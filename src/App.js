@@ -18,7 +18,7 @@ class App extends Component {
         </header>
 
         <div className="FileHandler">
-          <FileHandler inactive />
+          <FileHandler  />
           
         </div>
         <button onClick={this.simulateFileDrop}>Simulate File Drop </button>
