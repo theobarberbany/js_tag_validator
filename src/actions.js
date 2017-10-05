@@ -1,3 +1,14 @@
+/*
+ * action types
+ */
+export const SIMULATE_DROP = 'SIMULATE_DROP'
+export const TOGGLE_COMPLETE = 'TOGGLE_COMPLETE'
+export const COPY_CLIPBOARD = 'COPY_CLIPBOARD'
+
+/* 
+ * action creators
+ */
+
 //1. Loads dropped file (manifest csv) into store.(needs to be async. Will leave for later)
 
 //2. Toggles a critical warning's complete / incomplete feild (notes it as addressed)
