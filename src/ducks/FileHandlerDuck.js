@@ -8,7 +8,7 @@ export const COPY_CLIPBOARD = 'COPY_CLIPBOARD'
 
 // Reducer
 
-
+//Initial state for *this* component
 const initialState = {
     cardTitle: "Get started",
     cardIcon: "copy",
