@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import { createStore } from 'redux';
-import { fileHandler } from './reducers.js';
+import rootReducer from './rootReducer'
 import FileHandler from './components/FileHandler';
-import CardStatus from './carbon/CardStatus';
 import logo from './logo.svg';
 import './App.css';
 
-import {
-  simulateDrop,
-  copyClipboard,
-  toggleComplete
-} from './actions'
+import * as fileHandlerActions from './ducks/FileHandlerDuck'
 
-export const store = createStore(fileHandler, window.STATE_FROM_SERVER)
+export const store = createStore(rootReducer, window.STATE_FROM_SERVER)
 
 // Log the initial state of the store (currently set in reducers.js)
 console.log(store.getState())
@@ -29,7 +24,7 @@ console.log(store.getState())
 class App extends Component {
   simulateFileDrop () {
     //Do some redux state magic here
-    store.dispatch(simulateDrop())
+    store.dispatch(fileHandlerActions.simulateDrop())
   }
   render() {
     return (
@@ -40,9 +35,10 @@ class App extends Component {
           <h1 className="App-title">Validate Tags</h1>
         </header>
 
-        <div className="FileHandler">
-          <FileHandler  />
-          
+        <div className="FileHandlerContainer">
+          <div className="FileHandlerContainer"><FileHandler  /></div>
+          <div className="FileHandlerContainer"><FileHandler  /></div>
+          <div className="FileHandlerContainer"><FileHandler  /></div>
         </div>
         <button onClick={this.simulateFileDrop}>Simulate File Drop </button>
       </div>
