@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Card from '../carbon/Card';
 import OverflowMenu from '../carbon/OverflowMenu';
 import OverflowMenuItem from '../carbon/OverflowMenuItem';
@@ -24,15 +25,10 @@ const overflowMenuItemProps = {
 };
 
 class FileHandler extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, state) {
+    super(props, state);
 
-    this.state = {
-      cardTitle: "Get started",
-      cardIcon: "copy",
-      cardInfo:['Drop manifest file here'], 
-      status: CardStatus.appStatus.NOT_RUNNING,
-    };
+    this.state = this.props.propsstate;
   }
 
   render() {
@@ -40,9 +36,9 @@ class FileHandler extends Component {
     return (
       <Card {...cardProps}>
         <CardContent
-          cardTitle={this.state.cardTitle}
-          cardIcon={this.state.cardIcon}
-          cardInfo={this.state.cardInfo}
+          cardTitle={this.props.propsstate.cardTitle}
+          cardIcon={this.props.propsstate.cardIcon}
+          cardInfo={this.props.propsstate.cardInfo}
         >
           <OverflowMenu {...overflowMenuProps}>
             <OverflowMenuItem
@@ -52,10 +48,14 @@ class FileHandler extends Component {
           </OverflowMenu>
         </CardContent>
         <CardFooter>
-          <CardStatus status={this.state.status} />
+          <CardStatus status={this.props.propsstate.status} />
         </CardFooter>
       </Card>)
   }
 }
 
-export {FileHandler};
+export default connect((state) => {
+  return {
+    propsstate: state
+  };
+})(FileHandler);
