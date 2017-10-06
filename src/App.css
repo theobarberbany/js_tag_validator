@@ -22,11 +22,11 @@
   font-size: large;
 }
 
-.FileHandler {
+.FileHandlerContainer {
   display: flex;
   justify-content: center;
   align-content: center;
-  padding: 10px;
+  padding: 5px;
 }
 
 @keyframes App-logo-spin {
