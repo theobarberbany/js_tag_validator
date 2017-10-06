@@ -25,10 +25,9 @@ const overflowMenuItemProps = {
 };
 
 class FileHandler extends Component {
-  constructor(props, state) {
-    super(props, state);
+  constructor(props) {
+    super(props);
 
-    this.state = this.props.propsstate;
   }
 
   render() {
@@ -36,9 +35,9 @@ class FileHandler extends Component {
     return (
       <Card {...cardProps}>
         <CardContent
-          cardTitle={this.props.propsstate.cardTitle}
-          cardIcon={this.props.propsstate.cardIcon}
-          cardInfo={this.props.propsstate.cardInfo}
+          cardTitle={this.props.cardTitle}
+          cardIcon={this.props.cardIcon}
+          cardInfo={this.props.cardInfo}
         >
           <OverflowMenu {...overflowMenuProps}>
             <OverflowMenuItem
@@ -48,7 +47,7 @@ class FileHandler extends Component {
           </OverflowMenu>
         </CardContent>
         <CardFooter>
-          <CardStatus status={this.props.propsstate.status} />
+          <CardStatus status={this.props.status} />
         </CardFooter>
       </Card>)
   }
@@ -56,6 +55,9 @@ class FileHandler extends Component {
 
 export default connect((state) => {
   return {
-    propsstate: state
+    cardTitle: state.cardTitle,
+    cardIcon : state.cardIcon,
+    cardInfo : state.cardInfo,
+    status : state.status
   };
 })(FileHandler);
