@@ -1,29 +1,16 @@
 import React, { Component } from 'react';
-import { createStore } from 'redux';
-import rootReducer from './rootReducer'
+import { store } from './index'
 import FileHandler from './components/FileHandler';
 import logo from './logo.svg';
 import './App.css';
 
 import * as fileHandlerActions from './ducks/FileHandlerDuck'
 
-export const store = createStore(rootReducer, window.STATE_FROM_SERVER)
-
-// Log the initial state of the store (currently set in reducers.js)
-console.log(store.getState())
-
-// Every time the state changes, log it
-// Note that subscribe() returns a function for unregistering the listener
-let unsubscribe = store.subscribe(() =>
-console.log(store.getState())
-)
-
-// Dispatch some actions (woo!)
-//store.dispatch(simulateDrop())
 
 class App extends Component {
   simulateFileDrop () {
-    //Do some redux state magic here
+    //Do some redux magic here
+    // Dispatch some actions (woo!)
     store.dispatch(fileHandlerActions.simulateDrop())
   }
   render() {
