@@ -55,9 +55,9 @@ class FileHandler extends Component {
 
 export default connect((state) => {
   return {
-    cardTitle: state.cardTitle,
-    cardIcon : state.cardIcon,
-    cardInfo : state.cardInfo,
-    status : state.status
+    cardTitle: state.fileHandler.cardTitle,
+    cardIcon : state.fileHandler.cardIcon,
+    cardInfo : state.fileHandler.cardInfo,
+    status : state.fileHandler.status
   };
 })(FileHandler);
