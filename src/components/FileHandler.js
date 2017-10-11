@@ -75,16 +75,23 @@ class FileHandler extends Component {
       </div>)
   }
 }
-//This is bloody awful, rewrite if it works to make clearer
-export default connect((state) => {
+
+
+//Connect the FileHandler Component to react dnd (which is basically a redux store)
+FileHandler = DropTarget(props => props.accepts, boxTarget, (connect, monitor) => ({
+	connectDropTarget: connect.dropTarget(),
+	isOver: monitor.isOver(),
+	canDrop: monitor.canDrop(),
+}))(FileHandler)
+
+//Connect the connected FileHandler to the app's redux store (should this be done here?)
+FileHandler = connect((state) => {
   return {
     cardTitle: state.fileHandler.cardTitle,
     cardIcon : state.fileHandler.cardIcon,
     cardInfo : state.fileHandler.cardInfo,
     status : state.fileHandler.status
   };
-})(DropTarget(props => props.accepts, boxTarget, (connect, monitor) => ({
-	connectDropTarget: connect.dropTarget(),
-	isOver: monitor.isOver(),
-	canDrop: monitor.canDrop(),
-}))(FileHandler));
+})(FileHandler); 
+
+export default FileHandler;
