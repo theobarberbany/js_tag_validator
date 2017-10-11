@@ -10,7 +10,7 @@ UI is designed with [sketch](https://www.sketchapp.com/), and can be found in ui
 
 ---
 
-######Commands:
+###### Commands:
 
   - start dev server: `yarn start`
 
@@ -22,7 +22,7 @@ UI is designed with [sketch](https://www.sketchapp.com/), and can be found in ui
 
 ---
 
-######Testing
+###### Testing
 
   * tests are run by [Jest](https://facebook.github.io/jest/) running "yarn test" will
     scan the entire src folder for "x.test.js" files, the __tests__ folder for test files to run.
@@ -35,7 +35,7 @@ UI is designed with [sketch](https://www.sketchapp.com/), and can be found in ui
 
 ---
 
-######Directory / File Structure
+###### Directory / File Structure
 
 **React Components**
 
@@ -48,7 +48,7 @@ UI is designed with [sketch](https://www.sketchapp.com/), and can be found in ui
 
 ---
 
-######Libraries used :
+###### Libraries used :
 
  - React
  - Redux
