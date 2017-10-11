@@ -10,7 +10,7 @@ UI is designed with [sketch](https://www.sketchapp.com/), and can be found in ui
 
 ---
 
-**Commands:**
+######Commands:
 
   - start dev server: `yarn start`
 
@@ -22,7 +22,7 @@ UI is designed with [sketch](https://www.sketchapp.com/), and can be found in ui
 
 ---
 
-**Testing**
+######Testing
 
   * tests are run by [Jest](https://facebook.github.io/jest/) running "yarn test" will
     scan the entire src folder for "x.test.js" files, the __tests__ folder for test files to run.
@@ -33,9 +33,23 @@ UI is designed with [sketch](https://www.sketchapp.com/), and can be found in ui
     
   * [Enzyme](http://airbnb.io/enzyme/) is used for test rendering.
 
+---
+
+######Directory / File Structure
+
+**React Components**
+
+  * All components go into `/src/components/{ComponentName}`
+
+**Redux**
+
+  * Currently using [redux ducks](https://github.com/erikras/ducks-modular-redux) but transitioning to [re-ducks](https://github.com/alexnm/re-ducks) following the suggestions from [here](https://medium.freecodecamp.org/scaling-your-redux-app-with-ducks-6115955638be)
 
 
-Libraries used : 
+---
+
+######Libraries used :
+
  - React
  - Redux
  - Redux thunk
