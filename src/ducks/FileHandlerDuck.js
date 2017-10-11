@@ -5,10 +5,12 @@ import CardStatus from '../carbon/CardStatus';
 export const DROP_FILE = 'DROP_FILE'
 export const TOGGLE_COMPLETE = 'TOGGLE_COMPLETE'
 export const COPY_CLIPBOARD = 'COPY_CLIPBOARD'
+export const ON_FILE_HOVER = 'ON_FILE_HOVER'
+export const LOAD_FILE = 'LOAD_FILE           s'
 
 // Reducer
 
-//Initial state for *this* component
+//Initial state for *this* component (Duck)
 const initialState = {
     cardTitle: "Get started",
     cardIcon: "copy",
@@ -51,7 +53,7 @@ export const copyClipboard = (verboseData) => {
     }
 }
 
-//4 Simulates dropping a file onto the canvas when button pressed (passes new state)
+//4 Changes FileHandler state when something is dropped on it(passes new state)
 export const dropFile = (fileHandlerState) => {
     return {
         type: 'DROP_FILE',
