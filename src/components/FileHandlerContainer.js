@@ -18,8 +18,7 @@ class FileHandlerContainer extends Component {
     handleFileDrop(item,monitor) {
         if (monitor) {
             const droppedFiles = monitor.getItem().files
-            // Should be able to push to redux store here. Just setting state for now
-            //this.setState({ droppedFiles })
+            // Should be able to push to redux store here. Just logging to console for now
             console.log("you dropped something")
         }
     }
