@@ -38,7 +38,6 @@ const boxTarget = {
 class FileHandler extends Component {
   constructor(props) {
     super(props);
-
   }
 
   static propTypes = {
