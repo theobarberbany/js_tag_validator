@@ -8,6 +8,10 @@ import * as fileHandlerActions from './ducks/FileHandlerDuck'
 
 
 class App extends Component {
+  componentDidMount() {
+    document.title = "Tag Validator";
+  }
+  
   simulateFileDrop () {
     //Do some redux magic here
     // Dispatch some actions (woo!)
