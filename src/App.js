@@ -15,7 +15,7 @@ class App extends Component {
   simulateFileDrop () {
     //Do some redux magic here
     // Dispatch some actions (woo!)
-    store.dispatch(fileHandlerActions.simulateDrop())
+    store.dispatch(fileHandlerActions.dropFile())
   }
   render() {
     return (
