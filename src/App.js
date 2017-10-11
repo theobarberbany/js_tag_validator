@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { store } from './index'
 import FileHandlerContainer from './components/FileHandlerContainer';
+import { Button } from 'carbon-components-react'
 import logo from './logo.svg';
 import './App.css';
 
@@ -29,7 +30,7 @@ class App extends Component {
         <div className="FileHandlerContainer">
           <div className="FileHandlerContainer"><FileHandlerContainer  /></div>
         </div>
-        <button onClick={this.simulateFileDrop}>Simulate File Drop </button>
+        <Button onClick={this.simulateFileDrop}>Simulate File Drop </Button>
       </div>
     );
   }
