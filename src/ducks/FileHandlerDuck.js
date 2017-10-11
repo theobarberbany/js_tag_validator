@@ -2,7 +2,7 @@
 import CardStatus from '../carbon/CardStatus';
 
 //Action types
-export const SIMULATE_DROP = 'SIMULATE_DROP'
+export const DROP_FILE = 'DROP_FILE'
 export const TOGGLE_COMPLETE = 'TOGGLE_COMPLETE'
 export const COPY_CLIPBOARD = 'COPY_CLIPBOARD'
 
@@ -19,7 +19,7 @@ const initialState = {
 export default function reducer(state=initialState, action) {
     
     switch (action.type) {
-        case 'SIMULATE_DROP':
+        case 'DROP_FILE':
         return {...state,
             cardTitle: "Crunching Numbers",
             cardIcon: "copy",
@@ -52,9 +52,9 @@ export const copyClipboard = (verboseData) => {
 }
 
 //4 Simulates dropping a file onto the canvas when button pressed (passes new state)
-export const simulateDrop = (fileHandlerState) => {
+export const dropFile = (fileHandlerState) => {
     return {
-        type: 'SIMULATE_DROP',
+        type: 'DROP_FILE',
         fileHandlerState
     }
 }
