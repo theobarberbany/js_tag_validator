@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { store } from './index'
-import FileHandler from './components/FileHandler';
+import FileHandlerContainer from './components/FileHandlerContainer';
 import logo from './logo.svg';
 import './App.css';
 
@@ -27,9 +27,7 @@ class App extends Component {
         </header>
 
         <div className="FileHandlerContainer">
-          <div className="FileHandlerContainer"><FileHandler  /></div>
-          <div className="FileHandlerContainer"><FileHandler  /></div>
-          <div className="FileHandlerContainer"><FileHandler  /></div>
+          <div className="FileHandlerContainer"><FileHandlerContainer  /></div>
         </div>
         <button onClick={this.simulateFileDrop}>Simulate File Drop </button>
       </div>

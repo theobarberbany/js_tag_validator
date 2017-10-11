@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { DropTarget } from 'react-dnd'
+import PropTypes from 'prop-types'
 import Card from '../carbon/Card';
 import OverflowMenu from '../carbon/OverflowMenu';
 import OverflowMenuItem from '../carbon/OverflowMenuItem';
@@ -24,15 +26,35 @@ const overflowMenuItemProps = {
   className: 'some-class',
 };
 
+//Calls func when file is dropped, if func is defined.
+const boxTarget = {
+	drop(props, monitor) {
+		if (props.onDrop) {
+			props.onDrop(props, monitor)
+		}
+	},
+}
+
 class FileHandler extends Component {
   constructor(props) {
     super(props);
 
   }
 
-  render() {
+  static propTypes = {
+    accepts: PropTypes.arrayOf(PropTypes.string).isRequired,
+    connectDropTarget: PropTypes.func.isRequired,
+    isOver: PropTypes.bool.isRequired,
+    canDrop: PropTypes.bool.isRequired,
+    onDrop: PropTypes.func,
+  }
 
-    return (
+  render() {
+    const { canDrop, isOver, connectDropTarget } = this.props
+    const isActive = canDrop && isOver
+    
+    return connectDropTarget(
+      <div>
       <Card {...cardProps}>
         <CardContent
           cardTitle={this.props.cardTitle}
@@ -49,10 +71,11 @@ class FileHandler extends Component {
         <CardFooter>
           <CardStatus status={this.props.status} />
         </CardFooter>
-      </Card>)
+      </Card>
+      </div>)
   }
 }
-
+//This is bloody awful, rewrite if it works to make clearer
 export default connect((state) => {
   return {
     cardTitle: state.fileHandler.cardTitle,
@@ -60,4 +83,8 @@ export default connect((state) => {
     cardInfo : state.fileHandler.cardInfo,
     status : state.fileHandler.status
   };
-})(FileHandler);
+})(DropTarget(props => props.accepts, boxTarget, (connect, monitor) => ({
+	connectDropTarget: connect.dropTarget(),
+	isOver: monitor.isOver(),
+	canDrop: monitor.canDrop(),
+}))(FileHandler));
