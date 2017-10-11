@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { store } from '../index'
 import { DragDropContext, DragDropContextProvider } from 'react-dnd'
 import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend'
 import FileHandler from './FileHandler'
+import * as fileHandlerActions from '../ducks/FileHandlerDuck'
 import FileList from './FileList'
 
 // I probably need to connect() this to the redux store, not the presentiational component.
@@ -19,6 +21,7 @@ class FileHandlerContainer extends Component {
         if (monitor) {
             const droppedFiles = monitor.getItem().files
             // Should be able to push to redux store here. Just logging to console for now
+            store.dispatch(fileHandlerActions.simulateDrop())
             console.log("you dropped something")
         }
     }
