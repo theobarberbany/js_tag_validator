@@ -5,8 +5,7 @@ import CardStatus from '../carbon/CardStatus';
 export const DROP_FILE = 'DROP_FILE'
 export const TOGGLE_COMPLETE = 'TOGGLE_COMPLETE'
 export const COPY_CLIPBOARD = 'COPY_CLIPBOARD'
-export const ON_FILE_HOVER = 'ON_FILE_HOVER'
-export const LOAD_FILE = 'LOAD_FILE           s'
+export const PUSH_FILE = 'PUSH_FILE'
 
 // Reducer
 
@@ -35,8 +34,13 @@ export default function reducer(state=initialState, action) {
 
 // Action Creators
 
-//1. Loads dropped file (manifest csv) into store.(needs to be async. Will leave for later)
-    //not done yet
+//1. Loads dropped file (manifest csv) into store.
+export const pushFile = (file) => {
+    return {
+        type: 'PUSH_FILE',
+        file
+    }
+}
 //2. Toggles a critical warning's complete / incomplete feild (notes it as addressed)
 export const toggleComplete = (id) => {
     return {
