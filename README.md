@@ -4,3 +4,43 @@ Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## Javascript Tag Validator
+
+Clone the repo then run `npm install` or `yarn install`
+
+UI is designed with [sketch] (https://www.sketchapp.com/), and can be found in ui.sketch
+
+-- 
+
+**Commands:**
+
+  - start dev server: `yarn start`
+
+  - run tests: `yarn test`
+
+  - build for production: `yarn build`
+
+  - eject (don't do..): `yarn eject`
+
+---
+
+**Testing**
+
+  * tests are run by [Jest](https://facebook.github.io/jest/) running "yarn test" will
+    scan the entire src folder for "x.test.js" files, the __tests__ folder for test files to run.
+    Tests are run using nodejs with jsdom.
+
+  *  Tests are formatted using the [expect](https://facebook.github.io/jest/docs/en/expect.html) statement. 
+     Snapshot testing is also supported.
+    
+  * [Enzyme](http://airbnb.io/enzyme/) is used for test rendering.
+
+
+
+Libraries used : 
+ - React
+ - Redux
+ - Redux thunk
+ - React-redux
+ - Carbon components design kit
+ - React DnD
+ 
