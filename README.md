@@ -7,7 +7,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 Clone the repo then run `npm install` or `yarn install`
 
-UI is designed with [sketch] (https://www.sketchapp.com/), and can be found in ui.sketch
+UI is designed with [sketch](https://www.sketchapp.com/), and can be found in ui.sketch
 
 -- 
 
