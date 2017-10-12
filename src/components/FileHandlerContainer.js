@@ -38,14 +38,14 @@ class FileHandlerContainer extends Component {
             // To Do : set the callback of parseData to push parsed data to store.
             let parsePromise = new Promise ((resolve, reject) => {
                 let start = now();
-                console.log('starting parsing')
+                console.log('Starting parsing')
                 parseData(this.state.droppedFiles[0], function(results) {
                     component.setState({
                       parsedData: results.data, //update array with parsed data
                     })
                     let end = now();
                     resolve();
-                    console.log('finished parsing');
+                    console.log('Finished parsing:');
                     console.log("       Time:", (end-start || "(Unknown; your browser does not support the Performance API)"), "ms");
                 })
             });
@@ -66,9 +66,6 @@ class FileHandlerContainer extends Component {
                     <div>
                         <FileHandler accepts={[FILE]} onDrop={this.handleFileDrop} />
                     </div>
-                    <div className="FileList">
-                        <FileList files={droppedFiles} />
-                    </div> 
                 </div>
             </DragDropContextProvider>
         )
