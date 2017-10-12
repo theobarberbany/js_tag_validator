@@ -50,10 +50,11 @@ You can find the most recent version of the guide [here](https://github.com/face
 
 ###### Libraries used :
 
- - React
- - Redux
- - Redux thunk
- - React-redux
- - Carbon components design kit
- - React DnD
+ - [React](https://reactjs.org/)
+ - [Redux](https://github.com/reactjs/redux)
+ - [Redux thunk](https://github.com/gaearon/redux-thunk)
+ - [React-redux](https://github.com/reactjs/react-redux)
+ - [Carbon components design kit](http://carbondesignsystem.com/)
+ - [React DnD](https://github.com/react-dnd/react-dnd)
+ - [Redux Dev tools](https://github.com/zalmoxisus/redux-devtools-extension) (chrome extension)
  
