@@ -6,6 +6,8 @@ import FileHandler from './FileHandler'
 import * as fileHandlerActions from '../ducks/FileHandlerDuck'
 import FileList from './FileList'
 
+import './FileHandlerContainer.css';
+
 // I probably need to connect() this to the redux store, not the presentiational component.
 
 class FileHandlerContainer extends Component {
@@ -13,17 +15,18 @@ class FileHandlerContainer extends Component {
         super(props)
 
         this.handleFileDrop.bind(this)
-
         this.state = { droppedFiles: [] }
     }
 
-    handleFileDrop(item,monitor) {
+    handleFileDrop(item, monitor) {
         if (monitor) {
+            let self = this;
             //dropped files end up in here
             const droppedFiles = monitor.getItem().files
             // Should be able to push to redux store here. Just logging to console for now
             store.dispatch(fileHandlerActions.dropFile())
             console.log("you dropped something")
+            self.setState({ droppedFiles })
         }
     }
 
@@ -35,7 +38,9 @@ class FileHandlerContainer extends Component {
             <DragDropContextProvider backend={HTML5Backend}>
                 <div>
                     <FileHandler accepts={[FILE]} onDrop={this.handleFileDrop} />
-                    <FileList files={droppedFiles} />
+                    <div className="FileList">
+                        <FileList files={droppedFiles} />
+                    </div>
                 </div>
             </DragDropContextProvider>
         )
