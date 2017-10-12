@@ -27,13 +27,13 @@ class FileHandlerContainer extends Component {
             // Should be able to push to redux store here. Just logging to console for now
             store.dispatch(fileHandlerActions.dropFile())
             console.log("you dropped something")
-            console.log(this.state.droppedFiles)
             this.setState({ droppedFiles })
-            //parseData(this.state.droppedFiles, function(results) {
-            //    component.setState({
-            //      parsedData: results.data, //update array with parsed data
-            //    })
-            //})
+            console.log(this.state.droppedFiles[0])
+            parseData(this.state.droppedFiles[0], function(results) {
+                component.setState({
+                  parsedData: results.data, //update array with parsed data
+                })
+            })
 
         }
     }
