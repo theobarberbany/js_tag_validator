@@ -12,4 +12,11 @@ let parseData = (path, callback) => {
   });
 };
 
-export default parseData;
+let now = () => {
+	return typeof window.performance !== 'undefined'
+			? window.performance.now()
+			: 0;
+
+}
+
+export {parseData, now} ;
