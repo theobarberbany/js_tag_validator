@@ -5,6 +5,7 @@ import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend'
 import FileHandler from './FileHandler'
 import * as fileHandlerActions from '../ducks/FileHandlerDuck'
 import FileList from './FileList'
+import parseData from '../internal/Parser.js'
 
 import './FileHandlerContainer.css';
 
@@ -20,12 +21,20 @@ class FileHandlerContainer extends Component {
     
     handleFileDrop(item, monitor) {
         if (monitor) {
+            let component = this
             //dropped files end up in here
             const droppedFiles = monitor.getItem().files
             // Should be able to push to redux store here. Just logging to console for now
             store.dispatch(fileHandlerActions.dropFile())
             console.log("you dropped something")
+            console.log(this.state.droppedFiles)
             this.setState({ droppedFiles })
+            //parseData(this.state.droppedFiles, function(results) {
+            //    component.setState({
+            //      parsedData: results.data, //update array with parsed data
+            //    })
+            //})
+
         }
     }
 
