@@ -24,7 +24,7 @@ class FileHandlerContainer extends Component {
             let component = this
             // Update the state of droppedFiles
             const droppedFiles = monitor.getItem().files
-            if(droppedFiles[0].type == 'text/csv') {
+            if(droppedFiles[0].type === 'text/csv') {
                 // log file that was passed
                 console.log(droppedFiles[0])
                 // update the state of the ui
@@ -36,9 +36,9 @@ class FileHandlerContainer extends Component {
                     let start = now();
                     console.log('Starting parsing')
                     parseData(this.state.droppedFiles[0], function(results) {
-                        // clean up here pls?
+                        let len = results.data.length
                         component.setState({
-                            parsedData: results.data, //update array with parsed data
+                            parsedData: results.data.slice(9, len) //update array with parsed data
                             })
                     let end = now();
                     resolve();
