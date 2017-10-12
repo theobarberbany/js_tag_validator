@@ -1,4 +1,8 @@
 .FileList {
     margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 5px;
   }
   

@@ -26,7 +26,7 @@ const overflowMenuItemProps = {
   className: 'some-class',
 };
 
-//Calls func when file is dropped, if func is defined.
+//Calls func when file is dropped, if func is defined. Allowed methods defined here (spec)
 const boxTarget = {
 	drop(props, monitor) {
 		if (props.onDrop) {
@@ -82,8 +82,9 @@ FileHandler = DropTarget(props => props.accepts, boxTarget, (connect, monitor) =
 	isOver: monitor.isOver(),
 	canDrop: monitor.canDrop(),
 }))(FileHandler)
+//returns a collect function
 
-//Connect the connected FileHandler to the app's redux store (should this be done here?)
+//Connect the connected FileHandler to the app's redux store (should this be done here, or in the container and passed as props?)
 FileHandler = connect((state) => {
   return {
     cardTitle: state.fileHandler.cardTitle,

@@ -13,20 +13,19 @@ import './FileHandlerContainer.css';
 class FileHandlerContainer extends Component {
     constructor(props) {
         super(props)
-
-        this.handleFileDrop.bind(this)
+        
+        this.handleFileDrop = this.handleFileDrop.bind(this)
         this.state = { droppedFiles: [] }
     }
-
+    
     handleFileDrop(item, monitor) {
         if (monitor) {
-            let self = this;
             //dropped files end up in here
             const droppedFiles = monitor.getItem().files
             // Should be able to push to redux store here. Just logging to console for now
             store.dispatch(fileHandlerActions.dropFile())
             console.log("you dropped something")
-            self.setState({ droppedFiles })
+            this.setState({ droppedFiles })
         }
     }
 
@@ -37,10 +36,12 @@ class FileHandlerContainer extends Component {
         return(
             <DragDropContextProvider backend={HTML5Backend}>
                 <div>
-                    <FileHandler accepts={[FILE]} onDrop={this.handleFileDrop} />
+                    <div>
+                        <FileHandler accepts={[FILE]} onDrop={this.handleFileDrop} />
+                    </div>
                     <div className="FileList">
                         <FileList files={droppedFiles} />
-                    </div>
+                    </div> 
                 </div>
             </DragDropContextProvider>
         )

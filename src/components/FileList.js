@@ -9,9 +9,9 @@ export default class FileList extends Component {
 
 	list(files) {
 		return files.map(file => (
-			<li
+			<ul
 				key={file.name}
-			>{`'${file.name}' of size '${file.size}' and type '${file.type}'`}</li>
+			>{`'${file.name}' of size '${file.size}' and type '${file.type}'`}</ul>
 		))
 	}
 
