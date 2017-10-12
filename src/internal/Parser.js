@@ -1,9 +1,9 @@
 import Papa from "papaparse";
 
-let parseData = (path, callback) => {
+let parseData = (path, delimiter, callback) => {
   Papa.parse(path, {
     download: true,
-    delimiter: "\t",
+    delimiter: delimiter,
     newline: "\n",
     quotes: false,
     fastMode: true,
