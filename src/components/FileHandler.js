@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { DropTarget } from 'react-dnd'
 import PropTypes from 'prop-types'
-import Card from '../carbon/Card';
-import OverflowMenu from '../carbon/OverflowMenu';
-import OverflowMenuItem from '../carbon/OverflowMenuItem';
-import CardFooter from '../carbon/CardFooter';
-import CardContent from '../carbon/CardContent';
-import CardStatus from '../carbon/CardStatus';
+import {Card} from 'carbon-components-react';
+import {OverflowMenu} from 'carbon-components-react';
+import {OverflowMenuItem} from 'carbon-components-react';
+import {CardFooter} from 'carbon-components-react';
+import {CardContent} from 'carbon-components-react';
+import {CardStatus} from 'carbon-components-react';
 
 const cardProps = {
   onClick: () => { console.log('click'); }, // eslint-disable-line no-console

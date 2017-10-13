@@ -1,11 +1,10 @@
 // FileHandler.js duck *quack*
-import CardStatus from '../carbon/CardStatus';
+import {CardStatus} from 'carbon-components-react';
 
 //Action types
 export const DROP_FILE = 'DROP_FILE'
 export const TOGGLE_COMPLETE = 'TOGGLE_COMPLETE'
-export const COPY_CLIPBOARD = 'COPY_CLIPBOARD'
-export const PUSH_FILE = 'PUSH_FILE'
+export const PUSH_OBJECT = 'PUSH_OBJECT'
 
 // Reducer
 
@@ -28,16 +27,19 @@ export default function reducer(state=initialState, action) {
             status: CardStatus.appStatus.RUNNING,
         }
         default: return state
+
+        case 'PUSH_OBJECT':
+        return{}
     }
     
 }
 
 // Action Creators
 
-//1. Loads dropped file (manifest csv) into store.
-export const pushFile = (file) => {
+//1. Loads an object into store.
+export const pushObject = (file) => {
     return {
-        type: 'PUSH_FILE',
+        type: 'PUSH_OBJECT',
         file
     }
 }
@@ -49,15 +51,7 @@ export const toggleComplete = (id) => {
     }
 }
 
-//3. Copy verbose data output to clipboard. ///  I Don't think this needs to be done in redux?
-export const copyClipboard = (verboseData) => {
-    return {
-        type: 'COPY_CLIPBOARD',
-        verboseData
-    }
-}
-
-//4 Changes FileHandler state when something is dropped on it(passes new state)
+//3. Changes FileHandler UI state when something is dropped on it
 export const dropFile = (fileHandlerState) => {
     return {
         type: 'DROP_FILE',
