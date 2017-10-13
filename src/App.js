@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { store } from './index'
+import configureStore from './setupStore';
 import FileHandlerContainer from './components/FileHandlerContainer';
 import { Button } from 'carbon-components-react'
 import logo from './logo.svg';
@@ -7,6 +7,19 @@ import '../node_modules/carbon-components/css/carbon-components.css'
 import './App.css';
 
 import * as fileHandlerActions from './ducks/FileHandlerDuck'
+
+
+//Initialise the global store.
+export const store = configureStore();
+
+// Log the initial state of the store (currently set in reducers.js)
+console.log(store.getState())
+
+// Every time the state changes, log it
+// Note that subscribe() returns a function for unregistering the listener (componentWillUnmount)?
+let unsubscribe = store.subscribe(() =>
+console.log(store.getState())
+)
 
 
 class App extends Component {
