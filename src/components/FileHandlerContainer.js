@@ -29,7 +29,8 @@ class FileHandlerContainer extends Component {
         let end = now();
         console.log("Time to clean: ", (end-start || "(Unknown; your browser does not support the Performance API)"), "ms");
         console.log(cleanData)
-        this.setState({cleanData : cleanData})
+        store.dispatch(fileHandlerActions.pushData(cleanData))
+        //this.setState({cleanData : cleanData})
     }
     //This is a really big function - I'll make it smaller later.
     handleFileDrop(item, monitor) {
