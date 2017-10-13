@@ -10,21 +10,25 @@ import './App.css';
 import * as fileHandlerActions from './ducks/FileHandlerDuck'
 
 
-// Log the initial state of the store 
-console.log(store.getState())
-
-// Every time the state changes, log it
-// Note that subscribe() returns a function for unregistering the listener (componentWillUnmount)?
-let unsubscribe = store.subscribe(() =>
-console.log(store.getState())
-)
-
 
 class App extends Component {
   componentDidMount() {
     document.title = "Tag Validator";
+    // Log the initial state of the store 
+    console.log(store.getState())
+    // Every time the state changes, log it
+    // Note that subscribe() returns a function for unregistering the listener (componentWillUnmount)?
+    this.unsubscribe = store.subscribe(() =>
+    console.log(store.getState())
+    )
+    window.map = this;
   }
   
+  componentWillUnmount() {
+    this.unsubscribe()
+    console.log('it is alive!')
+  }
+
   simulateFileDrop () {
     //Do some redux magic here
     // Dispatch some actions (woo!)
