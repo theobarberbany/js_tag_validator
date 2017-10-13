@@ -26,7 +26,7 @@ class App extends Component {
   
   componentWillUnmount() {
     this.unsubscribe()
-    console.log('it is alive!')
+    console.log('unsubscribed from store')
   }
 
   simulateFileDrop () {
