@@ -1,3 +1,4 @@
+// Not used anymore.
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 

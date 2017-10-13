@@ -1,3 +1,4 @@
+//Polyfill for react 16 and enzyme.
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
