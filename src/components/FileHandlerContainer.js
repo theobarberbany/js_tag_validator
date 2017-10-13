@@ -31,7 +31,7 @@ class FileHandlerContainer extends Component {
         console.log(cleanData)
         this.setState({cleanData : cleanData})
     }
-
+    //This is a really big function - I'll make it smaller later.
     handleFileDrop(item, monitor) {
         if (monitor) {
             console.log("you dropped something..")
