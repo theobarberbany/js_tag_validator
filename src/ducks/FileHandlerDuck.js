@@ -10,22 +10,26 @@ export const PUSH_DATA = 'PUSH_DATA'
 
 //Initial state for *this* component (Duck) (This only gets passed a slice of the state)
 const initialState = {
+    displayProps: {
         cardTitle: "Get started",
         cardIcon: "copy",
         cardInfo:['Drop manifest file here'], 
         status: CardStatus.appStatus.NOT_RUNNING,
-
+    },
+    cleanData: []
 }
 
 export default function reducer(state=initialState, action) {
     switch (action.type) {
         case DROP_FILE:
         return {...state,
-            cardTitle: "Crunching Numbers",
-            cardIcon: "copy",
-            cardInfo:['Won\'t be a minute'], 
-            status: CardStatus.appStatus.RUNNING,
-        }
+            displayProps: {
+                cardTitle: "Crunching Numbers",
+                cardIcon: "copy",
+                cardInfo:['Won\'t be a minute'], 
+                status: CardStatus.appStatus.RUNNING,
+                }
+            }
 
         case PUSH_DATA:
         return {...state,

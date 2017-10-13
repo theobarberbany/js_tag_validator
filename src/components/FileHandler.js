@@ -87,10 +87,10 @@ FileHandler = DropTarget(props => props.accepts, boxTarget, (connect, monitor) =
 //Connect the connected FileHandler to the app's redux store (should this be done here, or in the container and passed as props?)
 FileHandler = connect((state) => {
   return {
-    cardTitle: state.fileHandler.cardTitle,
-    cardIcon : state.fileHandler.cardIcon,
-    cardInfo : state.fileHandler.cardInfo,
-    status : state.fileHandler.status
+    cardTitle: state.fileHandler.displayProps.cardTitle,
+    cardIcon : state.fileHandler.displayProps.cardIcon,
+    cardInfo : state.fileHandler.displayProps.cardInfo,
+    status : state.fileHandler.displayProps.status
   };
 })(FileHandler); 
 
