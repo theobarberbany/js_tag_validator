@@ -85,7 +85,6 @@ class FileHandlerContainer extends Component {
 
     render() {
         const { FILE } = NativeTypes
-        const { droppedFiles } = this.state
 
         return(
             <DragDropContextProvider backend={HTML5Backend}>
