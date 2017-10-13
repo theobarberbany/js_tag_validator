@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { store } from '../App'
+import store from '../setupStore'
 import { DragDropContext, DragDropContextProvider } from 'react-dnd'
 import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend'
 import FileHandler from './FileHandler'

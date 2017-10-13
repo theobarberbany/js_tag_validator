@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import configureStore from './setupStore';
+import store from './setupStore';
+import { Provider } from 'react-redux';
 import FileHandlerContainer from './components/FileHandlerContainer';
 import { Button } from 'carbon-components-react'
 import logo from './logo.svg';
@@ -9,10 +10,7 @@ import './App.css';
 import * as fileHandlerActions from './ducks/FileHandlerDuck'
 
 
-//Initialise the global store.
-export const store = configureStore();
-
-// Log the initial state of the store (currently set in reducers.js)
+// Log the initial state of the store 
 console.log(store.getState())
 
 // Every time the state changes, log it
@@ -34,17 +32,19 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Validate Tags</h1>
-        </header>
+      <Provider store={store}>
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Validate Tags</h1>
+          </header>
 
-        <div className="FileHandlerContainer">
-          <div className="FileHandlerContainer"><FileHandlerContainer  /></div>
+          <div className="FileHandlerContainer">
+            <div className="FileHandlerContainer"><FileHandlerContainer  /></div>
+          </div>
+          <Button onClick={this.simulateFileDrop}>Simulate File Drop </Button>
         </div>
-        <Button onClick={this.simulateFileDrop}>Simulate File Drop </Button>
-      </div>
+      </Provider>
     );
   }
 }
