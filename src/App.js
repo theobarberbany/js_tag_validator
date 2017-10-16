@@ -21,7 +21,7 @@ class App extends Component {
     this.unsubscribe = store.subscribe(() =>
     console.log(store.getState())
     )
-    window.map = this;
+    window.App = this;
   }
   
   componentWillUnmount() {
