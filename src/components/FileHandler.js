@@ -57,6 +57,14 @@ class FileHandler extends Component {
     onDrop: PropTypes.func,
   }
 
+  componentDidMount() {
+    window.FileHandler = this;
+  }
+
+  changeProps() {
+    this.props.cardInfo = "Updated"
+  }
+
   render() {
     const { canDrop, isOver, connectDropTarget } = this.props
     const isActive = canDrop && isOver
