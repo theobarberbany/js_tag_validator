@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import store from '../setupStore'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { DragDropContext, DragDropContextProvider } from 'react-dnd'
 import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend'
 import FileHandler from './FileHandler'
@@ -8,7 +9,21 @@ import {parseData, now} from '../internal/Parser'
 
 import './FileHandlerContainer.css';
 
-// I probably need to connect() this to the redux store, not the presentiational component.
+const mapDispatchToProps = (dispatch) => {
+    return {
+      pushData: data => {
+        dispatch({
+          type: 'PUSH_DATA',
+          data
+        })
+      },
+      dropFile: () => {
+          dispatch({
+              type: 'DROP_FILE'
+          })
+      }
+    }
+}
 
 class FileHandlerContainer extends Component {
     constructor(props) {
@@ -29,7 +44,7 @@ class FileHandlerContainer extends Component {
         let end = now();
         console.log("Time to clean: ", (end-start || "(Unknown; your browser does not support the Performance API)"), "ms");
         console.log(cleanData)
-        store.dispatch(fileHandlerActions.pushData(cleanData))
+        this.props.pushData(cleanData)
         //this.setState({cleanData : cleanData})
     }
     //This is a really big function - I'll make it smaller later.
@@ -44,7 +59,7 @@ class FileHandlerContainer extends Component {
                 // log file that was passed
                 console.log(droppedFiles[0])
                 // update the state of the ui
-                store.dispatch(fileHandlerActions.dropFile())
+                this.props.dropFile()
                 // update state with dropped file
                 this.setState({ droppedFiles })
                 // parse
@@ -98,4 +113,6 @@ class FileHandlerContainer extends Component {
     }
 }
 
-export default DragDropContext(HTML5Backend)(FileHandlerContainer);
+FileHandlerContainer = DragDropContext(HTML5Backend)(FileHandlerContainer);
+FileHandlerContainer = connect(null,mapDispatchToProps)(FileHandlerContainer)
+export default FileHandlerContainer
