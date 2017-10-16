@@ -16,7 +16,8 @@ const initialState = {
         cardInfo:['Drop manifest file here'], 
         status: CardStatus.appStatus.NOT_RUNNING,
     },
-    cleanData: []
+    cleanData: [],
+    array: [1,2]
 }
 
 export default function reducer(state=initialState, action) {

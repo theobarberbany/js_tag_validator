@@ -40,7 +40,8 @@ const mapStateToProps = (state) => {
     cardTitle: state.fileHandler.displayProps.cardTitle,
     cardIcon : state.fileHandler.displayProps.cardIcon,
     cardInfo : state.fileHandler.displayProps.cardInfo,
-    status : state.fileHandler.displayProps.status
+    status : state.fileHandler.displayProps.status,
+    array: state.array
   }; 
 }
 
@@ -62,7 +63,7 @@ class FileHandler extends Component {
   }
 
   changeProps() {
-    this.props.cardInfo = "Updated"
+    this.props.array[0] = 2;
   }
 
   render() {
