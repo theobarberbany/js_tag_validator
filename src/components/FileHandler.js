@@ -41,7 +41,6 @@ const mapStateToProps = (state) => {
     cardIcon : state.fileHandler.displayProps.cardIcon,
     cardInfo : state.fileHandler.displayProps.cardInfo,
     status : state.fileHandler.displayProps.status,
-    array: state.array
   }; 
 }
 
@@ -56,14 +55,6 @@ class FileHandler extends Component {
     isOver: PropTypes.bool.isRequired,
     canDrop: PropTypes.bool.isRequired,
     onDrop: PropTypes.func,
-  }
-
-  componentDidMount() {
-    window.FileHandler = this;
-  }
-
-  changeProps() {
-    this.props.array[0] = 2;
   }
 
   render() {
