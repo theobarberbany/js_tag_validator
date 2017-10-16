@@ -84,7 +84,6 @@ class FileHandler extends Component {
   }
 }
 
-
 //Connect the FileHandler Component to react dnd (which is basically a redux store)
 FileHandler = DropTarget(props => props.accepts, boxTarget, (connect, monitor) => ({
 	connectDropTarget: connect.dropTarget(),
@@ -93,7 +92,6 @@ FileHandler = DropTarget(props => props.accepts, boxTarget, (connect, monitor) =
 }))(FileHandler)
 //returns a collect function
 
-//Connect the connected FileHandler to the app's redux store (should this be done here, or in the container and passed as props?)
 FileHandler = connect(mapStateToProps)(FileHandler); 
 
 export default FileHandler
