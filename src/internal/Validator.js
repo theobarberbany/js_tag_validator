@@ -1,15 +1,10 @@
 //@flow
 const testarray = [
-    [
-        "TAAGGCGA", "CTCTCTAT"
-    ],
-    [
-        "CGTACTAG", "CTCTCTAT"
-    ],
-    ["AGGCAGAA", "CTCTCTAT"]
-]
+  ["TAAGGCGA", "CTCTCTAT"],
+  ["CGTACTAG", "CTCTCTAT"],
+  ["AGGCAGAA", "CTCTCTAT"]
+];
 
-let difference = function () {
-    //Check the difference between two tags
-
-}
+export const difference = function(tag1: String, tag2: String) {
+  //Check the difference between two tags
+};
