@@ -13,12 +13,9 @@ let parseData = (path, delimiter, callback) => {
 };
 
 let now = () => {
-  return typeof window.performance !== 'undefined'
-    ? window
-      .performance
-      .now()
+  return typeof window.performance !== "undefined"
+    ? window.performance.now()
     : 0;
+};
 
-}
-
-export {parseData, now};
+export { parseData, now };
