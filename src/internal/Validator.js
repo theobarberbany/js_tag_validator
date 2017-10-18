@@ -43,8 +43,17 @@ function reverse_compliment(tag) {
   return compliment.join("");
 }
 
+function extract_from_array(array, colno) {
+  let extracted = [];
+  for (let i = 0; i < array.length; i++) {
+    extracted.push(array[i][colno]);
+  }
+  return extracted;
+}
+
 module.exports = {
   difference: difference,
   check_array: check_array,
-  reverse_compliment: reverse_compliment
+  reverse_compliment: reverse_compliment,
+  extract_from_array: extract_from_array
 };

@@ -37,3 +37,20 @@ describe("reverse_compliment function", () => {
     expect(Validator.reverse_compliment("AGGCAGAA")).toBe("TTCTGCCT");
   });
 });
+
+describe("Extracting a single tag from the parsed array", () => {
+  it("Extracts the first tag from the test array", () => {
+    expect(Validator.extract_from_array(testArray, 0)).toEqual([
+      "TAAGGCGA",
+      "CGTACTAG",
+      "AGGCAGAA"
+    ]);
+  });
+  it("Extracts the second tag from the test array", () => {
+    expect(Validator.extract_from_array(testArray, 1)).toEqual([
+      "CTCTCTAT",
+      "CTCTCTAT",
+      "CTCTCTAT"
+    ]);
+  });
+});
