@@ -33,7 +33,18 @@ function check_array(array) {
   }
   return bad_tags;
 }
+
+function reverse_compliment(tag) {
+  let complimentArray = [["A", "T"], ["C", "G"], ["G", "C"], ["T", "A"]];
+  let complimentMap = new Map(complimentArray);
+  let compliment = tag.split("");
+  compliment = compliment.map(base => complimentMap.get(base));
+  compliment = compliment.reverse();
+  return compliment.join("");
+}
+
 module.exports = {
   difference: difference,
-  check_array: check_array
+  check_array: check_array,
+  reverse_compliment: reverse_compliment
 };
