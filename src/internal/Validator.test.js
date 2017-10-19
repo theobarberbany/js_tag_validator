@@ -21,8 +21,14 @@ describe("Difference function", () => {
 });
 
 describe("Check_array function", () => {
-  it("checks the test array fails", () => {
+  it("when both tags are checked, fail", () => {
     expect(Validator.check_array(testArray)).toBe(3);
+  });
+  it("checks the first tag passes", () => {
+    expect(Validator.check_array(["TAAGGCGA", "CGTACTAG", "AGGCAGAA"])).toBe(0);
+  });
+  it("checks the second tag fails", () => {
+    expect(Validator.check_array(["CTCTCTAT", "CTCTCTAT", "CTCTCTAT"])).toBe(3);
   });
 });
 

@@ -20,17 +20,28 @@ function difference(tag1, tag2) {
 
 function check_array(array) {
   // check if an array of tags differ by at least 3.
-  let number_cols = array[0].length;
+  let number_tag_groups = 0;
+  if (Array.isArray(array[0])) {
+    number_tag_groups = array[0].length;
+  } else {
+    // assume there's only one tag.
+    number_tag_groups = 1;
+  }
+  console.log(number_tag_groups, "tag groups");
   let bad_tags = 0;
-  for (let i = 0; i < number_cols; i++) {
+  for (let i = 0; i < number_tag_groups; i++) {
     for (let j = 0; j < array.length; j++) {
       for (let k = j + 1; k < array.length; k++) {
-        let diff = difference(array[j][i], array[k][i]);
+        let diff;
+        number_tag_groups = 1
+          ? (diff = difference(array[j], array[k]))
+          : (diff = difference(array[j][i], array[k][i]));
         // to do  :  dispatch an action to add this to a 'checklist'
         diff < 3 ? bad_tags++ : null;
       }
     }
   }
+  console.log(bad_tags, "bad tags");
   return bad_tags;
 }
 
@@ -49,6 +60,18 @@ function extract_from_array(array, colno) {
     extracted.push(array[i][colno]);
   }
   return extracted;
+}
+
+function check_tag_set_composition(array) {
+  let number_tag_groups = 0;
+  if (Array.isArray(array[0])) {
+    number_tag_groups = array[0].length;
+  } else {
+    number_tags = 1;
+  }
+
+  let tags = extract_from_array;
+  let tag_length = null;
 }
 
 module.exports = {
