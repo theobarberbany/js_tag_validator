@@ -55,11 +55,20 @@ function reverse_compliment(tag) {
 }
 
 function extract_from_array(array, colno) {
+  // extract a tag group (oligo) from the parsed array
   let extracted = [];
   for (let i = 0; i < array.length; i++) {
     extracted.push(array[i][colno]);
   }
   return extracted;
+}
+
+function extract_base(array, n) {
+  //returns an array with the nth base of every tag in the array.
+
+  let data = [];
+  for (let i = 0; i < array.length; i++) data.push(array[i][n]);
+  return data;
 }
 
 function check_tag_set_composition(array) {
@@ -78,5 +87,7 @@ module.exports = {
   difference: difference,
   check_array: check_array,
   reverse_compliment: reverse_compliment,
-  extract_from_array: extract_from_array
+  extract_from_array: extract_from_array,
+  check_tag_set_composition: check_tag_set_composition,
+  extract_base: extract_base
 };

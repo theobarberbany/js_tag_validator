@@ -44,7 +44,7 @@ describe("reverse_compliment function", () => {
   });
 });
 
-describe("Extracting a single tag from the parsed array", () => {
+describe("Extracting a single tag group from the parsed array", () => {
   it("Extracts the first tag from the test array", () => {
     expect(Validator.extract_from_array(testArray, 0)).toEqual([
       "TAAGGCGA",
@@ -52,11 +52,19 @@ describe("Extracting a single tag from the parsed array", () => {
       "AGGCAGAA"
     ]);
   });
-  it("Extracts the second tag from the test array", () => {
+  it("Extracts the second tag group from the test array", () => {
     expect(Validator.extract_from_array(testArray, 1)).toEqual([
       "CTCTCTAT",
       "CTCTCTAT",
       "CTCTCTAT"
     ]);
+  });
+});
+
+describe("Extracting the first base from every tag in a tag group (oligo)", () => {
+  it("Extracts the nth (n=0) base from a given array of single tags", () => {
+    expect(
+      Validator.extract_base(["TAAGGCGA", "CGTACTAG", "AGGCAGAA"], 0)
+    ).toEqual(["T", "C", "A"]);
   });
 });
