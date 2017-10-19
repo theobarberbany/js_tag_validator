@@ -71,16 +71,29 @@ function extract_base(array, n) {
   return data;
 }
 
-function check_tag_set_composition(array) {
+function call_check_tag_set_composition(array) {
+  // call the funci
   let number_tag_groups = 0;
   if (Array.isArray(array[0])) {
     number_tag_groups = array[0].length;
   } else {
-    number_tags = 1;
+    number_tag_groups = 1;
   }
+  for (let i = 0; i < number_tag_groups; i++) {
+    let data = extract_from_array(array, i);
+    //console.log("calling check_tag_set_composition with data : ", data);
+    check_tag_set_composition(data);
+  }
+}
 
-  let tags = extract_from_array;
-  let tag_length = null;
+function check_tag_set_composition(array) {
+  let tag_length = array[0].length;
+  // console.log(
+  //   "check_tag_set_composition recieved data: ",
+  //   array,
+  //   "tag length: ",
+  //   tag_length
+  // );
 }
 
 module.exports = {
