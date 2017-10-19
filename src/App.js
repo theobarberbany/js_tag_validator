@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import store from "./setupStore";
+import Raven from "raven-js";
 import { Provider } from "react-redux";
 import FileHandlerContainer from "./components/FileHandlerContainer";
 import { Button } from "carbon-components-react";
@@ -23,6 +24,11 @@ class App extends Component {
   componentWillUnmount() {
     this.unsubscribe();
     console.log("unsubscribed from store");
+  }
+
+  componentDidCatch(error, errorInfo) {
+    this.setState({ error });
+    Raven.captureException(error, { extra: errorInfo });
   }
 
   simulateFileDrop() {
