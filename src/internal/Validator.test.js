@@ -61,10 +61,27 @@ describe("Extracting a single tag group from the parsed array", () => {
   });
 });
 
-describe("Extracting the first base from every tag in a tag group (oligo)", () => {
+describe("Extracting the first base from every tag in a tag set (oligo)", () => {
   it("Extracts the nth (n=0) base from a given array of single tags", () => {
     expect(
       Validator.extract_base(["TAAGGCGA", "CGTACTAG", "AGGCAGAA"], 0)
     ).toEqual(["T", "C", "A"]);
+  });
+});
+
+describe("Checking the composition of each 'column' in a given tag set (oligo)", () => {
+  it("Returns an object, containing an array for each column with tallies of each base [A,T,C,G]", () => {
+    expect(
+      Validator.check_tag_set_composition(["TAAGGCGA", "CGTACTAG", "AGGCAGAA"])
+    ).toEqual({
+      Col0: [1, 1, 1, 0],
+      Col1: [1, 0, 0, 2],
+      Col2: [1, 1, 0, 1],
+      Col3: [1, 0, 1, 1],
+      Col4: [1, 0, 1, 1],
+      Col5: [0, 1, 1, 1],
+      Col6: [2, 0, 0, 1],
+      Col7: [2, 0, 0, 1]
+    });
   });
 });

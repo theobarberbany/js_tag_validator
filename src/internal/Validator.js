@@ -1,4 +1,19 @@
 // See https://github.com/theobarberbany/tag_validator
+
+// Actually taken *from* stack overflow's website...
+//Try "string".formatUnicorn in console when on their website..
+String.prototype.formatUnicorn = function() {
+  var e = this.toString();
+  if (!arguments.length) return e;
+  var t = typeof arguments[0],
+    n =
+      "string" == t || "number" == t
+        ? Array.prototype.slice.call(arguments)
+        : arguments[0];
+  for (var i in n) e = e.replace(new RegExp("\\{" + i + "\\}", "gi"), n[i]);
+  return e;
+};
+
 function difference(tag1, tag2) {
   //compare two tags - return the degree to which they differ
   try {
@@ -65,14 +80,13 @@ function extract_from_array(array, colno) {
 
 function extract_base(array, n) {
   //returns an array with the nth base of every tag in the array.
-
   let data = [];
   for (let i = 0; i < array.length; i++) data.push(array[i][n]);
   return data;
 }
 
 function call_check_tag_set_composition(array) {
-  // call the funci
+  // call the func
   let number_tag_groups = 0;
   if (Array.isArray(array[0])) {
     number_tag_groups = array[0].length;
@@ -81,20 +95,40 @@ function call_check_tag_set_composition(array) {
   }
   for (let i = 0; i < number_tag_groups; i++) {
     let data = extract_from_array(array, i);
-    //console.log("calling check_tag_set_composition with data : ", data);
+    console.log("calling check_tag_set_composition with data : ", data);
     check_tag_set_composition(data);
   }
 }
 
 function check_tag_set_composition(array) {
+  // treat each tag set as a 2d matrix, the first column
+  // represents the first base of each tag in the set.
   let tag_length = array[0].length;
-  // console.log(
-  //   "check_tag_set_composition recieved data: ",
-  //   array,
-  //   "tag length: ",
-  //   tag_length
-  // );
+  let universe = "ATCG";
+  console.log(
+    "check_tag_set_composition recieved data: ",
+    array,
+    "tag length: ",
+    tag_length
+  );
+  let proportions = {};
+
+  for (let i = 0; i < tag_length; i++) {
+    proportions["Col" + i] = [0, 0, 0, 0]; // A,T,C,G
+  }
+  for (let i = 0; i < array.length; i++) {
+    //For each tag in the array
+    for (let j = 0; j < tag_length; j++) {
+      // For each base in each tag use a lookup table to increment values
+      proportions["Col" + j][universe.indexOf(array[i][j])] += 1;
+    }
+  }
+  return proportions;
 }
+
+test = ["TAAGGCGA", "CGTACTAG", "AGGCAGAA"];
+
+console.log(check_tag_set_composition(test));
 
 module.exports = {
   difference: difference,
@@ -102,5 +136,7 @@ module.exports = {
   reverse_compliment: reverse_compliment,
   extract_from_array: extract_from_array,
   check_tag_set_composition: check_tag_set_composition,
-  extract_base: extract_base
+  extract_base: extract_base,
+  call_check_tag_set_composition: call_check_tag_set_composition,
+  check_tag_set_composition: check_tag_set_composition
 };
