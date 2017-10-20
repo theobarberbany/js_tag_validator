@@ -33,27 +33,54 @@ function difference(tag1, tag2) {
   }
 }
 
-function check_array(array) {
-  // check if an array of tags differ by at least 3.
-  let number_tag_groups = 0;
+function call_check_array(array) {
+  // If Two Cols : Check against adjacent col
+  let number_tag_groups;
+  let output = [];
+  //Determine how many tag groups there are
   if (Array.isArray(array[0])) {
     number_tag_groups = array[0].length;
   } else {
-    // assume there's only one tag.
     number_tag_groups = 1;
   }
-  console.log(number_tag_groups, "tag groups");
+  // Call the appropriate function
+  //Single Tag set
+  if (number_tag_groups == 1) {
+    console.log("calling check_array_single with data : ", array);
+    output = check_array_single(array);
+  } else {
+    // More than one  - so compare tag1 -> tag2
+    console.log(
+      "calling check_array with data : ",
+      array,
+      "and ",
+      number_tag_groups,
+      "tag sets"
+    );
+    check_array(array, number_tag_groups);
+    //next check the concatenation as a single tag
+    let concatenated = [];
+    console.log("calling check_array_single with data : ", concatenated);
+  }
+  return output;
+}
+
+function check_array(array, number_tag_groups) {
   let bad_tags = 0;
-  for (let i = 0; i < number_tag_groups; i++) {
-    for (let j = 0; j < array.length; j++) {
-      for (let k = j + 1; k < array.length; k++) {
-        let diff;
-        number_tag_groups = 1
-          ? (diff = difference(array[j], array[k]))
-          : (diff = difference(array[j][i], array[k][i]));
-        // to do  :  dispatch an action to add this to a 'checklist'
-        diff < 3 ? bad_tags++ : null;
-      }
+  for (let i = 0; i < array.length; i++) {
+    let diff = difference(array[i][0], array[i][1]);
+  }
+}
+
+function check_array_single(array) {
+  let bad_tags = 0;
+  for (let j = 0; j < array.length; j++) {
+    for (let k = j + 1; k < array.length; k++) {
+      let diff = difference(array[j], array[k]);
+      // (diff = difference(array[j][i], array[k][i]));
+      console.log("Comparing", array[j], "to", array[k]);
+      // to do  :  dispatch an action to add this to a 'checklist'
+      diff < 3 ? bad_tags++ : null;
     }
   }
   console.log(bad_tags, "bad tags");
@@ -126,17 +153,22 @@ function check_tag_set_composition(array) {
   return proportions;
 }
 
-test = ["TAAGGCGA", "CGTACTAG", "AGGCAGAA"];
-
-console.log(check_tag_set_composition(test));
+function run(array) {
+  //Function to tie everything together
+  console.log("Checking tags differ by at least 3");
+  let bad_tags = call_check_array(array);
+  console.log("Found ", bad_tags, "bad tags");
+}
 
 module.exports = {
   difference: difference,
-  check_array: check_array,
+  check_array_single: check_array_single,
   reverse_compliment: reverse_compliment,
   extract_from_array: extract_from_array,
   check_tag_set_composition: check_tag_set_composition,
   extract_base: extract_base,
   call_check_tag_set_composition: call_check_tag_set_composition,
-  check_tag_set_composition: check_tag_set_composition
+  check_tag_set_composition: check_tag_set_composition,
+  call_check_array: call_check_array,
+  run: run
 };

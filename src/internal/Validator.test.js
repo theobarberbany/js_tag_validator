@@ -22,13 +22,17 @@ describe("Difference function", () => {
 
 describe("Check_array function", () => {
   it("when both tags are checked, fail", () => {
-    expect(Validator.check_array(testArray)).toBe(3);
+    expect(Validator.call_check_array(testArray)).toEqual();
   });
   it("checks the first tag passes", () => {
-    expect(Validator.check_array(["TAAGGCGA", "CGTACTAG", "AGGCAGAA"])).toBe(0);
+    expect(
+      Validator.call_check_array(["TAAGGCGA", "CGTACTAG", "AGGCAGAA"])
+    ).toBe(0);
   });
   it("checks the second tag fails", () => {
-    expect(Validator.check_array(["CTCTCTAT", "CTCTCTAT", "CTCTCTAT"])).toBe(3);
+    expect(
+      Validator.call_check_array(["CTCTCTAT", "CTCTCTAT", "CTCTCTAT"])
+    ).toEqual(3);
   });
 });
 
