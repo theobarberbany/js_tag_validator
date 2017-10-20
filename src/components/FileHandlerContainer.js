@@ -6,6 +6,7 @@ import HTML5Backend, { NativeTypes } from "react-dnd-html5-backend";
 import FileHandler from "./FileHandler";
 import * as fileHandlerActions from "../ducks/FileHandlerDuck";
 import { parseData, now } from "../internal/Parser";
+import { run } from "../internal/Validator";
 
 import "./FileHandlerContainer.css";
 
@@ -46,6 +47,7 @@ class FileHandlerContainer extends Component {
       "ms"
     );
     console.log(cleanData);
+    run(cleanData);
     this.props.pushData(cleanData);
     //this.setState({cleanData : cleanData})
   }
