@@ -36,7 +36,7 @@ function difference(tag1, tag2) {
 function call_check_array(array) {
   // If Two Cols : Check against adjacent col
   let number_tag_groups;
-  let output = [];
+  let output;
   //Determine how many tag groups there are
   if (Array.isArray(array[0])) {
     number_tag_groups = array[0].length;
@@ -57,10 +57,13 @@ function call_check_array(array) {
       number_tag_groups,
       "tag sets"
     );
-    check_array(array, number_tag_groups);
+    output = check_array(array, number_tag_groups);
     //next check the concatenation as a single tag
     let concatenated = [];
-    console.log("calling check_array_single with data : ", concatenated);
+    console.log(
+      "calling check_array_single with concatenated data : ",
+      concatenated
+    );
   }
   return output;
 }
@@ -69,7 +72,12 @@ function check_array(array, number_tag_groups) {
   let bad_tags = 0;
   for (let i = 0; i < array.length; i++) {
     let diff = difference(array[i][0], array[i][1]);
+    //console.log("Comparing", array[i][0], "to", array[i][1]);
+    // to do  :  dispatch an action to add this to a 'checklist'
+    diff < 3 ? console.log("Above tag bad!") : null;
+    diff < 3 ? bad_tags++ : null;
   }
+  return bad_tags;
 }
 
 function check_array_single(array) {
@@ -114,6 +122,7 @@ function extract_base(array, n) {
 
 function call_check_tag_set_composition(array) {
   // call the func
+  let output = [];
   let number_tag_groups = 0;
   if (Array.isArray(array[0])) {
     number_tag_groups = array[0].length;
@@ -122,9 +131,10 @@ function call_check_tag_set_composition(array) {
   }
   for (let i = 0; i < number_tag_groups; i++) {
     let data = extract_from_array(array, i);
-    console.log("calling check_tag_set_composition with data : ", data);
-    check_tag_set_composition(data);
+    //console.log("calling check_tag_set_composition with data : ", data);
+    output[i] = check_tag_set_composition(data);
   }
+  return output;
 }
 
 function check_tag_set_composition(array) {
@@ -158,6 +168,9 @@ function run(array) {
   console.log("Checking tags differ by at least 3");
   let bad_tags = call_check_array(array);
   console.log("Found ", bad_tags, "bad tags");
+  console.log("Checking tag set composition");
+  let composotion = call_check_tag_set_composition(array);
+  console.log(composotion);
 }
 
 module.exports = {

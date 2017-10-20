@@ -22,7 +22,7 @@ describe("Difference function", () => {
 
 describe("Check_array function", () => {
   it("when both tags are checked, fail", () => {
-    expect(Validator.call_check_array(testArray)).toEqual();
+    expect(Validator.call_check_array(testArray)).toEqual(0);
   });
   it("checks the first tag passes", () => {
     expect(
