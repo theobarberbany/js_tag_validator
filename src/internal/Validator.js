@@ -59,7 +59,7 @@ function call_check_array(array) {
     );
     output = check_array(array, number_tag_groups);
     //next check the concatenation as a single tag
-    let concatenated = [];
+    let concatenated = concatenate_tags(array);
     console.log(
       "calling check_array_single with concatenated data : ",
       concatenated
