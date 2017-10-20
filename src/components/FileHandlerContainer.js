@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Raven from "raven-js";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { DragDropContext, DragDropContextProvider } from "react-dnd";
@@ -6,6 +7,7 @@ import HTML5Backend, { NativeTypes } from "react-dnd-html5-backend";
 import FileHandler from "./FileHandler";
 import * as fileHandlerActions from "../ducks/FileHandlerDuck";
 import { parseData, now } from "../internal/Parser";
+import { run } from "../internal/Validator";
 
 import "./FileHandlerContainer.css";
 
@@ -31,6 +33,11 @@ class FileHandlerContainer extends Component {
     };
   }
 
+  componentDidCatch(error, errorInfo) {
+    this.setState({ error });
+    Raven.captureException(error, { extra: errorInfo });
+  }
+
   cleanParsedData() {
     let len = this.state.parsedData.length;
     let cleanData = [];
@@ -46,6 +53,7 @@ class FileHandlerContainer extends Component {
       "ms"
     );
     console.log(cleanData);
+    run(cleanData);
     this.props.pushData(cleanData);
     //this.setState({cleanData : cleanData})
   }
