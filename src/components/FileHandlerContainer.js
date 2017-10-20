@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Raven from "raven-js";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { DragDropContext, DragDropContextProvider } from "react-dnd";
@@ -30,6 +31,11 @@ class FileHandlerContainer extends Component {
     this.state = {
       droppedFiles: []
     };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    this.setState({ error });
+    Raven.captureException(error, { extra: errorInfo });
   }
 
   cleanParsedData() {
