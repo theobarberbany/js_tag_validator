@@ -89,3 +89,14 @@ describe("Checking the composition of each 'column' in a given tag set (oligo)",
     });
   });
 });
+
+describe("Function to concatenate tags", () => {
+  it("Concatenates tag2 to tag1", () => {
+    expect(Validator.concatenate_tags([["A", "B"]])).toEqual(["AB"]);
+    expect(Validator.concatenate_tags(testArray)).toEqual([
+      "TAAGGCGACTCTCTAT",
+      "CGTACTAGCTCTCTAT",
+      "AGGCAGAACTCTCTAT"
+    ]);
+  });
+});

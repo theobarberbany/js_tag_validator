@@ -95,6 +95,16 @@ function check_array_single(array) {
   return bad_tags;
 }
 
+function concatenate_tags(array) {
+  let concatenated = [];
+  for (let i = 0; i < array.length; i++) {
+    concatenated.push(
+      "{tag1}{tag2}".formatUnicorn({ tag1: array[i][0], tag2: array[i][1] })
+    );
+  }
+  return concatenated;
+}
+
 function reverse_compliment(tag) {
   let complimentArray = [["A", "T"], ["C", "G"], ["G", "C"], ["T", "A"]];
   let complimentMap = new Map(complimentArray);
@@ -183,5 +193,6 @@ module.exports = {
   call_check_tag_set_composition: call_check_tag_set_composition,
   check_tag_set_composition: check_tag_set_composition,
   call_check_array: call_check_array,
+  concatenate_tags: concatenate_tags,
   run: run
 };
