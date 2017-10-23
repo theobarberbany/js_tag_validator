@@ -5,6 +5,7 @@ import { DragDropContext, DragDropContextProvider } from "react-dnd";
 import HTML5Backend, { NativeTypes } from "react-dnd-html5-backend";
 import FileHandler from "./FileHandler";
 import * as fileHandlerActionCreators from "../ducks/FileHandlerDuck";
+import * as cacheActions from "../ducks/cacheDuck";
 import { parseData, now } from "../internal/Parser";
 import { run } from "../internal/Validator";
 
@@ -20,7 +21,7 @@ const mapDispatchToProps = dispatch => {
     },
     fetchCache: () => {
       dispatch(
-        fileHandlerActionCreators.fetchCache(
+        cacheActions.fetchCache(
           "https://raw.githubusercontent.com/theobarberbany/js_tag_validator/development/src/internal/cache.json"
         )
       );
@@ -118,7 +119,7 @@ class FileHandlerContainer extends Component {
           }
         );
       } else {
-        // Reset the state of droppedFilesß
+        // Reset the state of droppedFiles
         this.setState({ droppedFiles: [] });
         // scold the user..
         console.log("only drop a csv file here...");
