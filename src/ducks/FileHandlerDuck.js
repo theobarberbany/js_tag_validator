@@ -6,6 +6,7 @@ import fetch from "isomorphic-fetch";
 export const DROP_FILE = "DROP_FILE";
 export const TOGGLE_COMPLETE = "TOGGLE_COMPLETE";
 export const PUSH_DATA = "PUSH_DATA";
+export const PUSH_OVERVIEW = "PUSH_OVERVIEW;
 
 // Reducer Initial state for *this* component (Duck) (This only gets passed a
 // slice of the state)
@@ -38,6 +39,11 @@ export function reducer(state = initialState, action) {
         ...state,
         cleanData: action.data
       };
+    case PUSH_OVERVIEW:
+      return {
+        ...state,
+        tagOverview: action.data
+      };
     default:
       return state;
   }
@@ -57,4 +63,9 @@ export const toggleComplete = id => {
 //3. Changes FileHandler UI state when something is dropped on it
 export const dropFile = fileHandlerState => {
   return { type: DROP_FILE, fileHandlerState };
+};
+
+//4. Pushes tag composition (array) to store
+export const pushOverview = data => {
+  return { type: PUSH_OVERVIEW, data };
 };

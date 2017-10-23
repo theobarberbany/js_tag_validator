@@ -16,13 +16,16 @@ const mapDispatchToProps = dispatch => {
     pushData: data => {
       dispatch({ type: "PUSH_DATA", data });
     },
+    pushOverview: data => {
+      dispatch({ type: "PUSH_OVERVIEW", data });
+    },
     dropFile: () => {
       dispatch({ type: "DROP_FILE" });
     },
     fetchCache: () => {
       dispatch(
         cacheActions.fetchCache(
-          "https://raw.githubusercontent.com/theobarberbany/js_tag_validator/development/src/internal/cache.json"
+          "https://raw.githubusercontent.com/theobarberbany/js_tag_validator/development/src/internal/cache_min.json"
         )
       );
     }
@@ -64,10 +67,17 @@ class FileHandlerContainer extends Component {
         "(Unknown; your browser does not support the Performance API)",
       "ms"
     );
-    console.log(cleanData);
-    run(cleanData);
     this.props.pushData(cleanData);
-    //this.setState({cleanData : cleanData})
+    let start1 = now();
+    let output = run(cleanData);
+    let end1 = now();
+    console.log(
+      "Time to validate: ",
+      end1 - start1 ||
+        "(Unknown; your browser does not support the Performance API)",
+      "ms"
+    );
+    this.props.pushOverview(output);
   }
   //This is a really big function - I'll make it smaller later.
   handleFileDrop(item, monitor) {
