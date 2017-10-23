@@ -173,6 +173,9 @@ function check_tag_set_composition(array) {
   return proportions;
 }
 
+//Not sure if its best to export  all functions separately and call them there,
+// or keep this function here to run everything at once
+
 function run(array) {
   //Function to tie everything together
   console.log("Checking tags differ by at least 3");
@@ -180,7 +183,7 @@ function run(array) {
   console.log("Found ", bad_tags, "bad tags");
   console.log("Checking tag set composition");
   let composotion = call_check_tag_set_composition(array);
-  console.log(composotion);
+  return { bad_tags: bad_tags, composotion: composotion };
 }
 
 module.exports = {
