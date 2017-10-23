@@ -17,12 +17,12 @@ String.prototype.formatUnicorn = function() {
 function difference(tag1, tag2) {
   //compare two tags - return the degree to which they differ
   try {
-    if (tag1.length != tag2.length) {
+    if (tag1.length !== tag2.length) {
       throw "Tag Length Mismatch";
     }
     let counter = 0;
     for (let i = 0; i < tag1.length; i++) {
-      if (tag1[i] != tag2[i]) {
+      if (tag1[i] !== tag2[i]) {
         counter += 1;
       }
     }
@@ -45,7 +45,7 @@ function call_check_array(array) {
   }
   // Call the appropriate function
   //Single Tag set
-  if (number_tag_groups == 1) {
+  if (number_tag_groups === 1) {
     console.log("calling check_array_single with data : ", array);
     output = check_array_single(array);
   } else {
@@ -191,7 +191,6 @@ module.exports = {
   check_tag_set_composition: check_tag_set_composition,
   extract_base: extract_base,
   call_check_tag_set_composition: call_check_tag_set_composition,
-  check_tag_set_composition: check_tag_set_composition,
   call_check_array: call_check_array,
   concatenate_tags: concatenate_tags,
   run: run
