@@ -54,6 +54,7 @@ You can find the most recent version of the guide [here](https://github.com/face
  - [Redux](https://github.com/reactjs/redux)
  - [Redux thunk](https://github.com/gaearon/redux-thunk)
  - [React-redux](https://github.com/reactjs/react-redux)
+ - [Isomorphic Fetch](https://github.com/matthew-andrews/isomorphic-fetch)
  - [Carbon components design kit](http://carbondesignsystem.com/)
  - [React DnD](https://github.com/react-dnd/react-dnd)
  - [Redux Dev tools](https://github.com/zalmoxisus/redux-devtools-extension) (chrome extension)
