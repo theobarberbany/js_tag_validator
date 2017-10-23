@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import Raven from "raven-js";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import { DragDropContext, DragDropContextProvider } from "react-dnd";
 import HTML5Backend, { NativeTypes } from "react-dnd-html5-backend";
 import FileHandler from "./FileHandler";
-import * as fileHandlerActions from "../ducks/FileHandlerDuck";
+import * as fileHandlerActionCreators from "../ducks/FileHandlerDuck";
 import { parseData, now } from "../internal/Parser";
 import { run } from "../internal/Validator";
 
@@ -18,6 +17,13 @@ const mapDispatchToProps = dispatch => {
     },
     dropFile: () => {
       dispatch({ type: "DROP_FILE" });
+    },
+    fetchCache: () => {
+      dispatch(
+        fileHandlerActionCreators.fetchCache(
+          "https://raw.githubusercontent.com/theobarberbany/js_tag_validator/development/src/internal/cache.json"
+        )
+      );
     }
   };
 };
@@ -31,6 +37,11 @@ class FileHandlerContainer extends Component {
     this.state = {
       droppedFiles: []
     };
+  }
+
+  componentDidMount() {
+    //Fetch the cache
+    this.props.fetchCache();
   }
 
   componentDidCatch(error, errorInfo) {
