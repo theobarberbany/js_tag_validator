@@ -43,11 +43,8 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <h1 className="App-title">Validate Tags</h1>
           </header>
-
           <div className="FileHandlerContainer">
-            <div className="FileHandlerContainer">
-              <FileHandlerContainer />
-            </div>
+            <FileHandlerContainer />
           </div>
           <Button onClick={this.simulateFileDrop}>Simulate File Drop</Button>
         </div>

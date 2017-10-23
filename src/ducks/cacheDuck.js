@@ -8,11 +8,9 @@ export const RECIEVE_CACHE = "RECIEVE_CACHE";
 // Reducer Initial state for *this* component (Duck) (This only gets passed a
 // slice of the state)
 const initialState = {
-  cache: {
-    isFetching: false,
-    didInvalidate: false,
-    data: []
-  }
+  isFetching: false,
+  didInvalidate: false,
+  data: []
 };
 
 //Reducer
@@ -21,20 +19,16 @@ export function reducer(state = initialState, action) {
     case REQUEST_CACHE:
       return {
         ...state,
-        cache: {
-          isFetching: true,
-          didInvalidate: false
-        }
+        isFetching: true,
+        didInvalidate: false
       };
     case RECIEVE_CACHE:
       return {
         ...state,
-        cache: {
-          isFetching: false,
-          didInvalidate: false,
-          data: action.data,
-          lastUpdated: action.receivedAt
-        }
+        isFetching: false,
+        didInvalidate: false,
+        data: action.data,
+        lastUpdated: action.receivedAt
       };
     default:
       return state;
