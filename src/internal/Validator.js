@@ -64,11 +64,18 @@ function call_check_array(array) {
       "calling check_array_single with concatenated data : ",
       concatenated
     );
+    concatenated = check_array_single(concatenated);
   }
   return output;
 }
 
 function check_array(array, number_tag_groups) {
+  console.log(
+    "check_array recieved data:",
+    array,
+    "number tag groups: ",
+    number_tag_groups
+  );
   let bad_tags = 0;
   for (let i = 0; i < array.length; i++) {
     let diff = difference(array[i][0], array[i][1]);
@@ -81,12 +88,13 @@ function check_array(array, number_tag_groups) {
 }
 
 function check_array_single(array) {
+  console.log("check_array_single recieved data:", array);
   let bad_tags = 0;
   for (let j = 0; j < array.length; j++) {
     for (let k = j + 1; k < array.length; k++) {
       let diff = difference(array[j], array[k]);
       // (diff = difference(array[j][i], array[k][i]));
-      console.log("Comparing", array[j], "to", array[k]);
+      //console.log("Comparing", array[j], "to", array[k]);
       // to do  :  dispatch an action to add this to a 'checklist'
       diff < 3 ? bad_tags++ : null;
     }
