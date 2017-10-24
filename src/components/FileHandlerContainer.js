@@ -78,6 +78,7 @@ class FileHandlerContainer extends Component {
       "ms"
     );
     this.props.pushOverview(output);
+    this.setState({ hideFileHandler: true });
   }
   //This is a really big function - I'll make it smaller later.
   handleFileDrop(item, monitor) {
@@ -144,7 +145,9 @@ class FileHandlerContainer extends Component {
       <DragDropContextProvider backend={HTML5Backend}>
         <div>
           <div>
-            <FileHandler accepts={[FILE]} onDrop={this.handleFileDrop} />
+            {this.state.hideFileHandler ? null : (
+              <FileHandler accepts={[FILE]} onDrop={this.handleFileDrop} />
+            )}
           </div>
         </div>
       </DragDropContextProvider>
