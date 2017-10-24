@@ -1,4 +1,4 @@
-import reducer from "./FileHandlerDuck";
+import { reducer } from "./FileHandlerDuck";
 
 test("FileHandler reducers", () => {
   let state;

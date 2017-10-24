@@ -19,7 +19,8 @@ const initialState = {
     cardInfo: ["Drop manifest file here"],
     status: CardStatus.appStatus.NOT_RUNNING
   },
-  cleanData: []
+  cleanData: [],
+  badPairs: []
 };
 
 //Reducer
@@ -44,18 +45,23 @@ export function reducer(state = initialState, action) {
     case PUSH_OVERVIEW:
       return {
         ...state,
-        tagOverview: action.data
+        overview: action.data
       };
     case ADD_BAD_TAG_PAIR:
-      return [
+      return {
         ...state,
-        {
-          id: action.id,
-          tag1: action.tag1,
-          tag2: action.tag2,
-          completed: false
-        }
-      ];
+        badPairs: [
+          ...state.badPairs,
+          {
+            id: action.id,
+            tag1: action.tag1,
+            tag2: action.tag2,
+            diff: action.diff,
+            pos: action.pos,
+            completed: false
+          }
+        ]
+      };
     case TOGGLE_TAG_PAIR:
       return state.map(
         tagpair =>
@@ -91,12 +97,14 @@ export const pushOverview = data => {
 
 //5. Adds a bad tag pair to the store.
 let nextTagPairId = 0;
-export const addBadTagPair = (tag1, tag2) => {
+export const addBadTagPair = (tag1, tag2, diff, pos) => {
   return {
     type: ADD_BAD_TAG_PAIR,
     id: nextTagPairId++,
     tag1: tag1,
-    tag2: tag2
+    tag2: tag2,
+    diff: diff,
+    pos: pos
   };
 };
 
@@ -105,5 +113,28 @@ export const toggleTagPair = id => {
   return {
     type: TOGGLE_TAG_PAIR,
     id
+  };
+};
+
+//6. processOverview to call addBadTagPair when needed and update overview data in store.
+export const processOverview = object => {
+  console.log(object);
+  let normal = object.bad_tag_container.normal;
+  let concatenated = object.bad_tag_container.concatenated;
+  let bad_tag_total = normal.bad_tag_count + concatenated.bad_tag_count;
+
+  object.composition.bad_tag_total = bad_tag_total;
+  return function(dispatch) {
+    dispatch(pushOverview(object.composition));
+    for (let i = 0; i < normal.bad_tag_count; i++) {
+      dispatch(
+        addBadTagPair(
+          normal.bad_tag_pairs[i][0],
+          normal.bad_tag_pairs[i][1],
+          normal.bad_tag_pairs[i][2],
+          normal.bad_tag_pairs[i][3]
+        )
+      );
+    }
   };
 };
