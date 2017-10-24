@@ -15,8 +15,8 @@ class App extends Component {
     document.title = "Tag Validator";
     // Log the initial state of the store
     console.log(store.getState());
-    // Every time the state changes, log it Note that subscribe() returns a function
-    // for unregistering the listener (componentWillUnmount)?
+    // Every time the state changes, log it. Note that subscribe() returns a function
+    // for unregistering the listener, called in componentWillUnmount
     this.unsubscribe = store.subscribe(() => console.log(store.getState()));
     window.App = this;
   }
@@ -31,10 +31,6 @@ class App extends Component {
     Raven.captureException(error, { extra: errorInfo });
   }
 
-  simulateFileDrop() {
-    //Do some redux magic here Dispatch some actions (woo!)
-    store.dispatch(fileHandlerActions.dropFile());
-  }
   render() {
     return (
       <Provider store={store}>
@@ -46,7 +42,6 @@ class App extends Component {
           <div className="FileHandlerContainer">
             <FileHandlerContainer />
           </div>
-          <Button onClick={this.simulateFileDrop}>Simulate File Drop</Button>
         </div>
       </Provider>
     );
