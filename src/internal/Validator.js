@@ -192,10 +192,10 @@ function run(array) {
   console.log("Checking tags differ by at least 3");
   let bad_tag_container = call_check_array(array);
   console.log("Checking tag set composition");
-  let composotion = call_check_tag_set_composition(array);
+  let composition = call_check_tag_set_composition(array);
   return {
     bad_tag_container: bad_tag_container,
-    composotion: composotion
+    composition: { composition }
   };
 }
 
