@@ -16,8 +16,8 @@ const mapDispatchToProps = dispatch => {
     pushData: data => {
       dispatch({ type: "PUSH_DATA", data });
     },
-    pushOverview: data => {
-      dispatch({ type: "PUSH_OVERVIEW", data });
+    processOverview: data => {
+      dispatch(fileHandlerActionCreators.processOverview(data));
     },
     dropFile: () => {
       dispatch({ type: "DROP_FILE" });
@@ -77,7 +77,7 @@ class FileHandlerContainer extends Component {
         "(Unknown; your browser does not support the Performance API)",
       "ms"
     );
-    this.props.pushOverview(output);
+    this.props.processOverview(output);
     this.setState({ hideFileHandler: true });
   }
   //This is a really big function - I'll make it smaller later.
@@ -145,7 +145,9 @@ class FileHandlerContainer extends Component {
       <DragDropContextProvider backend={HTML5Backend}>
         <div>
           <div>
-            {this.state.hideFileHandler ? null : (
+            {this.state.hideFileHandler ? (
+              <h1>Validation Complete</h1>
+            ) : (
               <FileHandler accepts={[FILE]} onDrop={this.handleFileDrop} />
             )}
           </div>
