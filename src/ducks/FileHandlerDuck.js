@@ -8,6 +8,7 @@ export const TOGGLE_COMPLETE = "TOGGLE_COMPLETE";
 export const PUSH_DATA = "PUSH_DATA";
 export const PUSH_OVERVIEW = "PUSH_OVERVIEW";
 export const ADD_BAD_TAG_PAIR = "ADD_BAD_TAG_PAIR";
+export const ADD_BAD_TAG_PAIR_CONCAT = "ADD_BAD_TAG_PAIR_CONCAT";
 export const TOGGLE_TAG_PAIR = "TOGGLE_TAG_PAIR";
 
 // Reducer Initial state for *this* component (Duck) (This only gets passed a
@@ -20,7 +21,8 @@ const initialState = {
     status: CardStatus.appStatus.NOT_RUNNING
   },
   cleanData: [],
-  badPairs: []
+  badPairs: [],
+  badPairsConcat: []
 };
 
 //Reducer
@@ -62,6 +64,21 @@ export function reducer(state = initialState, action) {
           }
         ]
       };
+    case ADD_BAD_TAG_PAIR_CONCAT:
+      return {
+        ...state,
+        badPairsConcat: [
+          ...state.badPairsConcat,
+          {
+            id: action.id,
+            tag1: action.tag1,
+            tag2: action.tag2,
+            diff: action.diff,
+            completed: false
+          }
+        ]
+      };
+    //todo; fix
     case TOGGLE_TAG_PAIR:
       return state.map(
         tagpair =>
@@ -108,6 +125,16 @@ export const addBadTagPair = (tag1, tag2, diff, pos) => {
   };
 };
 
+//5.5 Add bad tag pairs where tags are concatenations
+export const addBadTagPairConcat = (tag1, tag2, diff) => {
+  return {
+    type: ADD_BAD_TAG_PAIR_CONCAT,
+    id: nextTagPairId++,
+    tag1: tag1,
+    tag2: tag2,
+    diff: diff
+  };
+};
 //6. Toggle bad tag pairs complete
 export const toggleTagPair = id => {
   return {
@@ -133,6 +160,15 @@ export const processOverview = object => {
           normal.bad_tag_pairs[i][1],
           normal.bad_tag_pairs[i][2],
           normal.bad_tag_pairs[i][3]
+        )
+      );
+    }
+    for (let i = 0; i < concatenated.bad_tag_count; i++) {
+      dispatch(
+        addBadTagPairConcat(
+          concatenated.bad_tag_pairs[i][0],
+          concatenated.bad_tag_pairs[i][1],
+          concatenated.bad_tag_pairs[i][2]
         )
       );
     }
