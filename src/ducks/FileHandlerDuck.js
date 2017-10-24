@@ -6,7 +6,9 @@ import fetch from "isomorphic-fetch";
 export const DROP_FILE = "DROP_FILE";
 export const TOGGLE_COMPLETE = "TOGGLE_COMPLETE";
 export const PUSH_DATA = "PUSH_DATA";
-export const PUSH_OVERVIEW = "PUSH_OVERVIEW;
+export const PUSH_OVERVIEW = "PUSH_OVERVIEW";
+export const ADD_BAD_TAG_PAIR = "ADD_BAD_TAG_PAIR";
+export const TOGGLE_TAG_PAIR = "TOGGLE_TAG_PAIR";
 
 // Reducer Initial state for *this* component (Duck) (This only gets passed a
 // slice of the state)
@@ -44,6 +46,23 @@ export function reducer(state = initialState, action) {
         ...state,
         tagOverview: action.data
       };
+    case ADD_BAD_TAG_PAIR:
+      return [
+        ...state,
+        {
+          id: action.id,
+          tag1: action.tag1,
+          tag2: action.tag2,
+          completed: false
+        }
+      ];
+    case TOGGLE_TAG_PAIR:
+      return state.map(
+        tagpair =>
+          tagpair.id === action.id
+            ? { ...tagpair, completed: !tagpair.completed }
+            : tagpair
+      );
     default:
       return state;
   }
@@ -68,4 +87,23 @@ export const dropFile = fileHandlerState => {
 //4. Pushes tag composition (array) to store
 export const pushOverview = data => {
   return { type: PUSH_OVERVIEW, data };
+};
+
+//5. Adds a bad tag pair to the store.
+let nextTagPairId = 0;
+export const addBadTagPair = (tag1, tag2) => {
+  return {
+    type: ADD_BAD_TAG_PAIR,
+    id: nextTagPairId++,
+    tag1: tag1,
+    tag2: tag2
+  };
+};
+
+//6. Toggle bad tag pairs complete
+export const toggleTagPair = id => {
+  return {
+    type: TOGGLE_TAG_PAIR,
+    id
+  };
 };
