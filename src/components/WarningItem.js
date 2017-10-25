@@ -17,13 +17,12 @@ class StructuredListInputNew extends StructuredListInput {
 }
 
 const WarningItem = ({ onChange, tag1, tag2, diff, pos }) => (
-  <StructuredListRow label htmlFor="warning">
+  <StructuredListRow label htmlFor="warning" onClick={onChange}>
     <StructuredListInput
       id="warning"
       value="warning"
       title="warning"
       name="warning"
-      onChange={onChange}
     />
     <StructuredListCell>
       <Icon
