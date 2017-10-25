@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Raven from "raven-js";
 import { connect } from "react-redux";
+import * as fileHandlerActionCreators from "../ducks/FileHandlerDuck";
+import * as cacheActions from "../ducks/cacheDuck";
 import { DragDropContext, DragDropContextProvider } from "react-dnd";
 import HTML5Backend, { NativeTypes } from "react-dnd-html5-backend";
 import FileHandler from "./FileHandler";
-import * as fileHandlerActionCreators from "../ducks/FileHandlerDuck";
-import * as cacheActions from "../ducks/cacheDuck";
+import WarningContainer from "./WarningContainer";
+
 import { parseData, now } from "../internal/Parser";
 import { run } from "../internal/Validator";
 
@@ -146,7 +148,10 @@ class FileHandlerContainer extends Component {
         <div>
           <div>
             {this.state.hideFileHandler ? (
-              <h1>Validation Complete</h1>
+              <div>
+                <h1>Validation Complete</h1>
+                <WarningContainer />
+              </div>
             ) : (
               <FileHandler accepts={[FILE]} onDrop={this.handleFileDrop} />
             )}
