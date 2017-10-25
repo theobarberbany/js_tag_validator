@@ -12,7 +12,7 @@ import {
 } from "carbon-components-react";
 import WarningItem from "./WarningItem";
 
-const WarningContainer = ({ badPairs, onChange }) => (
+const WarningContainer = ({ badPairs, onClick }) => (
   <StructuredListWrapper selection border>
     <StructuredListHead>
       <StructuredListRow head>
@@ -28,7 +28,7 @@ const WarningContainer = ({ badPairs, onChange }) => (
         <WarningItem
           key={badPair.id}
           {...badPair}
-          onChange={() => onChange(badPair.id)}
+          onClick={() => onClick(badPair.id)}
         />
       ))}
     </StructuredListBody>
@@ -46,7 +46,7 @@ WarningContainer.PropTypes = {
       pos: PropTypes.number.isRequired
     }).isRequired
   ).isRequired,
-  onChange: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 //Once checked off, remove from list.
@@ -62,7 +62,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onChange: id => {
+    onClick: id => {
       console.log("Id passed: ", id);
       dispatch(fileHandlerActionCreators.toggleTagPair(id));
     }

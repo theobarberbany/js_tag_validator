@@ -16,8 +16,8 @@ class StructuredListInputNew extends StructuredListInput {
   }
 }
 
-const WarningItem = ({ onChange, tag1, tag2, diff, pos }) => (
-  <StructuredListRow label htmlFor="warning" onClick={onChange}>
+const WarningItem = ({ onClick, tag1, tag2, diff, pos }) => (
+  <StructuredListRow label htmlFor="warning" onClick={onClick}>
     <StructuredListInput
       id="warning"
       value="warning"
@@ -28,7 +28,7 @@ const WarningItem = ({ onChange, tag1, tag2, diff, pos }) => (
       <Icon
         className="bx--structured-list-svg"
         name="checkmark--glyph"
-        description="select a warning"
+        description="Check off a warning once fixed"
       />
     </StructuredListCell>
     <StructuredListCell>{tag1}</StructuredListCell>
@@ -39,7 +39,7 @@ const WarningItem = ({ onChange, tag1, tag2, diff, pos }) => (
 );
 
 WarningItem.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   tag1: PropTypes.string.isRequired,
   tag1: PropTypes.string.isRequired,
   tag2: PropTypes.string.isRequired,
