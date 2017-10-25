@@ -80,12 +80,15 @@ export function reducer(state = initialState, action) {
       };
     //todo; fix
     case TOGGLE_TAG_PAIR:
-      return state.map(
-        tagpair =>
-          tagpair.id === action.id
-            ? { ...tagpair, completed: !tagpair.completed }
-            : tagpair
-      );
+      return {
+        ...state,
+        badPairs: state.badPairs.map(
+          tagPair =>
+            tagPair.id === action.id
+              ? { ...tagPair, completed: !tagPair.completed }
+              : tagPair
+        )
+      };
     default:
       return state;
   }
