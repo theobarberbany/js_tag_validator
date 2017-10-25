@@ -38,12 +38,9 @@ describe("Check_array function", () => {
     ).toEqual({
       bad_tag_count: 3,
       bad_tag_pairs: [
-        ["CTCTCTAT", "CTCTCTAT"],
-        0,
-        ["CTCTCTAT", "CTCTCTAT"],
-        0,
-        ["CTCTCTAT", "CTCTCTAT"],
-        0
+        ["CTCTCTAT", "CTCTCTAT", 0],
+        ["CTCTCTAT", "CTCTCTAT", 0],
+        ["CTCTCTAT", "CTCTCTAT", 0]
       ]
     });
   });
