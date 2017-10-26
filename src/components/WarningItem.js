@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {
   StructuredListRow,
@@ -6,15 +6,6 @@ import {
   StructuredListCell,
   Icon
 } from "carbon-components-react";
-
-class StructuredListInputNew extends StructuredListInput {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return <StructuredListInput />;
-  }
-}
 
 const WarningItem = ({ onClick, tag1, tag2, diff, pos }) => (
   <StructuredListRow label htmlFor="warning" onClick={onClick}>
