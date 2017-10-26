@@ -1,5 +1,5 @@
 // Display Warnings from validator.js
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import * as fileHandlerActionCreators from "../ducks/FileHandlerDuck";
 import PropTypes from "prop-types";
