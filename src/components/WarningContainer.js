@@ -71,7 +71,7 @@ const getVisibleWarnings = badPairs => {
 const mapStateToProps = state => {
   return {
     badPairs: getVisibleWarnings(state.fileHandler.badPairs),
-    badPairsConcat: state.fileHandler.badPairsConcat
+    badPairsConcat: getVisibleWarnings(state.fileHandler.badPairsConcat)
   };
 };
 
