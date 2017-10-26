@@ -21,18 +21,28 @@ describe("Difference function", () => {
 });
 
 describe("Check_array function", () => {
-  it("when both tags are checked, fail", () => {
-    expect(Validator.call_check_array(testArray)).toEqual(0);
+  it("when both tags are checked, pass", () => {
+    expect(Validator.call_check_array(testArray)).toEqual({
+      concatenated: { bad_tag_count: 0, bad_tag_pairs: [] },
+      normal: { bad_tag_count: 0, bad_tag_pairs: [] }
+    });
   });
   it("checks the first tag passes", () => {
     expect(
       Validator.call_check_array(["TAAGGCGA", "CGTACTAG", "AGGCAGAA"])
-    ).toBe(0);
+    ).toEqual({ bad_tag_count: 0, bad_tag_pairs: [] });
   });
   it("checks the second tag fails", () => {
     expect(
       Validator.call_check_array(["CTCTCTAT", "CTCTCTAT", "CTCTCTAT"])
-    ).toEqual(3);
+    ).toEqual({
+      bad_tag_count: 3,
+      bad_tag_pairs: [
+        ["CTCTCTAT", "CTCTCTAT", 0],
+        ["CTCTCTAT", "CTCTCTAT", 0],
+        ["CTCTCTAT", "CTCTCTAT", 0]
+      ]
+    });
   });
 });
 

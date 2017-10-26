@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Raven from "raven-js";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import * as fileHandlerActionCreators from "../ducks/FileHandlerDuck";
+import * as cacheActions from "../ducks/cacheDuck";
 import { DragDropContext, DragDropContextProvider } from "react-dnd";
 import HTML5Backend, { NativeTypes } from "react-dnd-html5-backend";
 import FileHandler from "./FileHandler";
-import * as fileHandlerActions from "../ducks/FileHandlerDuck";
+import WarningContainer from "./WarningContainer";
+
 import { parseData, now } from "../internal/Parser";
 import { run } from "../internal/Validator";
 
@@ -16,8 +18,18 @@ const mapDispatchToProps = dispatch => {
     pushData: data => {
       dispatch({ type: "PUSH_DATA", data });
     },
+    processOverview: data => {
+      dispatch(fileHandlerActionCreators.processOverview(data));
+    },
     dropFile: () => {
       dispatch({ type: "DROP_FILE" });
+    },
+    fetchCache: () => {
+      dispatch(
+        cacheActions.fetchCache(
+          "https://raw.githubusercontent.com/theobarberbany/js_tag_validator/development/src/internal/cache_min.json"
+        )
+      );
     }
   };
 };
@@ -31,6 +43,11 @@ class FileHandlerContainer extends Component {
     this.state = {
       droppedFiles: []
     };
+  }
+
+  componentDidMount() {
+    //Fetch the cache
+    this.props.fetchCache();
   }
 
   componentDidCatch(error, errorInfo) {
@@ -52,10 +69,18 @@ class FileHandlerContainer extends Component {
         "(Unknown; your browser does not support the Performance API)",
       "ms"
     );
-    console.log(cleanData);
-    run(cleanData);
     this.props.pushData(cleanData);
-    //this.setState({cleanData : cleanData})
+    let start1 = now();
+    let output = run(cleanData);
+    let end1 = now();
+    console.log(
+      "Time to validate: ",
+      end1 - start1 ||
+        "(Unknown; your browser does not support the Performance API)",
+      "ms"
+    );
+    this.props.processOverview(output);
+    this.setState({ hideFileHandler: true });
   }
   //This is a really big function - I'll make it smaller later.
   handleFileDrop(item, monitor) {
@@ -107,7 +132,7 @@ class FileHandlerContainer extends Component {
           }
         );
       } else {
-        // Reset the state of droppedFilesß
+        // Reset the state of droppedFiles
         this.setState({ droppedFiles: [] });
         // scold the user..
         console.log("only drop a csv file here...");
@@ -122,7 +147,14 @@ class FileHandlerContainer extends Component {
       <DragDropContextProvider backend={HTML5Backend}>
         <div>
           <div>
-            <FileHandler accepts={[FILE]} onDrop={this.handleFileDrop} />
+            {this.state.hideFileHandler ? (
+              <div>
+                <h1>Validation Complete</h1>
+                <WarningContainer />
+              </div>
+            ) : (
+              <FileHandler accepts={[FILE]} onDrop={this.handleFileDrop} />
+            )}
           </div>
         </div>
       </DragDropContextProvider>

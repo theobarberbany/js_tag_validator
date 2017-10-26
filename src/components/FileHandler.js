@@ -36,6 +36,10 @@ const overflowMenuItemProps = {
   className: "some-class"
 };
 
+const visitInfo = () => {
+  window.location = "https://github.com/theobarberbany/js_tag_validator/";
+};
+
 // Calls func when file is dropped, if func is defined. Allowed methods defined
 // here (spec)
 const boxTarget = {
@@ -81,7 +85,11 @@ class FileHandler extends Component {
             cardInfo={this.props.cardInfo}
           >
             <OverflowMenu {...overflowMenuProps}>
-              <OverflowMenuItem {...overflowMenuItemProps} itemText="Info" />
+              <OverflowMenuItem
+                {...overflowMenuItemProps}
+                itemText="Info"
+                onClick={visitInfo}
+              />
             </OverflowMenu>
           </CardContent>
           <CardFooter>

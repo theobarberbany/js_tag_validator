@@ -1,5 +1,4 @@
 // See https://github.com/theobarberbany/tag_validator
-
 // Actually taken *from* stack overflow's website...
 //Try "string".formatUnicorn in console when on their website..
 String.prototype.formatUnicorn = function() {
@@ -17,12 +16,12 @@ String.prototype.formatUnicorn = function() {
 function difference(tag1, tag2) {
   //compare two tags - return the degree to which they differ
   try {
-    if (tag1.length != tag2.length) {
+    if (tag1.length !== tag2.length) {
       throw "Tag Length Mismatch";
     }
     let counter = 0;
     for (let i = 0; i < tag1.length; i++) {
-      if (tag1[i] != tag2[i]) {
+      if (tag1[i] !== tag2[i]) {
         counter += 1;
       }
     }
@@ -37,6 +36,7 @@ function call_check_array(array) {
   // If Two Cols : Check against adjacent col
   let number_tag_groups;
   let output;
+  let concatenated;
   //Determine how many tag groups there are
   if (Array.isArray(array[0])) {
     number_tag_groups = array[0].length;
@@ -45,9 +45,10 @@ function call_check_array(array) {
   }
   // Call the appropriate function
   //Single Tag set
-  if (number_tag_groups == 1) {
+  if (number_tag_groups === 1) {
     console.log("calling check_array_single with data : ", array);
     output = check_array_single(array);
+    return output;
   } else {
     // More than one  - so compare tag1 -> tag2
     console.log(
@@ -59,40 +60,50 @@ function call_check_array(array) {
     );
     output = check_array(array, number_tag_groups);
     //next check the concatenation as a single tag
-    let concatenated = concatenate_tags(array);
+    concatenated = concatenate_tags(array);
     console.log(
       "calling check_array_single with concatenated data : ",
       concatenated
     );
+    concatenated = check_array_single(concatenated);
   }
-  return output;
+  return { normal: output, concatenated: concatenated };
 }
 
 function check_array(array, number_tag_groups) {
-  let bad_tags = 0;
+  console.log(
+    "check_array recieved data:",
+    array,
+    "number tag groups: ",
+    number_tag_groups
+  );
+  let bad_tag_count = 0;
+  let bad_tag_pairs = [];
   for (let i = 0; i < array.length; i++) {
     let diff = difference(array[i][0], array[i][1]);
     //console.log("Comparing", array[i][0], "to", array[i][1]);
-    // to do  :  dispatch an action to add this to a 'checklist'
-    diff < 3 ? console.log("Above tag bad!") : null;
-    diff < 3 ? bad_tags++ : null;
+    diff < 3
+      ? bad_tag_pairs.push([array[i][0], array[i][1], diff, i + 10])
+      : null;
+    diff < 3 ? bad_tag_count++ : null;
   }
-  return bad_tags;
+  return { bad_tag_count, bad_tag_pairs };
 }
 
 function check_array_single(array) {
-  let bad_tags = 0;
+  console.log("check_array_single recieved data:", array);
+  let bad_tag_count = 0;
+  let bad_tag_pairs = [];
   for (let j = 0; j < array.length; j++) {
     for (let k = j + 1; k < array.length; k++) {
       let diff = difference(array[j], array[k]);
       // (diff = difference(array[j][i], array[k][i]));
-      console.log("Comparing", array[j], "to", array[k]);
-      // to do  :  dispatch an action to add this to a 'checklist'
-      diff < 3 ? bad_tags++ : null;
+      //console.log("Comparing", array[j], "to", array[k]);
+      diff < 3 ? bad_tag_pairs.push([array[j], array[k], diff]) : null;
+      diff < 3 ? bad_tag_count++ : null;
     }
   }
-  console.log(bad_tags, "bad tags");
-  return bad_tags;
+  return { bad_tag_count, bad_tag_pairs };
 }
 
 function concatenate_tags(array) {
@@ -173,14 +184,19 @@ function check_tag_set_composition(array) {
   return proportions;
 }
 
+//Not sure if its best to export  all functions separately and call them there,
+// or keep this function here to run everything at once
+
 function run(array) {
   //Function to tie everything together
   console.log("Checking tags differ by at least 3");
-  let bad_tags = call_check_array(array);
-  console.log("Found ", bad_tags, "bad tags");
+  let bad_tag_container = call_check_array(array);
   console.log("Checking tag set composition");
-  let composotion = call_check_tag_set_composition(array);
-  console.log(composotion);
+  let composition = call_check_tag_set_composition(array);
+  return {
+    bad_tag_container: bad_tag_container,
+    composition: { composition }
+  };
 }
 
 module.exports = {
@@ -191,7 +207,6 @@ module.exports = {
   check_tag_set_composition: check_tag_set_composition,
   extract_base: extract_base,
   call_check_tag_set_composition: call_check_tag_set_composition,
-  check_tag_set_composition: check_tag_set_composition,
   call_check_array: call_check_array,
   concatenate_tags: concatenate_tags,
   run: run
