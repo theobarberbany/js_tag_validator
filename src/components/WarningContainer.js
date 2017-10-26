@@ -28,7 +28,10 @@ const WarningContainer = ({ badPairs, badPairsConcat, onClick }) => (
         <WarningItem
           key={badPair.id}
           {...badPair}
-          onClick={() => onClick(badPair.id)}
+          onClick={e => {
+            e.preventDefault();
+            onClick(badPair.id);
+          }}
         />
       ))}
       {badPairsConcat.map(badPair => (
@@ -36,7 +39,10 @@ const WarningContainer = ({ badPairs, badPairsConcat, onClick }) => (
           key={badPair.id}
           {...badPair}
           pos="n/a"
-          onClick={() => onClick(badPair.id)}
+          onClick={e => {
+            e.preventDefault();
+            onClick(badPair.id);
+          }}
         />
       ))}
     </StructuredListBody>
