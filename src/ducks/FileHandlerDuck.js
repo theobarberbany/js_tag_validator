@@ -87,6 +87,12 @@ export function reducer(state = initialState, action) {
             tagPair.id === action.id
               ? { ...tagPair, completed: !tagPair.completed }
               : tagPair
+        ),
+        badPairsConcat: state.badPairsConcat.map(
+          tagPair =>
+            tagPair.id === action.id
+              ? { ...tagPair, completed: !tagPair.completed }
+              : tagPair
         )
       };
     default:
