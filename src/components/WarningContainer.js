@@ -12,7 +12,7 @@ import {
 } from "carbon-components-react";
 import WarningItem from "./WarningItem";
 
-const WarningContainer = ({ badPairs, onClick }) => (
+const WarningContainer = ({ badPairs, badPairsConcat, onClick }) => (
   <StructuredListWrapper selection border>
     <StructuredListHead>
       <StructuredListRow head>
@@ -28,6 +28,14 @@ const WarningContainer = ({ badPairs, onClick }) => (
         <WarningItem
           key={badPair.id}
           {...badPair}
+          onClick={() => onClick(badPair.id)}
+        />
+      ))}
+      {badPairsConcat.map(badPair => (
+        <WarningItem
+          key={badPair.id}
+          {...badPair}
+          pos="n/a"
           onClick={() => onClick(badPair.id)}
         />
       ))}
@@ -56,7 +64,8 @@ const getVisibleWarnings = badPairs => {
 
 const mapStateToProps = state => {
   return {
-    badPairs: getVisibleWarnings(state.fileHandler.badPairs)
+    badPairs: getVisibleWarnings(state.fileHandler.badPairs),
+    badPairsConcat: state.fileHandler.badPairsConcat
   };
 };
 
