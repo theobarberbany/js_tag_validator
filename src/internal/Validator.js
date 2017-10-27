@@ -169,16 +169,16 @@ function check_tag_set_composition(array) {
     "tag length: ",
     tag_length
   );
-  let proportions = {};
+  let proportions = [];
 
   for (let i = 0; i < tag_length; i++) {
-    proportions["Col" + i] = [0, 0, 0, 0]; // A,T,C,G
+    proportions[i] = [0, 0, 0, 0]; // A,T,C,G
   }
   for (let i = 0; i < array.length; i++) {
     //For each tag in the array
     for (let j = 0; j < tag_length; j++) {
       // For each base in each tag use a lookup table to increment values
-      proportions["Col" + j][universe.indexOf(array[i][j])] += 1;
+      proportions[j][universe.indexOf(array[i][j])] += 1;
     }
   }
   return proportions;
