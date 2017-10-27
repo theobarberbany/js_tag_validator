@@ -1364,6 +1364,10 @@
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "ACAGTGGT": [
@@ -3380,6 +3384,10 @@
             [
                 7,
                 "1 to 24 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TACTTCGGAT": [
@@ -3426,18 +3434,30 @@
             [
                 8,
                 "25 to 48 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TGTATGCGAT": [
             [
                 8,
                 "25 to 48 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TCATTGAGAT": [
             [
                 8,
                 "25 to 48 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TTGGAGGTAT": [
@@ -3454,6 +3474,10 @@
             [
                 8,
                 "25 to 48 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TCGAGCGTAT": [
@@ -3470,6 +3494,10 @@
             [
                 8,
                 "25 to 48 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TGATACGTAT": [
@@ -3486,6 +3514,10 @@
             [
                 8,
                 "25 to 48 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TGCATAGTAT": [
@@ -3644,24 +3676,40 @@
             [
                 9,
                 "49 to 72 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TATGTGGCAT": [
             [
                 9,
                 "49 to 72 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TTACTCGCAT": [
             [
                 9,
                 "49 to 72 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TCGTTAGCAT": [
             [
                 9,
                 "49 to 72 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "GCAACATTAT": [
@@ -3678,6 +3726,10 @@
             [
                 9,
                 "49 to 72 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "GGTCGTGTAT": [
@@ -3724,6 +3776,10 @@
             [
                 9,
                 "49 to 72 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "GCATGGCTAT": [
@@ -3790,6 +3846,10 @@
             [
                 134,
                 "Charb TraDIS - 10mers"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "GAGCCAATAT": [
@@ -3806,12 +3866,20 @@
             [
                 9,
                 "49 to 72 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TAGAACACAT": [
             [
                 9,
                 "49 to 72 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "GCTCCTTGAT": [
@@ -3828,12 +3896,20 @@
             [
                 9,
                 "49 to 72 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TGCTGATAAT": [
             [
                 9,
                 "49 to 72 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "GTAAGGTGAT": [
@@ -3850,6 +3926,10 @@
             [
                 9,
                 "49 to 72 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TGTGAAGAAT": [
@@ -4056,6 +4136,10 @@
             [
                 10,
                 "73 to 96 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "AUCUAC": [
@@ -4068,6 +4152,10 @@
             [
                 10,
                 "73 to 96 - 10 mer tags"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "GATTCATCAT": [
@@ -37368,6 +37456,10 @@
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CCTATCCT": [
@@ -46952,12 +47044,20 @@
             [
                 93,
                 "Dual Index Tag2 sequences"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "CAGGACGT": [
             [
                 93,
                 "Dual Index Tag2 sequences"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "TAATCTTA": [
@@ -46968,12 +47068,20 @@
             [
                 156,
                 "PF_adapters_UDI_96_C_i7"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "GTACTGAC": [
             [
                 93,
                 "Dual Index Tag2 sequences"
+            ],
+            [
+                142,
+                "Magic Tag Group"
             ]
         ],
         "GATGATAA": [
@@ -50440,6 +50548,10 @@
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GTGTCGCT": [
@@ -51618,6 +51730,10 @@
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CGGGCTTA": [
@@ -53982,6 +54098,10 @@
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "ATTTCAGC": [
@@ -57450,6 +57570,10 @@
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TCACCCAA": [
@@ -61654,6 +61778,10 @@
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GTCCTGTT": [
@@ -62138,6 +62266,10 @@
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AATTGACT": [
@@ -64346,270 +64478,450 @@
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TTATTGCG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CAAATGAG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AGTACCGC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CTCCATAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CCAAACCC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ACTTAAAC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GTGGTGTG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CGCGCAAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AAATCAAG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GTCAGTAT": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CTTGTTAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AAAGTGCG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AAGTACAG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GCGCGCTA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AAGCAAAC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AGGCGCTC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TATAATTA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TATAAAGC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TATCAAAG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CGTAATCG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TGTTCAGC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AATCGGCG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TCCACACC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TCCCGCTC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CACAGTTC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GTGATTGG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TAAATAGA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GGAAGACA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TCGAGGCG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GAATCTCT": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ACTTCTCG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GTCCCGCA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CTGTGCTT": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AGGCAGGC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ATCGCTAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ATCGCATG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TCGTTTCG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CACAAGGA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ACGCCGCG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CTTCTTGG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GGTCCCTC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ACCAAAGC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CGAAATTA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CGCTTCAC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ATGCGACT": [
@@ -64622,288 +64934,480 @@
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GAGGTCAC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GGCTATTC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ACTTCCGA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GAAATTAT": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ACGTTTAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TAAGCTTT": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AGCTATAG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TAGAGATA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CAAACAAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GATGGCTA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ATGGAACA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ATAGGCAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CTACCGTG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TGGCATAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CCGATAAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TTGTATGT": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TGCCGGCA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CCTTTCCT": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TAGTATTC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AAGCTCCG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TCCCTGCT": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TAATATAG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TTTCGCGT": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AGTGTCCG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AGCGCCCT": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ATCCTGAG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AAAGGCTG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CTTTGTGC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CGCCGCCC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "AGTTTAAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GCGCCTCT": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GTGAGATT": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CCGGTGCC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TCAAGTTG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CGAAGCAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GAGGCAAG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CGCAGAGG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "ACGCACCC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TAACCGCG": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GTTAAACC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TCACAAAC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CCCGCATC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "GAAGAGCC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CGATGCTC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "CTAAAGAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TTACGGAC": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TGATCAAA": [
             [
                 163,
                 "pWGS i5 UDI tag group "
+            ],
+            [
+                165,
+                "hWGS and RNAseq i5 UDI tag group v3"
             ]
         ],
         "TCCATAGG": [
@@ -66578,348 +67082,580 @@
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GTGTCACG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TCTTATGG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CTCTAAGT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "ACCTGTCT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GCTAACCA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CCGAAATG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TTTCCTGA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GCCAGCTG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GACCCGCT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AACTCGAC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TGGTGACG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AGAAACAC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TGAGTGCC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AAGTGCGA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AAGATGAC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CGCGCTGT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CCCACCGC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CTTATTAT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GGACTTAG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TAAGCTCT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GCTCGAAC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TGCGGCAC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GAAGACGC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GAAAGCTC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TCAAGATC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CCCAAACA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AATGCACC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CTGAGCTG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TGGTTAGT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CTTTATGC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TGGATAAA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TCAGTCGC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AGGCGATC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AATCCGGA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GGTCCTCG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "ACGAGCAC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TGACGGTC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CAGTCGTT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GCCAAAGC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AGCGACCG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "ACCCAGAG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GACACGAG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CCTCGAGG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TCGACTCT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AAGAGCTT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TGCCAGCA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GGAAATCA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CACATCAA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CATTTAAA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TGGTCTTG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GGAAGACC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CCGCAGGT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AGCCGCCC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CTGCGGTC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TGCTCAAG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AGCTGACA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "ACCGAGGA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TGTCTCCG": [
@@ -66932,132 +67668,220 @@
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CATGAAAC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AGTTCCCG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GCTACAGG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AGTGGATG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CGCCTCGC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TAACGCAG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TCCGTATC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GTAACTCT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GGACCTTT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AGCGCAGC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GGCTCTCT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "ACGTCGAG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CCGGAGAG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CGGTTGTC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AAGCGGTG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TTCCGCGC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "ATAAAGAG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CCGCACAA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CTCCGAAA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AGATAATT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TCACATAG": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "ACTAACGG": [
@@ -67070,12 +67894,20 @@
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "ATGTGACC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CGACGACG": [
@@ -67088,24 +67920,40 @@
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TTGCAACT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CATCTTAC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TCAAACCC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "AAAGAGAA": [
@@ -67118,24 +67966,40 @@
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GTCCCATT": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "CATTGGCA": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "ACGTTAAC": [
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "TCTTTACG": [
@@ -67148,6 +68012,10 @@
             [
                 164,
                 "pWGS i7 UDI tag group"
+            ],
+            [
+                166,
+                "hWGS and RNAseq i7 UDI tag group v3"
             ]
         ],
         "GAGATTAA": [
@@ -68819,5 +69687,5 @@
             ]
         ]
     },
-    "timestamp": 1507544389.433666
+    "timestamp": 1509112883.728311
 }
