@@ -32,7 +32,6 @@ const WarningItem = ({ onClick, tag1, tag2, diff, pos }) => (
 WarningItem.propTypes = {
   onClick: PropTypes.func.isRequired,
   tag1: PropTypes.string.isRequired,
-  tag1: PropTypes.string.isRequired,
   tag2: PropTypes.string.isRequired,
   diff: PropTypes.number.isRequired,
   pos: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
