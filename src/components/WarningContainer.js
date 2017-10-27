@@ -1,5 +1,5 @@
 // Display Warnings from validator.js
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import * as fileHandlerActionCreators from "../ducks/FileHandlerDuck";
 import PropTypes from "prop-types";
@@ -12,7 +12,7 @@ import {
 } from "carbon-components-react";
 import WarningItem from "./WarningItem";
 
-const WarningContainer = ({ badPairs, onClick }) => (
+const WarningContainer = ({ badPairs, badPairsConcat, onClick }) => (
   <StructuredListWrapper selection border>
     <StructuredListHead>
       <StructuredListRow head>
@@ -28,7 +28,21 @@ const WarningContainer = ({ badPairs, onClick }) => (
         <WarningItem
           key={badPair.id}
           {...badPair}
-          onClick={() => onClick(badPair.id)}
+          onClick={e => {
+            e.preventDefault();
+            onClick(badPair.id);
+          }}
+        />
+      ))}
+      {badPairsConcat.map(badPair => (
+        <WarningItem
+          key={badPair.id}
+          {...badPair}
+          pos="n/a"
+          onClick={e => {
+            e.preventDefault();
+            onClick(badPair.id);
+          }}
         />
       ))}
     </StructuredListBody>
@@ -56,7 +70,8 @@ const getVisibleWarnings = badPairs => {
 
 const mapStateToProps = state => {
   return {
-    badPairs: getVisibleWarnings(state.fileHandler.badPairs)
+    badPairs: getVisibleWarnings(state.fileHandler.badPairs),
+    badPairsConcat: getVisibleWarnings(state.fileHandler.badPairsConcat)
   };
 };
 

@@ -22,7 +22,11 @@ const initialState = {
   },
   cleanData: [],
   badPairs: [],
-  badPairsConcat: []
+  badPairsConcat: [],
+  overview: {
+    composition: [],
+    bad_tag_total: 0
+  }
 };
 
 //Reducer
@@ -83,6 +87,12 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         badPairs: state.badPairs.map(
+          tagPair =>
+            tagPair.id === action.id
+              ? { ...tagPair, completed: !tagPair.completed }
+              : tagPair
+        ),
+        badPairsConcat: state.badPairsConcat.map(
           tagPair =>
             tagPair.id === action.id
               ? { ...tagPair, completed: !tagPair.completed }
@@ -148,9 +158,11 @@ export const toggleTagPair = id => {
 
 //6. processOverview to call addBadTagPair when needed and update overview data in store.
 export const processOverview = object => {
-  console.log(object);
+  //console.log(object);
+  //Aliasing
   let normal = object.bad_tag_container.normal;
   let concatenated = object.bad_tag_container.concatenated;
+  //Get the total number of bad tags
   let bad_tag_total = normal.bad_tag_count + concatenated.bad_tag_count;
 
   object.composition.bad_tag_total = bad_tag_total;

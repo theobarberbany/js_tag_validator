@@ -5,3 +5,7 @@
   align-content: center;
   padding: 5px;
 }
+
+.Output {
+  min-width: 800px;
+}

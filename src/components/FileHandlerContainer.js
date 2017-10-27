@@ -7,6 +7,7 @@ import { DragDropContext, DragDropContextProvider } from "react-dnd";
 import HTML5Backend, { NativeTypes } from "react-dnd-html5-backend";
 import FileHandler from "./FileHandler";
 import WarningContainer from "./WarningContainer";
+import OutputContainer from "./OutputContainer";
 
 import { parseData, now } from "../internal/Parser";
 import { run } from "../internal/Validator";
@@ -148,9 +149,10 @@ class FileHandlerContainer extends Component {
         <div>
           <div>
             {this.state.hideFileHandler ? (
-              <div>
+              <div id="Output">
                 <h1>Validation Complete</h1>
                 <WarningContainer />
+                <OutputContainer />
               </div>
             ) : (
               <FileHandler accepts={[FILE]} onDrop={this.handleFileDrop} />
