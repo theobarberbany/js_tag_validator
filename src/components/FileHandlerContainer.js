@@ -149,7 +149,7 @@ class FileHandlerContainer extends Component {
         <div>
           <div>
             {this.state.hideFileHandler ? (
-              <div>
+              <div id="Output">
                 <h1>Validation Complete</h1>
                 <WarningContainer />
                 <OutputContainer />
