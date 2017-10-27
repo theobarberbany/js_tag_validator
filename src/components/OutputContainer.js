@@ -77,6 +77,12 @@ const OutputContainer = composition => (
   </Accordion>
 );
 
+OutputContainer.PropTypes = {
+  composition: PropTypes.shape({
+    composition: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number))
+  })
+};
+
 const mapStateToProps = state => {
   return {
     composition: state.fileHandler.overview.composition

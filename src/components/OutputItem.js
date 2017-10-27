@@ -16,4 +16,12 @@ const OutputItem = ({ colNo, a, t, c, g, sum }) => (
   </TableRow>
 );
 
+OutputItem.PropTypes = {
+  colNo: PropTypes.number.isRequired,
+  a: PropTypes.number.isRequired,
+  t: PropTypes.number.isRequired,
+  c: PropTypes.number.isRequired,
+  g: PropTypes.number.isRequired,
+  sum: PropTypes.number.isRequired
+};
 export default OutputItem;
