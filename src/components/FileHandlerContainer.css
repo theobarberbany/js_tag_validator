@@ -6,6 +6,6 @@
   padding: 5px;
 }
 
-.Output {
-  min-width: 800px;
+#Output {
+  min-width: 600px;
 }
