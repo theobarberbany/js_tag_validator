@@ -58,3 +58,4 @@ You can find the most recent version of the guide [here](https://github.com/face
  - [Carbon components design kit](http://carbondesignsystem.com/)
  - [React DnD](https://github.com/react-dnd/react-dnd)
  - [Redux Dev tools](https://github.com/zalmoxisus/redux-devtools-extension) (chrome extension)
+ - [React Inspector](https://github.com/xyc/react-inspector)
