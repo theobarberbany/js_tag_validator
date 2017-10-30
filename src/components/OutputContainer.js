@@ -22,7 +22,7 @@ const sum = Array => {
 
 const OutputContainer = composition => (
   <Accordion>
-    <AccordionItem title="Tag 1">
+    <AccordionItem title="Composition: Tag 1">
       <Table>
         <TableHead>
           <TableRow header>
@@ -48,7 +48,7 @@ const OutputContainer = composition => (
         </TableBody>
       </Table>
     </AccordionItem>
-    <AccordionItem title="Tag 2">
+    <AccordionItem title="Composition: Tag 2">
       <Table>
         <TableHead>
           <TableRow header>
