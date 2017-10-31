@@ -58,5 +58,4 @@ You can find the most recent version of the guide [here](https://github.com/face
  - [Carbon components design kit](http://carbondesignsystem.com/)
  - [React DnD](https://github.com/react-dnd/react-dnd)
  - [Redux Dev tools](https://github.com/zalmoxisus/redux-devtools-extension) (chrome extension)
- 
- - With thanks to stack overflow for a javascript version of String.Format(), (string.formatUnicorn() ) taken from [here](https://cdn.sstatic.net/Js/stub.en.js)
+ - [React Inspector](https://github.com/xyc/react-inspector)

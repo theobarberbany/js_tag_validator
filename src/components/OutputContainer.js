@@ -1,7 +1,6 @@
 // Display output from validator.js
 import React from "react";
 import { connect } from "react-redux";
-import * as fileHandlerActionCreators from "../ducks/FileHandlerDuck";
 import PropTypes from "prop-types";
 import {
   Accordion,
@@ -10,19 +9,14 @@ import {
   TableHead,
   TableRow,
   TableHeader,
-  TableBody,
-  TableData
+  TableBody
 } from "carbon-components-react";
 
 import OutputItem from "./OutputItem";
 
-const sum = Array => {
-  Array.reduce((acc, cur) => acc + cur, 0);
-};
-
 const OutputContainer = composition => (
   <Accordion>
-    <AccordionItem title="Tag 1">
+    <AccordionItem title="Composition: Tag 1">
       <Table>
         <TableHead>
           <TableRow header>
@@ -48,7 +42,7 @@ const OutputContainer = composition => (
         </TableBody>
       </Table>
     </AccordionItem>
-    <AccordionItem title="Tag 2">
+    <AccordionItem title="Composition: Tag 2">
       <Table>
         <TableHead>
           <TableRow header>
@@ -76,6 +70,12 @@ const OutputContainer = composition => (
     </AccordionItem>
   </Accordion>
 );
+
+OutputContainer.PropTypes = {
+  composition: PropTypes.shape({
+    composition: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number))
+  })
+};
 
 const mapStateToProps = state => {
   return {

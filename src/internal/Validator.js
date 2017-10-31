@@ -1,17 +1,4 @@
 // See https://github.com/theobarberbany/tag_validator
-// Actually taken *from* stack overflow's website...
-//Try "string".formatUnicorn in console when on their website..
-String.prototype.formatUnicorn = function() {
-  var e = this.toString();
-  if (!arguments.length) return e;
-  var t = typeof arguments[0],
-    n =
-      "string" == t || "number" == t
-        ? Array.prototype.slice.call(arguments)
-        : arguments[0];
-  for (var i in n) e = e.replace(new RegExp("\\{" + i + "\\}", "gi"), n[i]);
-  return e;
-};
 
 function difference(tag1, tag2) {
   //compare two tags - return the degree to which they differ
@@ -106,14 +93,11 @@ function check_array_single(array) {
   return { bad_tag_count, bad_tag_pairs };
 }
 
+// todo: use reduce instead. remove unicorn
 function concatenate_tags(array) {
-  let concatenated = [];
-  for (let i = 0; i < array.length; i++) {
-    concatenated.push(
-      "{tag1}{tag2}".formatUnicorn({ tag1: array[i][0], tag2: array[i][1] })
-    );
-  }
-  return concatenated;
+  return array.map(e => {
+    return e.join("");
+  });
 }
 
 function reverse_compliment(tag) {
