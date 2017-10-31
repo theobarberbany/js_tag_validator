@@ -1,7 +1,6 @@
 // Display output from validator.js
 import React from "react";
 import { connect } from "react-redux";
-import * as fileHandlerActionCreators from "../ducks/FileHandlerDuck";
 import PropTypes from "prop-types";
 import {
   Accordion,
@@ -10,15 +9,10 @@ import {
   TableHead,
   TableRow,
   TableHeader,
-  TableBody,
-  TableData
+  TableBody
 } from "carbon-components-react";
 
 import OutputItem from "./OutputItem";
-
-const sum = Array => {
-  Array.reduce((acc, cur) => acc + cur, 0);
-};
 
 const OutputContainer = composition => (
   <Accordion>

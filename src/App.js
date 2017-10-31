@@ -3,12 +3,9 @@ import store from "./setupStore";
 import Raven from "raven-js";
 import { Provider } from "react-redux";
 import FileHandlerContainer from "./components/FileHandlerContainer";
-import { Button } from "carbon-components-react";
 import logo from "./logo.svg";
 import "../node_modules/carbon-components/css/carbon-components.css";
 import "./App.css";
-
-import * as fileHandlerActions from "./ducks/FileHandlerDuck";
 
 class App extends Component {
   componentDidMount() {

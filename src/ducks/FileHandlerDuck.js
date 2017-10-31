@@ -1,6 +1,5 @@
 // FileHandler.js duck *quack*
 import { CardStatus } from "carbon-components-react";
-import fetch from "isomorphic-fetch";
 
 //Action types
 export const DROP_FILE = "DROP_FILE";
