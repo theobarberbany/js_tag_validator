@@ -8,6 +8,7 @@ import HTML5Backend, { NativeTypes } from "react-dnd-html5-backend";
 import FileHandler from "./FileHandler";
 import WarningContainer from "./WarningContainer";
 import OutputContainer from "./OutputContainer";
+import DatabaseContainer from "./DatabaseContainer";
 
 import { parseData, now } from "../internal/Parser";
 import { run } from "../internal/Validator";
@@ -150,9 +151,10 @@ class FileHandlerContainer extends Component {
           <div>
             {this.state.hideFileHandler ? (
               <div id="Output">
-                <h1>Validation Complete</h1>
+                <h2>Validation Complete: {this.state.droppedFiles[0].name}</h2>
                 <WarningContainer />
                 <OutputContainer />
+                <DatabaseContainer />
               </div>
             ) : (
               <FileHandler accepts={[FILE]} onDrop={this.handleFileDrop} />
