@@ -39,20 +39,20 @@ const includesArray = (array, comparator) => {
   });
 };
 
-// const distinctArray = array =>
-//   array.reduce((acc, cur) => {
-//     console.log("Acc: ", acc, "Cur: ", cur);
-//     includesArray(acc, cur) ? null : acc.push(cur);
-//     return acc;
-//   }, []);
+const distinctArray = array =>
+  array.reduce((acc, cur) => {
+    console.log("Acc: ", acc, "Cur: ", cur);
+    includesArray(acc, cur) ? null : acc.push(cur);
+    return acc;
+  }, []);
 
-const distinctArray = array => {
-  let outputArray = [];
-  array.forEach(
-    item => (includesArray(outputArray, item) ? null : outputArray.push(item))
-  );
-  return outputArray;
-};
+// const distinctArray = array => {
+//   let outputArray = [];
+//   array.forEach(
+//     item => (includesArray(outputArray, item) ? null : outputArray.push(item))
+//   );
+//   return outputArray;
+// };
 
 const getCount = tags => {
   let flattened = Object.keys(tags)
