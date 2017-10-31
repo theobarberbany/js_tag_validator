@@ -54,7 +54,6 @@ WarningContainer.PropTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       tag1: PropTypes.string.isRequired,
-      tag1: PropTypes.string.isRequired,
       tag2: PropTypes.string.isRequired,
       diff: PropTypes.number.isRequired,
       pos: PropTypes.number.isRequired
