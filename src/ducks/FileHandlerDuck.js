@@ -3,7 +3,6 @@ import { CardStatus } from "carbon-components-react";
 
 //Action types
 export const DROP_FILE = "DROP_FILE";
-export const TOGGLE_COMPLETE = "TOGGLE_COMPLETE";
 export const PUSH_DATA = "PUSH_DATA";
 export const PUSH_OVERVIEW = "PUSH_OVERVIEW";
 export const ADD_BAD_TAG_PAIR = "ADD_BAD_TAG_PAIR";
@@ -108,23 +107,18 @@ export function reducer(state = initialState, action) {
 export const pushData = data => {
   return { type: PUSH_DATA, data };
 };
-// 2. Toggles a critical warning's complete / incomplete feild (notes it as
-// addressed)
-export const toggleComplete = id => {
-  return { type: TOGGLE_COMPLETE, id };
-};
 
-//3. Changes FileHandler UI state when something is dropped on it
+//2. Changes FileHandler UI state when something is dropped on it
 export const dropFile = fileHandlerState => {
   return { type: DROP_FILE, fileHandlerState };
 };
 
-//4. Pushes tag composition (array) to store
+//3. Pushes tag composition (array) to store
 export const pushOverview = data => {
   return { type: PUSH_OVERVIEW, data };
 };
 
-//5. Adds a bad tag pair to the store.
+//4. Adds a bad tag pair to the store.
 let nextTagPairId = 0;
 export const addBadTagPair = (tag1, tag2, diff, pos) => {
   return {
@@ -137,7 +131,7 @@ export const addBadTagPair = (tag1, tag2, diff, pos) => {
   };
 };
 
-//5.5 Add bad tag pairs where tags are concatenations
+//5. Add bad tag pairs where tags are concatenations
 export const addBadTagPairConcat = (tag1, tag2, diff) => {
   return {
     type: ADD_BAD_TAG_PAIR_CONCAT,
@@ -155,7 +149,7 @@ export const toggleTagPair = id => {
   };
 };
 
-//6. processOverview to call addBadTagPair when needed and update overview data in store.
+//7. processOverview to call addBadTagPair when needed and update overview data in store.
 export const processOverview = object => {
   //console.log(object);
   //Aliasing
