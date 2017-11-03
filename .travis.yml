@@ -2,12 +2,19 @@ sudo: true
 dist: precise
 language: node_js
 node_js:
-  - 8 
-  - 6
+- 8
+- 6
 cache:
   yarn: true
-  directories:
-    -node_modules
+  directories: -node_modules
 script:
-  - yarn install
-  - yarn test --coverage
+- yarn install
+- yarn test --coverage
+notifications:
+  email:
+    recipients:
+    - tb15@sanger.ac.uk
+    on_success: never
+    on_failure: always
+  slack:
+    secure: 2qS5uGU7QxZh0xl3/5Mts8Y7gzrkVZXQ10Hnw6T9KdjPOMOcWoXOVWN6u//wqkL0oKhYyJ+PCogz85g5zMOa/vWoDI6rUzHZarm3JJ9Bw5M20Sfd/DcX08PXahZkIhCDxSzzU4J9Fx8z/qSF9Eu48ktxSgA8Shd43fQrENhJ2xzZhLIkjmufBxblgJwPXbZmpXXw6cIjaTFFz1n95zmcMUxw/I8WES5jKpm6bzB0KO0ZFyg+zB68wKzuP47sHZKhXYECWlnoHMViXjLU2FeMpu6i9jxsldxbYK3IPMAKpvxGilQ3segBZCtyoQRtfT0YBe3miB+4v1u6YvUMCBZyzOKOcGk16/eNxWkZjLLYwRFmY7NXGElAw/nY/fnYI1N9VgSkVYLFbSyzi/ufWT9Z/LyiSj8GCBH9FUZOmfQR6F2tkIIPAd5t1CDorj0SxxUrAKDzlzri4o0dGPUiIshRQH9aGIp/685pJkGv6lC+zx9j05MrkSE7a3HNu8AnE3EoGIFZPf3ENaydJ6uTbE1NU8ZVskv78RQRaEH6K5Cx4hTTpc1QNlBWgZDK5qJaHKAzLeOPlpkzx7aq+rtDuPg+7V7hNV9v0uGOA2g3zCcS1KjncWCIbNK3tGzUFhHbbDSiEy60XazmkvRTn8Gq344eXwz6beYZ3xsq3KkZT0XmIe4=
