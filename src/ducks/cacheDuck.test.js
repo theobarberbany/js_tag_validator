@@ -1,3 +1,5 @@
+import { XMLHttpRequest } from "xmlhttprequest";
+global.XMLHttpRequest = XMLHttpRequest;
 import "isomorphic-fetch";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
@@ -51,13 +53,6 @@ describe("async actions", () => {
   });
 
   it("creates RECIEVE_CACHE when fetching the cache is complete", async () => {
-    let p = fetch("/cache").then(res => {
-      return res.json();
-    });
-    p.then(j => {
-      console.log("Res dump: ", j);
-    });
-
     const expectedActions = [
       {
         type: duck.REQUEST_CACHE,
@@ -74,7 +69,7 @@ describe("async actions", () => {
     const store = mockStore({});
 
     await store.dispatch(duck.fetchCache("cache.json")).then(() => {
-      console.log("store actions: ", store.getActions());
+      //console.log("store actions: ", store.getActions());
       //hack to prevent recievedAt field failing the test
       let gotActions = store.getActions();
       let o = gotActions[1];
