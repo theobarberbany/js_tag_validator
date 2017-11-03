@@ -1,0 +1,7 @@
+dist: precise
+language: node_js
+node_js:
+  - 6
+script:
+  - yarn install
+  - yarn test --coverage
