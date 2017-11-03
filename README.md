@@ -1,5 +1,7 @@
 ## Javascript Tag Validator
 
+[![Build Status](https://travis-ci.org/theobarberbany/js_tag_validator.svg?branch=development)](https://travis-ci.org/theobarberbany/js_tag_validator)
+
 Clone the repo then run `npm install` or `yarn install`
 
 UI is designed with [sketch](https://www.sketchapp.com/), and can be found in ui.sketch
