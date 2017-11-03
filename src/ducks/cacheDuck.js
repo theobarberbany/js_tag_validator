@@ -1,5 +1,5 @@
 //Cache management duck.. *quack*
-import fetch from "isomorphic-fetch";
+import "isomorphic-fetch";
 
 //Action types
 export const REQUEST_CACHE = "REQUEST_CACHE";

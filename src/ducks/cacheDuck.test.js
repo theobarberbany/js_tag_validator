@@ -1,12 +1,14 @@
-import configureMockStore from "redux-mock-store";
+import "isomorphic-fetch";
 import thunk from "redux-thunk";
-import fetchMock from "fetch-mock";
+
+import configureMockStore from "redux-mock-store";
 
 import { reducer } from "./cacheDuck";
 import * as duck from "./cacheDuck";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
+import fetchMock from "fetch-mock";
 
 describe("actions", () => {
   it("should create an action to request a cache fetch", () => {
@@ -38,10 +40,6 @@ describe("async actions", () => {
     fetchMock.restore();
   });
   beforeEach(() => {
-    // fetchMock.get("*", {
-    //   body: { somejsonobject: "somedata" },
-    //   headers: { "content-type": "application/json" }
-    // });
     fetchMock.mock("*", {
       status: 200,
       body: {
@@ -52,7 +50,8 @@ describe("async actions", () => {
       }
     });
   });
-  it("creates RECIEVE_CACHE when fetching the cache is complete", () => {
+
+  it("creates RECIEVE_CACHE when fetching the cache is complete", async () => {
     let p = fetch("/cache").then(res => {
       return res.json();
     });
@@ -63,11 +62,11 @@ describe("async actions", () => {
     const expectedActions = [
       {
         type: duck.REQUEST_CACHE,
-        cacheURL: "/cache.json"
+        cacheURL: "cache.json"
       },
       {
         type: duck.RECIEVE_CACHE,
-        cacheURL: "/cache.json",
+        cacheURL: "cache.json",
         data: {
           body: {
             somejsonobject: "somedata"
@@ -77,9 +76,9 @@ describe("async actions", () => {
     ];
     const store = mockStore({});
 
-    return store.dispatch(duck.fetchCache("/cache.json")).then(() => {
-      //rebodyturn of async actions
+    await store.dispatch(duck.fetchCache("cache.json")).then(() => {
       console.log("store actions: ", store.getActions());
+      //hack to prevent recievedAt field failing the test
       let gotActions = store.getActions();
       let o = gotActions[1];
       delete o.receivedAt;
