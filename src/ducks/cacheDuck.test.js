@@ -1,6 +1,5 @@
 import "isomorphic-fetch";
 import thunk from "redux-thunk";
-
 import configureMockStore from "redux-mock-store";
 
 import { reducer } from "./cacheDuck";
@@ -68,9 +67,7 @@ describe("async actions", () => {
         type: duck.RECIEVE_CACHE,
         cacheURL: "cache.json",
         data: {
-          body: {
-            somejsonobject: "somedata"
-          }
+          somejsonobject: "somedata"
         }
       }
     ];
