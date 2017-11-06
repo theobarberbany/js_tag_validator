@@ -79,51 +79,51 @@ describe("async actions", () => {
   });
 });
 
-test("reducers", () => {
-  let state;
-  state = reducer(
-    {
-      fileHandler: {
-        displayProps: {
-          cardTitle: "Get started",
-          cardIcon: "copy",
-          cardInfo: ["Drop manifest file here"],
-          status: 1
+const initialState = {
+  isFetching: false,
+  didInvalidate: false,
+  data: []
+};
+
+const cacheURL = "http://testing123.com/cache.json";
+const data = { somejson: "somedata" };
+
+describe("reducers", () => {
+  it("returns initial state", () => {
+    expect(reducer(undefined, {})).toEqual(initialState);
+  });
+  it("should handle REQUEST_CACHE", () => {
+    expect(
+      reducer(undefined, {
+        type: duck.REQUEST_CACHE
+      })
+    ).toEqual({
+      ...initialState,
+      isFetching: true,
+      didInvalidate: false
+    });
+  });
+  it("should handle RECIEVE_CACHE", () => {
+    expect(
+      reducer(
+        {
+          ...initialState,
+          isFetching: true,
+          didInvalidate: false
         },
-        cleanData: [],
-        badPairs: [],
-        badPairsConcat: []
-      },
-      cache: {
-        isFetching: false,
-        didInvalidate: false,
-        data: []
-      }
-    },
-    {
-      type: "REQUEST_CACHE",
-      cacheURL:
-        "https://raw.githubusercontent.com/theobarberbany/js_tag_validator/development/src/internal/cache_min.json"
-    }
-  );
-  expect(state).toEqual({
-    cache: {
-      data: [],
+        {
+          type: duck.RECIEVE_CACHE,
+          cacheURL,
+          data: data,
+          receivedAt: 0
+        }
+      )
+    ).toEqual({
+      ...initialState,
+      isFetching: false,
       didInvalidate: false,
-      isFetching: false
-    },
-    didInvalidate: false,
-    fileHandler: {
-      badPairs: [],
-      badPairsConcat: [],
-      cleanData: [],
-      displayProps: {
-        cardIcon: "copy",
-        cardInfo: ["Drop manifest file here"],
-        cardTitle: "Get started",
-        status: 1
-      }
-    },
-    isFetching: true
+      data: data,
+      lastUpdated: 0
+    });
   });
 });
