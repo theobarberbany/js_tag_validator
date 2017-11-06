@@ -1,6 +1,10 @@
 ## Javascript Tag Validator
 ---
-[![Build Status](https://travis-ci.org/theobarberbany/js_tag_validator.svg?branch=development)](https://travis-ci.org/theobarberbany/js_tag_validator) [![codecov](https://codecov.io/gh/theobarberbany/js_tag_validator/branch/development/graph/badge.svg)](https://codecov.io/gh/theobarberbany/js_tag_validator)
+Master branch :
+[![Build Status](https://travis-ci.org/theobarberbany/js_tag_validator.svg?branch=master)](https://travis-ci.org/theobarberbany/js_tag_validator) [![codecov](https://codecov.io/gh/theobarberbany/js_tag_validator/branch/master/graph/badge.svg)](https://codecov.io/gh/theobarberbany/js_tag_validator)
+
+Development branch :
+[![Build Status devel](https://travis-ci.org/theobarberbany/js_tag_validator.svg?branch=development)](https://travis-ci.org/theobarberbany/js_tag_validator) [![codecov devel](https://codecov.io/gh/theobarberbany/js_tag_validator/branch/development/graph/badge.svg)](https://codecov.io/gh/theobarberbany/js_tag_validator)
 
 
 
@@ -32,9 +36,9 @@ You can find the most recent version of the guide [here](https://github.com/face
     scan the entire src folder for "x.test.js" files, the __tests__ folder for test files to run.
     Tests are run using nodejs with jsdom.
 
-  *  Tests are formatted using the [expect](https://facebook.github.io/jest/docs/en/expect.html) statement. 
+  *  Tests are formatted using the [expect](https://facebook.github.io/jest/docs/en/expect.html) statement.
      Snapshot testing is also supported.
-    
+
   * [Enzyme](http://airbnb.io/enzyme/) is used for test rendering.
 
 ---
