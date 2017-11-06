@@ -11,7 +11,7 @@ export const TOGGLE_TAG_PAIR = "TOGGLE_TAG_PAIR";
 
 // Reducer Initial state for *this* component (Duck) (This only gets passed a
 // slice of the state)
-const initialState = {
+export const initialState = {
   displayProps: {
     cardTitle: "Get started",
     cardIcon: "copy",
@@ -149,7 +149,7 @@ export const toggleTagPair = id => {
   };
 };
 
-//7. processOverview to call addBadTagPair when needed and update overview data in store.
+//7. processOverview to update overview data in store and call processBadTags.
 export const processOverview = object => {
   //console.log(object);
   //Aliasing
@@ -157,10 +157,19 @@ export const processOverview = object => {
   let concatenated = object.bad_tag_container.concatenated;
   //Get the total number of bad tags
   let bad_tag_total = normal.bad_tag_count + concatenated.bad_tag_count;
-
   object.composition.bad_tag_total = bad_tag_total;
   return function(dispatch) {
     dispatch(pushOverview(object.composition));
+    dispatch(processBadTags(object));
+  };
+};
+
+//8. Process bad tags: add them to the store.
+export const processBadTags = object => {
+  //Aliasing
+  let normal = object.bad_tag_container.normal;
+  let concatenated = object.bad_tag_container.concatenated;
+  return function(dispatch) {
     for (let i = 0; i < normal.bad_tag_count; i++) {
       dispatch(
         addBadTagPair(
