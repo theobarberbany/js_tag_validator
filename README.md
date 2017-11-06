@@ -1,6 +1,6 @@
 ## Javascript Tag Validator
-=======
-[![Build Status](https://travis-ci.org/theobarberbany/js_tag_validator.svg?branch=master)](https://travis-ci.org/theobarberbany/js_tag_validator) [![codecov](https://codecov.io/gh/theobarberbany/js_tag_validator/branch/master/graph/badge.svg)](https://codecov.io/gh/theobarberbany/js_tag_validator)
+---
+[![Build Status](https://travis-ci.org/theobarberbany/js_tag_validator.svg?branch=development)](https://travis-ci.org/theobarberbany/js_tag_validator) [![codecov](https://codecov.io/gh/theobarberbany/js_tag_validator/branch/development/graph/badge.svg)](https://codecov.io/gh/theobarberbany/js_tag_validator)
 
 
 
