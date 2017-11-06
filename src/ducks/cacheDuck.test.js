@@ -11,7 +11,7 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 import fetchMock from "fetch-mock";
 
-describe("actions", () => {
+describe("cache actions", () => {
   it("should create an action to request a cache fetch", () => {
     const cacheURL = "http://testurl.fetch/cache.json";
     const expectedAction = {
@@ -35,7 +35,7 @@ describe("actions", () => {
   });
 });
 
-describe("async actions", () => {
+describe("async cache actions", () => {
   afterEach(() => {
     fetchMock.reset();
     fetchMock.restore();
@@ -88,7 +88,7 @@ const initialState = {
 const cacheURL = "http://testing123.com/cache.json";
 const data = { somejson: "somedata" };
 
-describe("reducers", () => {
+describe("Cache reducer", () => {
   it("returns initial state", () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
