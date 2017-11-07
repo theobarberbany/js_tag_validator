@@ -29,21 +29,30 @@
   },
   "devDependencies": {
     "codecov": "^3.0.0",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
+    "esformatter-jsx": "^8.0.1",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-react-app": "^2.0.1",
+    "eslint-plugin-flowtype": "^2.39.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "fetch-mock": "^5.13.1",
-    "redux-mock-store": "^1.3.0",
-    "enzyme": "^3.1.0",
-    "enzyme-adapter-react-16": "^1.0.1",
-    "esformatter-jsx": "^8.0.1",
     "flow-bin": "^0.57.3",
     "prettier": "^1.7.4",
     "prettier-eslint": "^8.2.1",
-    "react-scripts": "1.0.14",
-    "react-test-renderer": "^16.0.0"
+    "react-scripts": "canary",
+    "react-test-renderer": "^16.0.0",
+    "redux-mock-store": "^1.3.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/src/registerServiceWorker.js",
+      "!<rootDir>/src/index.js"
+    ]
   }
 }
