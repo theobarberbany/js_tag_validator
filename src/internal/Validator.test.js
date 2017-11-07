@@ -4,6 +4,12 @@ const testArray = [
   ["AGGCAGAA", "CTCTCTAT"]
 ];
 
+const badTestArray = [
+  ["TAAGGCGA", "TAAGGCGA"],
+  ["TAAGGCGA", "TAAGGCGA"],
+  ["TAAGGCGA", "TAAGGCGA"]
+];
+
 const Validator = require("./Validator");
 
 describe("Difference function", () => {
@@ -108,5 +114,129 @@ describe("Function to concatenate tags", () => {
       "CGTACTAGCTCTCTAT",
       "AGGCAGAACTCTCTAT"
     ]);
+  });
+});
+
+describe("call_check_tag_set_composition function", () => {
+  it("should determine the number of tag groups correctly", () => {
+    //1 group
+    expect(
+      Validator.call_check_tag_set_composition(
+        testArray.reduce((acc, cur) => acc.concat(cur), [])
+      ).length
+    ).toEqual(1);
+
+    //2 groups
+    expect(Validator.call_check_tag_set_composition(testArray).length).toEqual(
+      2
+    );
+  });
+  it("should return the composition of the tag groups in the array passed", () => {
+    expect(Validator.call_check_tag_set_composition(testArray)).toEqual([
+      [
+        [1, 1, 1, 0],
+        [1, 0, 0, 2],
+        [1, 1, 0, 1],
+        [1, 0, 1, 1],
+        [1, 0, 1, 1],
+        [0, 1, 1, 1],
+        [2, 0, 0, 1],
+        [2, 0, 0, 1]
+      ],
+      [
+        [0, 0, 3, 0],
+        [0, 3, 0, 0],
+        [0, 0, 3, 0],
+        [0, 3, 0, 0],
+        [0, 0, 3, 0],
+        [0, 3, 0, 0],
+        [3, 0, 0, 0],
+        [0, 3, 0, 0]
+      ]
+    ]);
+    expect(
+      Validator.call_check_tag_set_composition(
+        testArray.reduce((acc, cur) => acc.concat(cur), [])
+      )
+    ).toEqual([[[1, 1, 4, 0]]]);
+  });
+});
+
+describe("run function", () => {
+  it("should return an object with the contents of all the validation outputs", () => {
+    expect(Validator.run(badTestArray)).toEqual({
+      bad_tag_container: {
+        concatenated: {
+          bad_tag_count: 3,
+          bad_tag_pairs: [
+            ["TAAGGCGATAAGGCGA", "TAAGGCGATAAGGCGA", 0],
+            ["TAAGGCGATAAGGCGA", "TAAGGCGATAAGGCGA", 0],
+            ["TAAGGCGATAAGGCGA", "TAAGGCGATAAGGCGA", 0]
+          ]
+        },
+        normal: {
+          bad_tag_count: 3,
+          bad_tag_pairs: [
+            ["TAAGGCGA", "TAAGGCGA", 0, 10],
+            ["TAAGGCGA", "TAAGGCGA", 0, 11],
+            ["TAAGGCGA", "TAAGGCGA", 0, 12]
+          ]
+        }
+      },
+      composition: {
+        composition: [
+          [
+            [0, 3, 0, 0],
+            [3, 0, 0, 0],
+            [3, 0, 0, 0],
+            [0, 0, 0, 3],
+            [0, 0, 0, 3],
+            [0, 0, 3, 0],
+            [0, 0, 0, 3],
+            [3, 0, 0, 0]
+          ],
+          [
+            [0, 3, 0, 0],
+            [3, 0, 0, 0],
+            [3, 0, 0, 0],
+            [0, 0, 0, 3],
+            [0, 0, 0, 3],
+            [0, 0, 3, 0],
+            [0, 0, 0, 3],
+            [3, 0, 0, 0]
+          ]
+        ]
+      }
+    });
+    expect(Validator.run(testArray)).toEqual({
+      bad_tag_container: {
+        concatenated: { bad_tag_count: 0, bad_tag_pairs: [] },
+        normal: { bad_tag_count: 0, bad_tag_pairs: [] }
+      },
+      composition: {
+        composition: [
+          [
+            [1, 1, 1, 0],
+            [1, 0, 0, 2],
+            [1, 1, 0, 1],
+            [1, 0, 1, 1],
+            [1, 0, 1, 1],
+            [0, 1, 1, 1],
+            [2, 0, 0, 1],
+            [2, 0, 0, 1]
+          ],
+          [
+            [0, 0, 3, 0],
+            [0, 3, 0, 0],
+            [0, 0, 3, 0],
+            [0, 3, 0, 0],
+            [0, 0, 3, 0],
+            [0, 3, 0, 0],
+            [3, 0, 0, 0],
+            [0, 3, 0, 0]
+          ]
+        ]
+      }
+    });
   });
 });
