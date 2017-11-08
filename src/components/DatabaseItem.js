@@ -4,9 +4,9 @@ import { TableRow, TableData } from "carbon-components-react";
 
 const DatabaseItem = ({ name, id, matches }) => (
   <TableRow>
-    <TableData>{name}</TableData>
-    <TableData>{id}</TableData>
-    <TableData>{matches}</TableData>
+    <TableData className="name">{name}</TableData>
+    <TableData className="id">{id}</TableData>
+    <TableData className="matches">{matches}</TableData>
   </TableRow>
 );
 
