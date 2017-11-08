@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "carbon-components": "^7.23.1",
-    "carbon-components-react": "^3.12.5",
+    "carbon-components": "^8.0.8",
+    "carbon-components-react": "^4.0.4",
     "carbon-icons": "^6.1.0",
     "isomorphic-fetch": "^2.2.1",
     "papaparse": "^4.3.6",
@@ -40,10 +40,10 @@
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
     "esformatter-jsx": "^8.0.1",
-    "flow-bin": "^0.57.3",
+    "flow-bin": "^0.58.0",
     "prettier": "^1.7.4",
     "prettier-eslint": "^8.2.1",
-    "react-scripts": "1.0.14",
+    "react-scripts": "1.0.17",
     "react-test-renderer": "^16.0.0"
   }
 }
