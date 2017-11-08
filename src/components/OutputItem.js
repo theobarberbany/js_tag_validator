@@ -9,10 +9,10 @@ const proportion = (int, total) => {
 const OutputItem = ({ colNo, a, t, c, g, sum }) => (
   <TableRow>
     <TableData>{colNo}</TableData>
-    <TableData>{proportion(a, sum)}</TableData>
-    <TableData>{proportion(t, sum)}</TableData>
-    <TableData>{proportion(c, sum)}</TableData>
-    <TableData>{proportion(g, sum)}</TableData>
+    <TableData className="a">{proportion(a, sum)}</TableData>
+    <TableData className="t">{proportion(t, sum)}</TableData>
+    <TableData className="c">{proportion(c, sum)}</TableData>
+    <TableData className="g">{proportion(g, sum)}</TableData>
   </TableRow>
 );
 
