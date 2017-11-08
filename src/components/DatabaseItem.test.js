@@ -6,8 +6,8 @@ import { TableRow, TableData } from "carbon-components-react";
 function setup() {
   const props = {
     name: "Tag Group",
-    id: "0",
-    matches: "42"
+    id: 0,
+    matches: 42
   };
 
   const enzymeWrapper = mount(<DatabaseItem {...props} />);
@@ -33,13 +33,13 @@ describe("DatabaseItem", () => {
   it("should contain an id entry that equals 0", () => {
     expect(enzymeWrapper.find(".id").exists());
     expect(
-      enzymeWrapper.contains(<TableData className="id">0</TableData>)
+      enzymeWrapper.contains(<TableData className="id">{0}</TableData>)
     ).toEqual(true);
   });
   it("should contain a matches entry that equals 42", () => {
     expect(enzymeWrapper.find(".matches").exists());
     expect(
-      enzymeWrapper.contains(<TableData className="matches">42</TableData>)
+      enzymeWrapper.contains(<TableData className="matches">{42}</TableData>)
     ).toEqual(true);
   });
 });
