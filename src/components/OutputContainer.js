@@ -14,7 +14,7 @@ import {
 
 import OutputItem from "./OutputItem";
 
-const OutputContainer = composition => (
+export const OutputContainer = composition => (
   <Accordion>
     <AccordionItem title="Composition: Tag 1">
       <Table>
@@ -77,7 +77,7 @@ OutputContainer.PropTypes = {
   })
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     composition: state.fileHandler.overview.composition
   };
