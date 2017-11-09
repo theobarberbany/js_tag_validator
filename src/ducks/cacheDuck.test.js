@@ -72,9 +72,15 @@ describe("async cache actions", () => {
       //console.log("store actions: ", store.getActions());
       //hack to prevent recievedAt field failing the test
       let gotActions = store.getActions();
-      let o = gotActions[1];
-      delete o.receivedAt;
-      expect(gotActions).toEqual(expectedActions);
+      //Action 1
+      expect(gotActions[0]).toEqual(expectedActions[0]);
+      //Action 2
+      ////type
+      expect(gotActions[1].type).toEqual(expectedActions[1].type);
+      ////cacheURL
+      expect(gotActions[1].cacheURL).toEqual(expectedActions[1].cacheURL);
+      ////data
+      expect(gotActions[1].data).toEqual(expectedActions[1].data);
     });
   });
 });
