@@ -50,26 +50,26 @@ describe("OutputItem", () => {
       enzymeWrapper.contains(<TableData className="colNo">1</TableData>)
     ).toEqual(true);
   });
-  it("should contain an 'a' entry that equals 10.00", async () => {
-    // expect(enzymeWrapper.find(".a").exists());
-    await expect(
+  it("should contain an 'a' entry that equals 10.00", () => {
+    expect(enzymeWrapper.find(".a").exists());
+    expect(
       enzymeWrapper.contains(<TableData className="a">10.0</TableData>)
     ).toEqual(true);
   });
   it("should contain a 't' entry that equals 20.00", () => {
-    //expect(enzymeWrapper.find(".t").exists());
+    expect(enzymeWrapper.find(".t").exists());
     expect(
       enzymeWrapper.contains(<TableData className="t">20.0</TableData>)
     ).toEqual(true);
   });
   it("should contain a 'c' entry that equals 30.00", () => {
-    //expect(enzymeWrapper.find(".c").exists());
+    expect(enzymeWrapper.find(".c").exists());
     expect(
       enzymeWrapper.contains(<TableData className="c">30.0</TableData>)
     ).toEqual(true);
   });
   it("should contain a 'g' entry that equals 40.00", () => {
-    //expect(enzymeWrapper.find(".g").exists());
+    expect(enzymeWrapper.find(".g").exists());
     expect(
       enzymeWrapper.contains(<TableData className="g">40.0</TableData>)
     ).toEqual(true);
