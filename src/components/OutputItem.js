@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import { TableRow, TableData } from "carbon-components-react";
 
 const proportion = (int, total) => {
-  return (int / total * 100).toFixed(2);
+  return (int / total * 100).toFixed(1);
 };
 
 const OutputItem = ({ colNo, a, t, c, g, sum }) => (
   <TableRow>
-    <TableData>{colNo}</TableData>
+    <TableData className="colNo">{colNo.toString()}</TableData>
     <TableData className="a">{proportion(a, sum)}</TableData>
     <TableData className="t">{proportion(t, sum)}</TableData>
     <TableData className="c">{proportion(c, sum)}</TableData>
