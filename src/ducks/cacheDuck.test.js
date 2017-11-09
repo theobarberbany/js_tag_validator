@@ -69,7 +69,6 @@ describe("async cache actions", () => {
     const store = mockStore({});
 
     await store.dispatch(duck.fetchCache("cache.json")).then(() => {
-      //console.log("store actions: ", store.getActions());
       //hack to prevent recievedAt field failing the test
       let gotActions = store.getActions();
       //Action 1
