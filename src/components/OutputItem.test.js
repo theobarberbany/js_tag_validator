@@ -12,15 +12,6 @@ const props = {
   sum: 100
 };
 
-function setupMount() {
-  const enzymeWrapper = mount(<OutputItem {...props} />);
-
-  return {
-    props,
-    enzymeWrapper
-  };
-}
-
 function setupShallow() {
   const enzymeWrapper = shallow(<OutputItem {...props} />);
 
