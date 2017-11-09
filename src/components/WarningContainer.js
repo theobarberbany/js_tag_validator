@@ -12,7 +12,7 @@ import {
 } from "carbon-components-react";
 import WarningItem from "./WarningItem";
 
-const WarningContainer = ({ badPairs, badPairsConcat, onClick }) => (
+export const WarningContainer = ({ badPairs, badPairsConcat, onClick }) => (
   <StructuredListWrapper selection border>
     <StructuredListHead>
       <StructuredListRow head>
@@ -63,18 +63,18 @@ WarningContainer.PropTypes = {
 };
 
 //Once checked off, remove from list.
-const getVisibleWarnings = badPairs => {
+export const getVisibleWarnings = badPairs => {
   return badPairs.filter(bp => !bp.completed);
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     badPairs: getVisibleWarnings(state.fileHandler.badPairs),
     badPairsConcat: getVisibleWarnings(state.fileHandler.badPairsConcat)
   };
 };
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     onClick: id => {
       console.log("Id passed: ", id);
