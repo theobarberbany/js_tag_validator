@@ -180,12 +180,6 @@ export const filterCacheConcat = (cache, tags) => {
 //2. Filter
 
 export const mapStateToProps = state => {
-  console.log(
-    filterCache(state.cache.data.tag_db, state.fileHandler.cleanData)
-  );
-  console.log(
-    filterCacheConcat(state.cache.data.tag_db, state.fileHandler.cleanData)
-  );
   return {
     tags: filterCache(state.cache.data.tag_db, state.fileHandler.cleanData),
     tagsConcat: filterCacheConcat(
