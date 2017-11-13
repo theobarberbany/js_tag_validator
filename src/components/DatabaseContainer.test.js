@@ -54,14 +54,6 @@ function setupMount() {
   };
 }
 
-describe("Testing full renders", () => {
-  const { enzymeWrapper } = setupMount();
-  it("Console logs everything as HTML", () => {
-    console.log("hello world");
-    console.log(enzymeWrapper.debug());
-  });
-});
-
 describe("Testing DatabaseContainer", () => {
   const { enzymeWrapper } = setupMount();
 
