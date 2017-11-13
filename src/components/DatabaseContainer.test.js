@@ -3,12 +3,6 @@ import { mount } from "enzyme";
 import {
   DatabaseContainer,
   mapStateToProps,
-  arrayCompare,
-  equal,
-  arrayEqual,
-  includesArray,
-  distinctArray,
-  getCount,
   filterCache,
   filterCacheConcat
 } from "./DatabaseContainer";
@@ -64,7 +58,21 @@ describe("Testing full renders", () => {
   const { enzymeWrapper } = setupMount();
   it("Console logs everything as HTML", () => {
     console.log("hello world");
-    //console.log(enzymeWrapper.debug());
+    console.log(enzymeWrapper.debug());
+  });
+});
+
+describe("Testing DatabaseContainer", () => {
+  const { enzymeWrapper } = setupMount();
+
+  it("should return 4 DatabaseItem(s) to test that map() is working correctly", () => {
+    const input = enzymeWrapper.find("DatabaseItem");
+    expect(input.length).toEqual(4);
+  });
+  it("should return one for each item", () => {
+    enzymeWrapper.find("DatabasdItem").forEach(node => {
+      expect(node.prop("matches")).toEqual(1);
+    });
   });
 });
 
