@@ -60,7 +60,7 @@ export const mapStateToProps = state => {
 };
 
 class FileHandler extends Component {
-  static PropTypes = {
+  static propTypes = {
     accepts: PropTypes.arrayOf(PropTypes.string).isRequired,
     connectDropTarget: PropTypes.func.isRequired,
     isOver: PropTypes.bool.isRequired,
