@@ -18,7 +18,6 @@ import "./FileHandlerContainer.css";
 class FileHandlerContainer extends Component {
   constructor(props) {
     super(props);
-
     this.handleFileDrop = this.handleFileDrop.bind(this);
     this.cleanParsedData = this.cleanParsedData.bind(this);
     this.state = {
@@ -36,6 +35,12 @@ class FileHandlerContainer extends Component {
     Raven.captureException(error, { extra: errorInfo });
   }
 
+  runValidation(cleanData) {
+    let output = run(cleanData);
+    this.props.processOverview(output);
+    this.setState({ hideFileHandler: true }); // Hide FileHandler Component
+  }
+
   cleanParsedData() {
     let len = this.state.parsedData.length;
     let cleanData = [];
@@ -43,19 +48,15 @@ class FileHandlerContainer extends Component {
       cleanData.push(this.state.parsedData[i].splice(2, 2));
     }
     this.props.pushData(cleanData);
-    let output = run(cleanData);
-    this.props.processOverview(output);
-    this.setState({ hideFileHandler: true });
+    this.runValidation(cleanData);
   }
+
   handleFileDrop(item, monitor) {
     if (monitor) {
       console.log("you dropped something..");
-      let component = this;
-      // Update the state of droppedFiles
       const droppedFiles = monitor.getItem().files;
       //If it's not csv, throw it away.
       if (droppedFiles[0].type === "text/csv") {
-        // log file that was passed
         console.log(droppedFiles[0]);
         // update the state of the ui
         this.props.dropFile();
@@ -64,17 +65,18 @@ class FileHandlerContainer extends Component {
         // parse
         parseData2(this.state.droppedFiles[0], ",").then(
           obj => {
-            console.log("Finished parsing:");
+            console.log("Finished parsing:", obj);
+            //VERIFY ITS A SANGER MANIFEST HERE
             let len = obj.data.length;
-            component.setState({
+            this.setState({
               parsedData: obj.data.slice(9, len) //update array with parsed data
             });
             //Call cleaning function
-            component.cleanParsedData();
+            this.cleanParsedData();
           },
           err => {
             Raven.captureException(err);
-            console.log("Failed to parse");
+            console.log("Failed to parse, this is embarrassing!");
           }
         );
       } else {
