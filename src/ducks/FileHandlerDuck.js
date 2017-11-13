@@ -80,7 +80,6 @@ export function reducer(state = initialState, action) {
           }
         ]
       };
-    //todo; fix
     case TOGGLE_TAG_PAIR:
       return {
         ...state,
