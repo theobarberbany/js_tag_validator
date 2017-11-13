@@ -20,9 +20,7 @@ const now = () => {
 };
 
 const parseData2 = (path, delimiter) => {
-  console.log("PLEASEWORK");
   return new Promise((resolve, reject) => {
-    console.log("Inside Promise");
     Papa.parse(path, {
       download: true,
       delimiter: delimiter,
@@ -31,7 +29,6 @@ const parseData2 = (path, delimiter) => {
       fastMode: true,
       skipEmptyLines: true,
       complete: results => {
-        console.log("about to resolve");
         resolve(results);
       },
       error: function(err, file, inputElem, reason) {
