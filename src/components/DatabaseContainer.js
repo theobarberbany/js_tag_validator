@@ -19,29 +19,30 @@ import {
   ModalWrapper
 } from "carbon-components-react";
 
+//Don't want to import a whole library for one function.
 // arrayCompare :: (a -> a -> Bool) -> [a] -> [a] -> Bool
-const arrayCompare = f => ([x, ...xs]) => ([y, ...ys]) => {
+export const arrayCompare = f => ([x, ...xs]) => ([y, ...ys]) => {
   if (x === undefined && y === undefined) return true;
   else if (!f(x)(y)) return false;
   else return arrayCompare(f)(xs)(ys);
 };
 
 //equal :: a -> a -> Bool
-const equal = x => y => x === y;
+export const equal = x => y => x === y;
 
 // arrayEqual :: [a] -> [a] -> Bool
-const arrayEqual = arrayCompare(equal);
+export const arrayEqual = arrayCompare(equal);
 
-const includesArray = (array, comparator) => {
+export const includesArray = (array, comparator) => {
   return array.some(item => {
     //console.log("Item: ", item, "Comp: ", comparator);
     return arrayEqual(item)(comparator);
   });
 };
 
-const distinctArray = array =>
+export const distinctArray = array =>
   array.reduce((acc, cur) => {
-    console.log("Acc: ", acc, "Cur: ", cur);
+    //console.log("Acc: ", acc, "Cur: ", cur);
     includesArray(acc, cur) ? null : acc.push(cur);
     return acc;
   }, []);
@@ -54,7 +55,7 @@ const distinctArray = array =>
 //   return outputArray;
 // };
 
-const getCount = tags => {
+export const getCount = tags => {
   let flattened = Object.keys(tags)
     .map(tag => tags[tag])
     .reduce((a, c) => a.concat(c), []);
@@ -69,7 +70,10 @@ const getCount = tags => {
   return count;
 };
 
-const DatabaseContainer = ({ tags, tagsConcat }) => (
+//tags and tagsConcat are objects where the key is the tag or concatenated tag
+//and the value is an array containing arrays of tag sets of the form:
+//[142, "Magic Tag Group"]
+export const DatabaseContainer = ({ tags, tagsConcat }) => (
   <Accordion>
     <AccordionItem title="Database: Individual Tags">
       <Table>
@@ -101,7 +105,7 @@ const DatabaseContainer = ({ tags, tagsConcat }) => (
         >
           <div className="bx--modal-content__text">
             <div id="Inspector">
-              <ObjectInspector expandLevel="3" data={tags} />
+              <ObjectInspector expandLevel={3} data={tags} />
             </div>
           </div>
         </ModalWrapper>
@@ -137,7 +141,7 @@ const DatabaseContainer = ({ tags, tagsConcat }) => (
         >
           <div className="bx--modal-content__text">
             <div id="Inspector">
-              <ObjectInspector expandLevel="3" data={tagsConcat} />
+              <ObjectInspector expandLevel={3} data={tagsConcat} />
             </div>
           </div>
         </ModalWrapper>
@@ -146,12 +150,15 @@ const DatabaseContainer = ({ tags, tagsConcat }) => (
   </Accordion>
 );
 
-//DatabaseContainer.PropTypes = {};
+DatabaseContainer.PropTypes = {
+  tags: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.array)),
+  tagsConcat: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.array))
+};
 
-const filterCache = (cache, tags) => {
+export const filterCache = (cache, tags) => {
   //1. filter tags against cache
   let flattened = tags.reduce((acc, cur) => acc.concat(cur), []);
-  console.log(flattened);
+  //console.log(flattened);
   //
   let filtered = flattened.reduce((result, key) => {
     result[key] = cache[key];
@@ -160,7 +167,7 @@ const filterCache = (cache, tags) => {
   return filtered;
 };
 
-const filterCacheConcat = (cache, tags) => {
+export const filterCacheConcat = (cache, tags) => {
   let concat = tags.map(e => {
     return e.join("");
   });
@@ -172,7 +179,13 @@ const filterCacheConcat = (cache, tags) => {
 };
 //2. Filter
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
+  console.log(
+    filterCache(state.cache.data.tag_db, state.fileHandler.cleanData)
+  );
+  console.log(
+    filterCacheConcat(state.cache.data.tag_db, state.fileHandler.cleanData)
+  );
   return {
     tags: filterCache(state.cache.data.tag_db, state.fileHandler.cleanData),
     tagsConcat: filterCacheConcat(
