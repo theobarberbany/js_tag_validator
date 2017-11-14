@@ -68,6 +68,15 @@ class FileHandler extends Component {
     onDrop: PropTypes.func
   };
 
+  //For debugging purposes
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log("previous props: ", prevProps, "previous state: ", prevState);
+  // }
+
+  // componentWillUpdate(nextProps, nextState) {
+  //   console.log("next props: ", nextProps, "next state:", nextState);
+  // }
+
   render() {
     const { canDrop, isOver, connectDropTarget } = this.props;
     const isActive = canDrop && isOver;
