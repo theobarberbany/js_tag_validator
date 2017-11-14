@@ -15,6 +15,8 @@ import { run } from "../internal/Validator";
 
 import "./FileHandlerContainer.css";
 
+const re = /^[ATCGatgc]+$/;
+
 class FileHandlerContainer extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +40,16 @@ class FileHandlerContainer extends Component {
   }
 
   runValidation(cleanData) {
-    let output = run(cleanData);
+    let index;
+    // Determine if dual index or single index run.
+    if (re.test(cleanData[0][0]) && re.test(cleanData[0][1])) {
+      index = 0;
+      this.setState({ indexing: "dual" });
+    } else {
+      index = 1;
+      this.setState({ indexing: "single" });
+    }
+    let output = run(cleanData, index);
     this.props.processOverview(output);
     this.setState({ hideFileHandler: true }); // Hide FileHandler Component
   }
@@ -59,7 +70,7 @@ class FileHandlerContainer extends Component {
       const component = this;
       const droppedFiles = monitor.getItem().files;
       let bad_input = false;
-      let re = /^[ATCGatgc]+$/;
+
       if (droppedFiles[0].type === "text/csv") {
         component.props.dropFile(); // update ui
         this.setState({ droppedFiles }); // update state with dropped file
@@ -120,7 +131,10 @@ class FileHandlerContainer extends Component {
           <div>
             {this.state.hideFileHandler ? (
               <div id="Output">
-                <h2>Validation Complete: {this.state.droppedFiles[0].name}</h2>
+                <h2>
+                  Validation Complete: {this.state.droppedFiles[0].name} -
+                  indexing: {this.state.indexing}
+                </h2>
                 <WarningContainer />
                 <OutputContainer />
                 <DatabaseContainer />
