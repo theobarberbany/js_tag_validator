@@ -73,81 +73,87 @@ export const getCount = tags => {
 //tags and tagsConcat are objects where the key is the tag or concatenated tag
 //and the value is an array containing arrays of tag sets of the form:
 //[142, "Magic Tag Group"]
-export const DatabaseContainer = ({ tags, tagsConcat }) => (
-  <Accordion>
-    <AccordionItem title="Database: Individual Tags">
-      <Table>
-        <TableHead>
-          <TableRow header>
-            <TableHeader> Group name </TableHeader>
-            <TableHeader> Group ID </TableHeader>
-            <TableHeader> Matches </TableHeader>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {getCount(tags).map(tagGroup => (
-            <DatabaseItem
-              key={tagGroup[0][0]}
-              id={tagGroup[0][0]}
-              name={tagGroup[0][1]}
-              matches={tagGroup[1]}
-            />
-          ))}
-        </TableBody>
-      </Table>
-      <div id="Modal">
-        <ModalWrapper
-          id="detail-modal"
-          buttonTriggerText="Detailed Results"
-          modalLabel="Detailed Results"
-          modalHeading="Single Tags"
-          passiveModal
-        >
-          <div className="bx--modal-content__text">
-            <div id="Inspector">
-              <ObjectInspector expandLevel={3} data={tags} />
-            </div>
+export const DatabaseContainer = ({ tags, tagsConcat, indexing }) => (
+  <div>
+    {indexing === "dual" ? (
+      <Accordion>
+        <AccordionItem title="Database: Individual Tags">
+          <Table>
+            <TableHead>
+              <TableRow header>
+                <TableHeader> Group name </TableHeader>
+                <TableHeader> Group ID </TableHeader>
+                <TableHeader> Matches </TableHeader>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {getCount(tags).map(tagGroup => (
+                <DatabaseItem
+                  key={tagGroup[0][0]}
+                  id={tagGroup[0][0]}
+                  name={tagGroup[0][1]}
+                  matches={tagGroup[1]}
+                />
+              ))}
+            </TableBody>
+          </Table>
+          <div id="Modal">
+            <ModalWrapper
+              id="detail-modal"
+              buttonTriggerText="Detailed Results"
+              modalLabel="Detailed Results"
+              modalHeading="Single Tags"
+              passiveModal
+            >
+              <div className="bx--modal-content__text">
+                <div id="Inspector">
+                  <ObjectInspector expandLevel={3} data={tags} />
+                </div>
+              </div>
+            </ModalWrapper>
           </div>
-        </ModalWrapper>
-      </div>
-    </AccordionItem>
-    <AccordionItem title="Database: Concatenated Tags">
-      <Table>
-        <TableHead>
-          <TableRow header>
-            <TableHeader> Group name </TableHeader>
-            <TableHeader> Group ID </TableHeader>
-            <TableHeader> Matches </TableHeader>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {getCount(tagsConcat).map(tagGroup => (
-            <DatabaseItem
-              key={tagGroup[0][0]}
-              id={tagGroup[0][0]}
-              name={tagGroup[0][1]}
-              matches={tagGroup[1]}
-            />
-          ))}
-        </TableBody>
-      </Table>
-      <div id="Modal">
-        <ModalWrapper
-          id="detail-modal"
-          buttonTriggerText="Detailed Results"
-          modalLabel="Detailed Results"
-          modalHeading="Concatenated Tags"
-          passiveModal
-        >
-          <div className="bx--modal-content__text">
-            <div id="Inspector">
-              <ObjectInspector expandLevel={3} data={tagsConcat} />
-            </div>
+        </AccordionItem>
+        <AccordionItem title="Database: Concatenated Tags">
+          <Table>
+            <TableHead>
+              <TableRow header>
+                <TableHeader> Group name </TableHeader>
+                <TableHeader> Group ID </TableHeader>
+                <TableHeader> Matches </TableHeader>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {getCount(tagsConcat).map(tagGroup => (
+                <DatabaseItem
+                  key={tagGroup[0][0]}
+                  id={tagGroup[0][0]}
+                  name={tagGroup[0][1]}
+                  matches={tagGroup[1]}
+                />
+              ))}
+            </TableBody>
+          </Table>
+          <div id="Modal">
+            <ModalWrapper
+              id="detail-modal"
+              buttonTriggerText="Detailed Results"
+              modalLabel="Detailed Results"
+              modalHeading="Concatenated Tags"
+              passiveModal
+            >
+              <div className="bx--modal-content__text">
+                <div id="Inspector">
+                  <ObjectInspector expandLevel={3} data={tagsConcat} />
+                </div>
+              </div>
+            </ModalWrapper>
           </div>
-        </ModalWrapper>
-      </div>
-    </AccordionItem>
-  </Accordion>
+        </AccordionItem>
+      </Accordion>
+    ) : (
+      <h1> single index database not implemented yet</h1>
+    )}
+  </div>
 );
 
 DatabaseContainer.PropTypes = {

@@ -47,9 +47,11 @@ class FileHandlerContainer extends Component {
       this.setState({ indexing: "dual" });
     } else {
       index = 1;
+      cleanData = cleanData.reduce((acc, cur) => acc.concat(cur[0]), []);
+      console.log("Single run data:", cleanData);
       this.setState({ indexing: "single" });
     }
-    let output = run(cleanData, index);
+    let output = run(cleanData);
     this.props.processOverview(output);
     this.setState({ hideFileHandler: true }); // Hide FileHandler Component
   }
@@ -136,8 +138,8 @@ class FileHandlerContainer extends Component {
                   indexing: {this.state.indexing}
                 </h2>
                 <WarningContainer />
-                <OutputContainer />
-                <DatabaseContainer />
+                <OutputContainer indexing={this.state.indexing} />
+                <DatabaseContainer indexing={this.state.indexing} />
               </div>
             ) : (
               <FileHandler
