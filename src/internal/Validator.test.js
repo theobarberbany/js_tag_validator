@@ -133,42 +133,31 @@ describe("call_check_tag_set_composition function", () => {
   it("should return the composition of the tag groups in the array passed", () => {
     expect(Validator.call_check_tag_set_composition(testArray)).toEqual([
       [
-        [
-          [1, 1, 1, 0],
-          [1, 0, 0, 2],
-          [1, 1, 0, 1],
-          [1, 0, 1, 1],
-          [1, 0, 1, 1],
-          [0, 1, 1, 1],
-          [2, 0, 0, 1],
-          [2, 0, 0, 1]
-        ],
-        [
-          [0, 0, 3, 0],
-          [0, 3, 0, 0],
-          [0, 0, 3, 0],
-          [0, 3, 0, 0],
-          [0, 0, 3, 0],
-          [0, 3, 0, 0],
-          [3, 0, 0, 0],
-          [0, 3, 0, 0]
-        ]
+        [1, 1, 1, 0],
+        [1, 0, 0, 2],
+        [1, 1, 0, 1],
+        [1, 0, 1, 1],
+        [1, 0, 1, 1],
+        [0, 1, 1, 1],
+        [2, 0, 0, 1],
+        [2, 0, 0, 1]
+      ],
+      [
+        [0, 0, 3, 0],
+        [0, 3, 0, 0],
+        [0, 0, 3, 0],
+        [0, 3, 0, 0],
+        [0, 0, 3, 0],
+        [0, 3, 0, 0],
+        [3, 0, 0, 0],
+        [0, 3, 0, 0]
       ]
     ]);
     expect(
       Validator.call_check_tag_set_composition(
         testArray.reduce((acc, cur) => acc.concat(cur), [])
       )
-    ).toEqual([
-      [1, 1, 4, 0],
-      [1, 3, 0, 2],
-      [1, 1, 3, 1],
-      [1, 3, 1, 1],
-      [1, 0, 4, 1],
-      [0, 4, 1, 1],
-      [5, 0, 0, 1],
-      [2, 3, 0, 1]
-    ]);
+    ).toEqual([[[1, 1, 4, 0]]]);
   });
 });
 
