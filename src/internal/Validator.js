@@ -126,7 +126,6 @@ function extract_base(array, n) {
 }
 
 function call_check_tag_set_composition(array) {
-  // call the func
   let output = [];
   let number_tag_groups = 0;
   if (Array.isArray(array[0])) {
