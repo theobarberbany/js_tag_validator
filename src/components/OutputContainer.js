@@ -74,7 +74,7 @@ export const OutputContainer = ({ composition, indexing }) => (
       </Accordion>
     ) : (
       <Accordion>
-        <AccordionItem title="Composition: Tag 1">
+        <AccordionItem title="Composition">
           <Table>
             <TableHead>
               <TableRow header>

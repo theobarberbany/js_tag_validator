@@ -151,7 +151,7 @@ export const DatabaseContainer = ({ tags, tagsConcat, indexing }) => (
       </Accordion>
     ) : (
       <Accordion>
-        <AccordionItem title="Database: Individual Tags">
+        <AccordionItem title="Database">
           <Table>
             <TableHead>
               <TableRow header>
