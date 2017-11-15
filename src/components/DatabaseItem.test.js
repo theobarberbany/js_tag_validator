@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import DatabaseItem from "./DatabaseItem";
-import { TableRow, TableData } from "carbon-components-react";
+import { TableData } from "carbon-components-react";
 
 function setup() {
   const props = {

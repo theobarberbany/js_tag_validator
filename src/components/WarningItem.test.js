@@ -2,7 +2,6 @@ import React from "react";
 import { mount } from "enzyme";
 import WarningItem from "./WarningItem";
 import {
-  StructuredListRow,
   StructuredListInput,
   StructuredListCell,
   Icon

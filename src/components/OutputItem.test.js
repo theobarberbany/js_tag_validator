@@ -1,7 +1,7 @@
 import React from "react";
-import { mount, shallow } from "enzyme";
+import { shallow } from "enzyme";
 import OutputItem from "./OutputItem";
-import { TableRow, TableData } from "carbon-components-react";
+import { TableData } from "carbon-components-react";
 
 const props = {
   colNo: 1,

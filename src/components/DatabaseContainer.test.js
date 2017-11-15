@@ -7,18 +7,6 @@ import {
   filterCacheConcat
 } from "./DatabaseContainer";
 
-import {
-  Accordion,
-  AccordionItem,
-  Table,
-  TableHead,
-  TableRow,
-  TableHeader,
-  TableBody,
-  TableData,
-  ModalWrapper
-} from "carbon-components-react";
-
 const props = {
   tags: { AAGGCTAT: [[1, "Testing Set 1"], [2, "Testing set 2"]] },
   tagsConcat: { ACTCGCTAAAGGCTAT: [[3, "Testing Set 3"], [4, "Testing set 4"]] }

@@ -15,7 +15,6 @@ import {
   TableRow,
   TableHeader,
   TableBody,
-  TableData,
   ModalWrapper
 } from "carbon-components-react";
 
