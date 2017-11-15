@@ -36,24 +36,18 @@ describe("Check_array function", () => {
   it("checks the first tag passes", () => {
     expect(
       Validator.call_check_array(["TAAGGCGA", "CGTACTAG", "AGGCAGAA"])
-    ).toEqual({
-      concatenated: { bad_tag_count: 0, bad_tag_pairs: [] },
-      normal: { bad_tag_count: 0, bad_tag_pairs: [] }
-    });
+    ).toEqual({ bad_tag_count: 0, bad_tag_pairs: [] });
   });
   it("checks the second tag fails", () => {
     expect(
       Validator.call_check_array(["CTCTCTAT", "CTCTCTAT", "CTCTCTAT"])
     ).toEqual({
-      concatenated: {
-        bad_tag_count: 3,
-        bad_tag_pairs: [
-          ["CTCTCTAT", "CTCTCTAT", 0],
-          ["CTCTCTAT", "CTCTCTAT", 0],
-          ["CTCTCTAT", "CTCTCTAT", 0]
-        ]
-      },
-      normal: { bad_tag_count: 0, bad_tag_pairs: [] }
+      bad_tag_count: 3,
+      bad_tag_pairs: [
+        ["CTCTCTAT", "CTCTCTAT", 0],
+        ["CTCTCTAT", "CTCTCTAT", 0],
+        ["CTCTCTAT", "CTCTCTAT", 0]
+      ]
     });
   });
 });
@@ -130,7 +124,7 @@ describe("call_check_tag_set_composition function", () => {
       Validator.call_check_tag_set_composition(
         testArray.reduce((acc, cur) => acc.concat(cur), [])
       ).length
-    ).toEqual(8);
+    ).toEqual(1);
     //2 groups
     expect(Validator.call_check_tag_set_composition(testArray).length).toEqual(
       2
@@ -139,24 +133,26 @@ describe("call_check_tag_set_composition function", () => {
   it("should return the composition of the tag groups in the array passed", () => {
     expect(Validator.call_check_tag_set_composition(testArray)).toEqual([
       [
-        [1, 1, 1, 0],
-        [1, 0, 0, 2],
-        [1, 1, 0, 1],
-        [1, 0, 1, 1],
-        [1, 0, 1, 1],
-        [0, 1, 1, 1],
-        [2, 0, 0, 1],
-        [2, 0, 0, 1]
-      ],
-      [
-        [0, 0, 3, 0],
-        [0, 3, 0, 0],
-        [0, 0, 3, 0],
-        [0, 3, 0, 0],
-        [0, 0, 3, 0],
-        [0, 3, 0, 0],
-        [3, 0, 0, 0],
-        [0, 3, 0, 0]
+        [
+          [1, 1, 1, 0],
+          [1, 0, 0, 2],
+          [1, 1, 0, 1],
+          [1, 0, 1, 1],
+          [1, 0, 1, 1],
+          [0, 1, 1, 1],
+          [2, 0, 0, 1],
+          [2, 0, 0, 1]
+        ],
+        [
+          [0, 0, 3, 0],
+          [0, 3, 0, 0],
+          [0, 0, 3, 0],
+          [0, 3, 0, 0],
+          [0, 0, 3, 0],
+          [0, 3, 0, 0],
+          [3, 0, 0, 0],
+          [0, 3, 0, 0]
+        ]
       ]
     ]);
     expect(
@@ -188,7 +184,14 @@ describe("run function", () => {
             ["TAAGGCGATAAGGCGA", "TAAGGCGATAAGGCGA", 0]
           ]
         },
-        normal: { bad_tag_count: 0, bad_tag_pairs: [] }
+        normal: {
+          bad_tag_count: 3,
+          bad_tag_pairs: [
+            ["TAAGGCGA", "TAAGGCGA", 0, 10],
+            ["TAAGGCGA", "TAAGGCGA", 0, 11],
+            ["TAAGGCGA", "TAAGGCGA", 0, 12]
+          ]
+        }
       },
       composition: {
         composition: [
