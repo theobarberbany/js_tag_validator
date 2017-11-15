@@ -22,7 +22,7 @@ function difference(tag1, tag2) {
 function call_check_array(array) {
   // If Two Cols : Check against adjacent col
   let number_tag_groups;
-  let output;
+  let output = {bad_tag_count: 0, bad_tag_pairs: [] };
   let concatenated;
   //Determine how many tag groups there are
   if (Array.isArray(array[0])) {
@@ -45,7 +45,7 @@ function call_check_array(array) {
       number_tag_groups,
       "tag sets"
     );
-    output = check_array(array, number_tag_groups);
+    //output = check_array(array, number_tag_groups);
     //next check the concatenation as a single tag
     concatenated = concatenate_tags(array);
     console.log(
