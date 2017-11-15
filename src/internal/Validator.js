@@ -22,8 +22,8 @@ function difference(tag1, tag2) {
 function call_check_array(array) {
   // If Two Cols : Check against adjacent col
   let number_tag_groups;
-  let output = {bad_tag_count: 0, bad_tag_pairs: [] };
-  let concatenated;
+  let output = { bad_tag_count: 0, bad_tag_pairs: [] };
+  let concatenated = { bad_tag_count: 0, bad_tag_pairs: [] };
   //Determine how many tag groups there are
   if (Array.isArray(array[0])) {
     number_tag_groups = array[0].length;
@@ -34,8 +34,7 @@ function call_check_array(array) {
   //Single Tag set
   if (number_tag_groups === 1) {
     console.log("calling check_array_single with data : ", array);
-    output = check_array_single(array);
-    return output;
+    concatenated = check_array_single(array);
   } else {
     // More than one  - so compare tag1 -> tag2
     console.log(
@@ -54,6 +53,7 @@ function call_check_array(array) {
     );
     concatenated = check_array_single(concatenated);
   }
+  //always return in the same format
   return { normal: output, concatenated: concatenated };
 }
 
