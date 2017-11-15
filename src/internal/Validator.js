@@ -33,24 +33,24 @@ function call_check_array(array) {
   // Call the appropriate function
   //Single Tag set
   if (number_tag_groups === 1) {
-    console.log("calling check_array_single with data : ", array);
+    // console.log("calling check_array_single with data : ", array);
     concatenated = check_array_single(array);
   } else {
     // More than one  - so compare tag1 -> tag2
-    console.log(
-      "calling check_array with data : ",
-      array,
-      "and ",
-      number_tag_groups,
-      "tag sets"
-    );
+    // console.log(
+    //   "calling check_array with data : ",
+    //   array,
+    //   "and ",
+    //   number_tag_groups,
+    //   "tag sets"
+    // );
     //output = check_array(array, number_tag_groups);
     //next check the concatenation as a single tag
     concatenated = concatenate_tags(array);
-    console.log(
-      "calling check_array_single with concatenated data : ",
-      concatenated
-    );
+    // console.log(
+    //   "calling check_array_single with concatenated data : ",
+    //   concatenated
+    // );
     concatenated = check_array_single(concatenated);
   }
   //always return in the same format
@@ -58,12 +58,12 @@ function call_check_array(array) {
 }
 
 function check_array(array, number_tag_groups) {
-  console.log(
-    "check_array recieved data:",
-    array,
-    "number tag groups: ",
-    number_tag_groups
-  );
+  // console.log(
+  //   "check_array recieved data:",
+  //   array,
+  //   "number tag groups: ",
+  //   number_tag_groups
+  // );
   let bad_tag_count = 0;
   let bad_tag_pairs = [];
   for (let i = 0; i < array.length; i++) {
@@ -78,7 +78,7 @@ function check_array(array, number_tag_groups) {
 }
 
 function check_array_single(array) {
-  console.log("check_array_single recieved data:", array);
+  // console.log("check_array_single recieved data:", array);
   let bad_tag_count = 0;
   let bad_tag_pairs = [];
   for (let j = 0; j < array.length; j++) {
@@ -151,12 +151,12 @@ function check_tag_set_composition(array) {
   // represents the first base of each tag in the set.
   let tag_length = array[0].length;
   let universe = "ATCG";
-  console.log(
-    "check_tag_set_composition recieved data: ",
-    array,
-    "tag length: ",
-    tag_length
-  );
+  // console.log(
+  //   "check_tag_set_composition recieved data: ",
+  //   array,
+  //   "tag length: ",
+  //   tag_length
+  // );
   let proportions = [];
 
   for (let i = 0; i < tag_length; i++) {
@@ -177,9 +177,9 @@ function check_tag_set_composition(array) {
 
 function run(array) {
   //Function to tie everything together
-  console.log("Checking tags differ by at least 3");
+  // console.log("Checking tags differ by at least 3");
   let bad_tag_container = call_check_array(array);
-  console.log("Checking tag set composition");
+  // console.log("Checking tag set composition");
   let composition = call_check_tag_set_composition(array);
   return {
     bad_tag_container: bad_tag_container,
