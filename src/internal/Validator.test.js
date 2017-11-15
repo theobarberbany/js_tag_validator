@@ -36,18 +36,24 @@ describe("Check_array function", () => {
   it("checks the first tag passes", () => {
     expect(
       Validator.call_check_array(["TAAGGCGA", "CGTACTAG", "AGGCAGAA"])
-    ).toEqual({ bad_tag_count: 0, bad_tag_pairs: [] });
+    ).toEqual({
+      concatenated: { bad_tag_count: 0, bad_tag_pairs: [] },
+      normal: { bad_tag_count: 0, bad_tag_pairs: [] }
+    });
   });
   it("checks the second tag fails", () => {
     expect(
       Validator.call_check_array(["CTCTCTAT", "CTCTCTAT", "CTCTCTAT"])
     ).toEqual({
-      bad_tag_count: 3,
-      bad_tag_pairs: [
-        ["CTCTCTAT", "CTCTCTAT", 0],
-        ["CTCTCTAT", "CTCTCTAT", 0],
-        ["CTCTCTAT", "CTCTCTAT", 0]
-      ]
+      concatenated: {
+        bad_tag_count: 3,
+        bad_tag_pairs: [
+          ["CTCTCTAT", "CTCTCTAT", 0],
+          ["CTCTCTAT", "CTCTCTAT", 0],
+          ["CTCTCTAT", "CTCTCTAT", 0]
+        ]
+      },
+      normal: { bad_tag_count: 0, bad_tag_pairs: [] }
     });
   });
 });
@@ -124,8 +130,7 @@ describe("call_check_tag_set_composition function", () => {
       Validator.call_check_tag_set_composition(
         testArray.reduce((acc, cur) => acc.concat(cur), [])
       ).length
-    ).toEqual(1);
-
+    ).toEqual(8);
     //2 groups
     expect(Validator.call_check_tag_set_composition(testArray).length).toEqual(
       2
@@ -158,7 +163,16 @@ describe("call_check_tag_set_composition function", () => {
       Validator.call_check_tag_set_composition(
         testArray.reduce((acc, cur) => acc.concat(cur), [])
       )
-    ).toEqual([[[1, 1, 4, 0]]]);
+    ).toEqual([
+      [1, 1, 4, 0],
+      [1, 3, 0, 2],
+      [1, 1, 3, 1],
+      [1, 3, 1, 1],
+      [1, 0, 4, 1],
+      [0, 4, 1, 1],
+      [5, 0, 0, 1],
+      [2, 3, 0, 1]
+    ]);
   });
 });
 
@@ -174,14 +188,7 @@ describe("run function", () => {
             ["TAAGGCGATAAGGCGA", "TAAGGCGATAAGGCGA", 0]
           ]
         },
-        normal: {
-          bad_tag_count: 3,
-          bad_tag_pairs: [
-            ["TAAGGCGA", "TAAGGCGA", 0, 10],
-            ["TAAGGCGA", "TAAGGCGA", 0, 11],
-            ["TAAGGCGA", "TAAGGCGA", 0, 12]
-          ]
-        }
+        normal: { bad_tag_count: 0, bad_tag_pairs: [] }
       },
       composition: {
         composition: [

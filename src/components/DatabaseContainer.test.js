@@ -46,7 +46,7 @@ const mockState = {
 };
 
 function setupMount() {
-  const enzymeWrapper = mount(<DatabaseContainer {...props} />);
+  const enzymeWrapper = mount(<DatabaseContainer {...props} indexing="dual" />);
 
   return {
     props,

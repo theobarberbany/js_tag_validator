@@ -36,7 +36,7 @@ const mockState = {
 };
 
 function setupShallow() {
-  const enzymeWrapper = shallow(<OutputContainer {...props} />);
+  const enzymeWrapper = shallow(<OutputContainer {...props} indexing="dual" />);
 
   return {
     props,
