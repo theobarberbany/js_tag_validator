@@ -134,11 +134,16 @@ function call_check_tag_set_composition(array) {
   } else {
     number_tag_groups = 1;
   }
-  for (let i = 0; i < number_tag_groups; i++) {
-    let data = extract_from_array(array, i);
-    //console.log("calling check_tag_set_composition with data : ", data);
-    output[i] = check_tag_set_composition(data);
+  if (number_tag_groups === 1) {
+    output = check_tag_set_composition(array);
+  } else {
+    for (let i = 0; i < number_tag_groups; i++) {
+      let data = extract_from_array(array, i);
+      //console.log("calling check_tag_set_composition with data : ", data);
+      output[i] = check_tag_set_composition(data);
+    }
   }
+
   return output;
 }
 
