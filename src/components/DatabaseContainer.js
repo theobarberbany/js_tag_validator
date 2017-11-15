@@ -151,7 +151,44 @@ export const DatabaseContainer = ({ tags, tagsConcat, indexing }) => (
         </AccordionItem>
       </Accordion>
     ) : (
-      <h1> single index database not implemented yet</h1>
+      <Accordion>
+        <AccordionItem title="Database: Individual Tags">
+          <Table>
+            <TableHead>
+              <TableRow header>
+                <TableHeader> Group name </TableHeader>
+                <TableHeader> Group ID </TableHeader>
+                <TableHeader> Matches </TableHeader>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {getCount(tagsConcat).map(tagGroup => (
+                <DatabaseItem
+                  key={tagGroup[0][0]}
+                  id={tagGroup[0][0]}
+                  name={tagGroup[0][1]}
+                  matches={tagGroup[1]}
+                />
+              ))}
+            </TableBody>
+          </Table>
+          <div id="Modal">
+            <ModalWrapper
+              id="detail-modal"
+              buttonTriggerText="Detailed Results"
+              modalLabel="Detailed Results"
+              modalHeading="Single Tags"
+              passiveModal
+            >
+              <div className="bx--modal-content__text">
+                <div id="Inspector">
+                  <ObjectInspector expandLevel={3} data={tags} />
+                </div>
+              </div>
+            </ModalWrapper>
+          </div>
+        </AccordionItem>
+      </Accordion>
     )}
   </div>
 );

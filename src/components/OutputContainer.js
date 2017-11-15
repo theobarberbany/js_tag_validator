@@ -73,7 +73,34 @@ export const OutputContainer = ({ composition, indexing }) => (
         </AccordionItem>
       </Accordion>
     ) : (
-      <h1>single index not implemented yet</h1>
+      <Accordion>
+        <AccordionItem title="Composition: Tag 1">
+          <Table>
+            <TableHead>
+              <TableRow header>
+                <TableHeader> Column </TableHeader>
+                <TableHeader> A </TableHeader>
+                <TableHeader> T </TableHeader>
+                <TableHeader> C </TableHeader>
+                <TableHeader> G </TableHeader>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {composition.map((tag, index) => (
+                <OutputItem
+                  key={index}
+                  colNo={index}
+                  a={tag[0]}
+                  t={tag[1]}
+                  c={tag[2]}
+                  g={tag[3]}
+                  sum={tag.reduce((prev, curr) => prev + curr)}
+                />
+              ))}
+            </TableBody>
+          </Table>
+        </AccordionItem>
+      </Accordion>
     )}
   </div>
 );
