@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Raven from "raven-js";
 import { connect } from "react-redux";
+import "./FileHandlerContainer.css";
 import * as fileHandlerActionCreators from "../ducks/FileHandlerDuck";
 import * as cacheActions from "../ducks/cacheDuck";
 import { DragDropContext, DragDropContextProvider } from "react-dnd";
@@ -12,8 +13,6 @@ import DatabaseContainer from "./DatabaseContainer";
 
 import { parseData2 } from "../internal/Parser";
 import { run } from "../internal/Validator";
-
-import "./FileHandlerContainer.css";
 
 const re = /^[ATCGatgc]+$/;
 
@@ -132,10 +131,12 @@ export class FileHandlerContainer extends Component {
               <div id="Output">
                 <h2>
                   Validation Complete: {this.state.droppedFiles[0].name} -
-                  indexing: {this.state.indexing}
+                  Indexing: {this.state.indexing}
                 </h2>
                 <WarningContainer />
+                <br />
                 <OutputContainer indexing={this.state.indexing} />
+                <br />
                 <DatabaseContainer indexing={this.state.indexing} />
               </div>
             ) : (

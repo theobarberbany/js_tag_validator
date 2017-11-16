@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import * as fileHandlerActionCreators from "../ducks/FileHandlerDuck";
 import PropTypes from "prop-types";
 import {
+  Accordion,
+  AccordionItem,
   StructuredListWrapper,
   StructuredListHead,
   StructuredListBody,
@@ -13,40 +15,43 @@ import {
 import WarningItem from "./WarningItem";
 
 export const WarningContainer = ({ badPairs, badPairsConcat, onClick }) => (
-  <StructuredListWrapper selection border>
-    <StructuredListHead>
-      <StructuredListRow head>
-        <StructuredListCell head>{""}</StructuredListCell>
-        <StructuredListCell head>Tag 1</StructuredListCell>
-        <StructuredListCell head>Tag 2</StructuredListCell>
-        <StructuredListCell head>Difference</StructuredListCell>
-        <StructuredListCell head>Position in manifest</StructuredListCell>
-      </StructuredListRow>
-    </StructuredListHead>
-    <StructuredListBody>
-      {badPairs.map(badPair => (
-        <WarningItem
-          key={badPair.id}
-          {...badPair}
-          onClick={e => {
-            e.preventDefault();
-            onClick(badPair.id);
-          }}
-        />
-      ))}
-      {badPairsConcat.map(badPair => (
-        <WarningItem
-          key={badPair.id}
-          {...badPair}
-          pos="n/a"
-          onClick={e => {
-            e.preventDefault();
-            onClick(badPair.id);
-          }}
-        />
-      ))}
-    </StructuredListBody>
-  </StructuredListWrapper>
+  <Accordion>
+    <AccordionItem title="Tag Clash">
+      <StructuredListWrapper selection border>
+        <StructuredListHead>
+          <StructuredListRow head>
+            <StructuredListCell head>{""}</StructuredListCell>
+            <StructuredListCell head>Tag</StructuredListCell>
+            <StructuredListCell head>Clashing Tag</StructuredListCell>
+            <StructuredListCell head>Difference</StructuredListCell>
+            <StructuredListCell head>Position in manifest</StructuredListCell>
+          </StructuredListRow>
+        </StructuredListHead>
+        <StructuredListBody>
+          {badPairs.map(badPair => (
+            <WarningItem
+              key={badPair.id}
+              {...badPair}
+              onClick={e => {
+                e.preventDefault();
+                onClick(badPair.id);
+              }}
+            />
+          ))}
+          {badPairsConcat.map(badPair => (
+            <WarningItem
+              key={badPair.id}
+              {...badPair}
+              onClick={e => {
+                e.preventDefault();
+                onClick(badPair.id);
+              }}
+            />
+          ))}
+        </StructuredListBody>
+      </StructuredListWrapper>
+    </AccordionItem>
+  </Accordion>
 );
 
 WarningContainer.PropTypes = {

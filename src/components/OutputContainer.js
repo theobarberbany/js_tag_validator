@@ -19,7 +19,7 @@ export const OutputContainer = ({ composition, indexing }) => (
     {console.log("HERE", composition)}
     {indexing === "dual" ? (
       <Accordion>
-        <AccordionItem title="Composition: Tag 1">
+        <AccordionItem title="Composition: Index read 1">
           <Table>
             <TableHead>
               <TableRow header>
@@ -34,7 +34,7 @@ export const OutputContainer = ({ composition, indexing }) => (
               {composition[0].map((tag, index) => (
                 <OutputItem
                   key={index}
-                  colNo={index}
+                  colNo={index + 1}
                   a={tag[0]}
                   t={tag[1]}
                   c={tag[2]}
@@ -45,11 +45,11 @@ export const OutputContainer = ({ composition, indexing }) => (
             </TableBody>
           </Table>
         </AccordionItem>
-        <AccordionItem title="Composition: Tag 2">
+        <AccordionItem title="Composition: Index read 2">
           <Table>
             <TableHead>
               <TableRow header>
-                <TableHeader> Column </TableHeader>
+                <TableHeader> Cycle </TableHeader>
                 <TableHeader> A </TableHeader>
                 <TableHeader> T </TableHeader>
                 <TableHeader> C </TableHeader>
@@ -60,7 +60,7 @@ export const OutputContainer = ({ composition, indexing }) => (
               {composition[1].map((tag, index) => (
                 <OutputItem
                   key={index}
-                  colNo={index}
+                  colNo={index + 1}
                   a={tag[0]}
                   t={tag[1]}
                   c={tag[2]}
@@ -74,11 +74,11 @@ export const OutputContainer = ({ composition, indexing }) => (
       </Accordion>
     ) : (
       <Accordion>
-        <AccordionItem title="Composition">
+        <AccordionItem title="Composition: Index read">
           <Table>
             <TableHead>
               <TableRow header>
-                <TableHeader> Column </TableHeader>
+                <TableHeader> Cycle </TableHeader>
                 <TableHeader> A </TableHeader>
                 <TableHeader> T </TableHeader>
                 <TableHeader> C </TableHeader>
