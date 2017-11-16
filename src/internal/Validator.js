@@ -86,7 +86,9 @@ function check_array_single(array) {
       let diff = difference(array[j], array[k]);
       // (diff = difference(array[j][i], array[k][i]));
       //console.log("Comparing", array[j], "to", array[k]);
-      diff < 3 ? bad_tag_pairs.push([array[j], array[k], diff]) : null;
+      diff < 3
+        ? bad_tag_pairs.push([array[j], array[k], diff, j + 10, k + 10])
+        : null;
       diff < 3 ? bad_tag_count++ : null;
     }
   }

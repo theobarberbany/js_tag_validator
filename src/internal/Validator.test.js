@@ -48,9 +48,9 @@ describe("Check_array function", () => {
       concatenated: {
         bad_tag_count: 3,
         bad_tag_pairs: [
-          ["CTCTCTAT", "CTCTCTAT", 0],
-          ["CTCTCTAT", "CTCTCTAT", 0],
-          ["CTCTCTAT", "CTCTCTAT", 0]
+          ["CTCTCTAT", "CTCTCTAT", 0, 10, 11],
+          ["CTCTCTAT", "CTCTCTAT", 0, 10, 12],
+          ["CTCTCTAT", "CTCTCTAT", 0, 11, 12]
         ]
       },
       normal: { bad_tag_count: 0, bad_tag_pairs: [] }
@@ -183,9 +183,9 @@ describe("run function", () => {
         concatenated: {
           bad_tag_count: 3,
           bad_tag_pairs: [
-            ["TAAGGCGATAAGGCGA", "TAAGGCGATAAGGCGA", 0],
-            ["TAAGGCGATAAGGCGA", "TAAGGCGATAAGGCGA", 0],
-            ["TAAGGCGATAAGGCGA", "TAAGGCGATAAGGCGA", 0]
+            ["TAAGGCGATAAGGCGA", "TAAGGCGATAAGGCGA", 0, 10, 11],
+            ["TAAGGCGATAAGGCGA", "TAAGGCGATAAGGCGA", 0, 10, 12],
+            ["TAAGGCGATAAGGCGA", "TAAGGCGATAAGGCGA", 0, 11, 12]
           ]
         },
         normal: { bad_tag_count: 0, bad_tag_pairs: [] }
