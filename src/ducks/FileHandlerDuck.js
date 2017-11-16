@@ -76,6 +76,7 @@ export function reducer(state = initialState, action) {
             tag1: action.tag1,
             tag2: action.tag2,
             diff: action.diff,
+            pos: action.pos,
             completed: false
           }
         ]
@@ -131,13 +132,14 @@ export const addBadTagPair = (tag1, tag2, diff, pos) => {
 };
 
 //5. Add bad tag pairs where tags are concatenations
-export const addBadTagPairConcat = (tag1, tag2, diff) => {
+export const addBadTagPairConcat = (tag1, tag2, diff, pos1, pos2) => {
   return {
     type: ADD_BAD_TAG_PAIR_CONCAT,
     id: nextTagPairId++,
     tag1: tag1,
     tag2: tag2,
-    diff: diff
+    diff: diff,
+    pos: pos1 + " : " + pos2
   };
 };
 //6. Toggle bad tag pairs complete
@@ -184,7 +186,9 @@ export const processBadTags = object => {
         addBadTagPairConcat(
           concatenated.bad_tag_pairs[i][0],
           concatenated.bad_tag_pairs[i][1],
-          concatenated.bad_tag_pairs[i][2]
+          concatenated.bad_tag_pairs[i][2],
+          concatenated.bad_tag_pairs[i][3],
+          concatenated.bad_tag_pairs[i][4]
         )
       );
     }

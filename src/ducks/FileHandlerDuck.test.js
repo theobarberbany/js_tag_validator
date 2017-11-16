@@ -75,14 +75,19 @@ describe("File Handler actions", () => {
     const tag1 = "GGAGCTAC";
     const tag2 = "TCGACTAG";
     const diff = 2;
+    const pos1 = 22;
+    const pos2 = 56;
     const expectedAction = {
       type: duck.ADD_BAD_TAG_PAIR_CONCAT,
       id: nextTagPairId++,
       tag1,
       tag2,
-      diff
+      diff,
+      pos: "22 : 56"
     };
-    expect(duck.addBadTagPairConcat(tag1, tag2, diff)).toEqual(expectedAction);
+    expect(duck.addBadTagPairConcat(tag1, tag2, diff, pos1, pos2)).toEqual(
+      expectedAction
+    );
   });
 });
 
@@ -90,23 +95,24 @@ describe("File Handler async actions", () => {
   it("should dispatch pushOverview with the overview data, and then dispatch processBadTags", async () => {
     const expectedActions = [
       {
-        type: duck.PUSH_OVERVIEW,
-        data: { bad_tag_total: 2, composition: [[1, 2, 3, 4], [1, 2, 3, 4]] }
+        data: { bad_tag_total: 2, composition: [[1, 2, 3, 4], [1, 2, 3, 4]] },
+        type: "PUSH_OVERVIEW"
       },
       {
-        type: duck.ADD_BAD_TAG_PAIR,
+        diff: 2,
         id: 2,
+        pos: 47,
         tag1: "CCGTAGTA",
         tag2: "CCGTAAGA",
-        diff: 2,
-        pos: 47
+        type: "ADD_BAD_TAG_PAIR"
       },
       {
-        type: duck.ADD_BAD_TAG_PAIR_CONCAT,
+        diff: 0,
         id: 3,
+        pos: "56 : 23",
         tag1: "GCGTAGTAGCGTAGTA",
         tag2: "GCGTAGTAGCGTAGTA",
-        diff: 0
+        type: "ADD_BAD_TAG_PAIR_CONCAT"
       }
     ];
     const object = {
@@ -117,7 +123,7 @@ describe("File Handler async actions", () => {
         },
         concatenated: {
           bad_tag_count: 1,
-          bad_tag_pairs: [["GCGTAGTAGCGTAGTA", "GCGTAGTAGCGTAGTA", 0, 56]]
+          bad_tag_pairs: [["GCGTAGTAGCGTAGTA", "GCGTAGTAGCGTAGTA", 0, 56, 23]]
         }
       },
       composition: {
