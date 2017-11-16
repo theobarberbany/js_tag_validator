@@ -17,13 +17,13 @@ import "./FileHandlerContainer.css";
 
 const re = /^[ATCGatgc]+$/;
 
-class FileHandlerContainer extends Component {
+export class FileHandlerContainer extends Component {
   constructor(props) {
     super(props);
     this.handleFileDrop = this.handleFileDrop.bind(this);
     this.cleanParsedData = this.cleanParsedData.bind(this);
     this.state = {
-      droppedFiles: [],
+      droppedFiles: [{ name: "placeholder" }],
       key: 0
     };
   }
@@ -40,13 +40,10 @@ class FileHandlerContainer extends Component {
   }
 
   runValidation(cleanData) {
-    let index;
     // Determine if dual index or single index run.
     if (re.test(cleanData[0][0]) && re.test(cleanData[0][1])) {
-      index = 0;
       this.setState({ indexing: "dual" });
     } else {
-      index = 1;
       cleanData = cleanData.reduce((acc, cur) => acc.concat(cur[0]), []);
       console.log("Single run data:", cleanData);
       this.setState({ indexing: "single" });
@@ -176,6 +173,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-FileHandlerContainer = DragDropContext(HTML5Backend)(FileHandlerContainer);
-FileHandlerContainer = connect(null, mapDispatchToProps)(FileHandlerContainer);
-export default FileHandlerContainer;
+let FileHandlerContainerExport = DragDropContext(HTML5Backend)(
+  FileHandlerContainer
+);
+FileHandlerContainerExport = connect(null, mapDispatchToProps)(
+  FileHandlerContainer
+);
+export default FileHandlerContainerExport;
