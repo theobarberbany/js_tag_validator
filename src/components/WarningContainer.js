@@ -15,43 +15,52 @@ import {
 import WarningItem from "./WarningItem";
 
 export const WarningContainer = ({ badPairs, badPairsConcat, onClick }) => (
-  <Accordion>
-    <AccordionItem title="Tag Clash">
-      <StructuredListWrapper selection border>
-        <StructuredListHead>
-          <StructuredListRow head>
-            <StructuredListCell head>{""}</StructuredListCell>
-            <StructuredListCell head>Tag</StructuredListCell>
-            <StructuredListCell head>Clashing Tag</StructuredListCell>
-            <StructuredListCell head>Difference</StructuredListCell>
-            <StructuredListCell head>Position in manifest</StructuredListCell>
-          </StructuredListRow>
-        </StructuredListHead>
-        <StructuredListBody>
-          {badPairs.map(badPair => (
-            <WarningItem
-              key={badPair.id}
-              {...badPair}
-              onClick={e => {
-                e.preventDefault();
-                onClick(badPair.id);
-              }}
-            />
-          ))}
-          {badPairsConcat.map(badPair => (
-            <WarningItem
-              key={badPair.id}
-              {...badPair}
-              onClick={e => {
-                e.preventDefault();
-                onClick(badPair.id);
-              }}
-            />
-          ))}
-        </StructuredListBody>
-      </StructuredListWrapper>
-    </AccordionItem>
-  </Accordion>
+  <div>
+    <Accordion
+      style={{
+        background:
+          badPairs.length + badPairsConcat.length === 0
+            ? "rgba(90, 167, 0, 0.55)"
+            : "rgba(231, 29, 50, 0.55)"
+      }}
+    >
+      <AccordionItem title="Tag Clash">
+        <StructuredListWrapper selection border>
+          <StructuredListHead>
+            <StructuredListRow head>
+              <StructuredListCell head>{""}</StructuredListCell>
+              <StructuredListCell head>Tag</StructuredListCell>
+              <StructuredListCell head>Clashing Tag</StructuredListCell>
+              <StructuredListCell head>Difference</StructuredListCell>
+              <StructuredListCell head>Position in manifest</StructuredListCell>
+            </StructuredListRow>
+          </StructuredListHead>
+          <StructuredListBody>
+            {badPairs.map(badPair => (
+              <WarningItem
+                key={badPair.id}
+                {...badPair}
+                onClick={e => {
+                  e.preventDefault();
+                  onClick(badPair.id);
+                }}
+              />
+            ))}
+            {badPairsConcat.map(badPair => (
+              <WarningItem
+                key={badPair.id}
+                {...badPair}
+                onClick={e => {
+                  e.preventDefault();
+                  onClick(badPair.id);
+                }}
+              />
+            ))}
+          </StructuredListBody>
+        </StructuredListWrapper>
+      </AccordionItem>
+    </Accordion>
+  </div>
 );
 
 WarningContainer.PropTypes = {
