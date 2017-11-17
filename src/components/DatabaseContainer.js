@@ -87,10 +87,10 @@ export class DatabaseContainer extends PureComponent {
     if (this.props.indexing === "dual") {
       this.individualTags = getCount(this.props.tags).map(tagGroup => {
         if (this.state.individual) {
-          console.log("already set");
+          // console.log("already set");
         } else if (tagGroup[1] === this.props.length) {
           this.setState({ individual: true });
-          console.log("setting true");
+          // console.log("setting true");
         }
         return (
           <DatabaseItem
@@ -104,10 +104,10 @@ export class DatabaseContainer extends PureComponent {
 
       this.concatenatedTags = getCount(this.props.tagsConcat).map(tagGroup => {
         if (this.state.concatenated) {
-          console.log("already set");
+          // console.log("already set");
         } else if (tagGroup[1] === this.props.length) {
           this.setState({ concatenated: true });
-          console.log("setting true");
+          // console.log("setting true");
         }
         return (
           <DatabaseItem
@@ -121,10 +121,10 @@ export class DatabaseContainer extends PureComponent {
     } else {
       this.singleIndexTags = getCount(this.props.tagsConcat).map(tagGroup => {
         if (this.state.concatenated) {
-          console.log("already set");
+          // console.log("already set");
         } else if (tagGroup[1] === this.props.length) {
           this.setState({ singleIndex: true });
-          console.log("setting true");
+          // console.log("setting true");
         }
         return (
           <DatabaseItem
@@ -142,12 +142,12 @@ export class DatabaseContainer extends PureComponent {
   // }
 
   render() {
-    console.log(
-      "here!",
-      this.props.length,
-      this.state.individual,
-      this.state.concatenated
-    );
+    // console.log(
+    //   "here!",
+    //   this.props.length,
+    //   this.state.individual,
+    //   this.state.concatenated
+    // );
     return (
       <div>
         {this.props.indexing === "dual" ? (
