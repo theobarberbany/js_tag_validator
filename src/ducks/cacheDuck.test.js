@@ -28,10 +28,12 @@ describe("cache actions", () => {
     const expectedAction = {
       type: duck.RECIEVE_CACHE,
       cacheURL,
-      data: json,
-      receivedAt: Date.now()
+      data: json
     };
-    expect(duck.recieveCache(cacheURL, json)).toEqual(expectedAction);
+    let action = duck.recieveCache(cacheURL, json);
+    delete action.receivedAt;
+    console.log(action);
+    expect(action).toEqual(expectedAction);
   });
 });
 
