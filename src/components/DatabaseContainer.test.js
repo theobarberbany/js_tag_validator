@@ -80,6 +80,7 @@ describe("Testing filterCacheConcat", () => {
 describe("Testing mapStateToProps", () => {
   it("returns filtered and filteredConcat results in the correct form", () => {
     expect(mapStateToProps(mockState)).toEqual({
+      length: 1,
       tags: {
         item1: [[1, "item 1 correspondence 1"], [2, "Item 1 correspondence 2"]],
         item2: [[3, "item 2 correspondence 1"], [4, "Item 3 correspondence 2"]]
