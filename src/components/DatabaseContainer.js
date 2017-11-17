@@ -58,7 +58,7 @@ export const getCount = tags => {
   let flattened = Object.keys(tags)
     .map(tag => tags[tag])
     .reduce((a, c) => a.concat(c), []);
-  console.log(flattened);
+  console.log("flattened array (without tags) in getCount", flattened);
   let distinctFlattened = distinctArray(flattened);
 
   let count = [...new Set(distinctFlattened)].map(tagGroup => [
@@ -72,7 +72,7 @@ export const getCount = tags => {
 //tags and tagsConcat are objects where the key is the tag or concatenated tag
 //and the value is an array containing arrays of tag sets of the form:
 //[142, "Magic Tag Group"]
-export const DatabaseContainer = ({ tags, tagsConcat, indexing }) => (
+export const DatabaseContainer = ({ tags, tagsConcat, indexing, length }) => (
   <div>
     {indexing === "dual" ? (
       <Accordion>
@@ -198,16 +198,39 @@ DatabaseContainer.PropTypes = {
 };
 
 export const filterCache = (cache, tags) => {
-  //1. filter tags against cache
+  //1. Make data usable
   let flattened = tags.reduce((acc, cur) => acc.concat(cur), []);
   //console.log(flattened);
-  //
+  //2. Actually filter
   let filtered = flattened.reduce((result, key) => {
-    result[key] = cache[key];
+    if (result[key]) {
+      result[key] = result[key].concat(cache[key]);
+    } else {
+      result[key] = cache[key];
+    }
     return result;
   }, {});
+  console.log("output from filterCache", filtered);
   return filtered;
 };
+
+//in case an object with the count is ever needed instead
+// export const filterCache = (cache, tags) => {
+//   //1. Make data usable
+//   let flattened = tags.reduce((acc, cur) => acc.concat(cur), []);
+//   //console.log(flattened);
+//   //2. Actually filter
+//   let filtered = flattened.reduce((result, key) => {
+//     if (result[key]) {
+//       result[key]["count"] += 1;
+//     } else {
+//       result[key] = { ...cache[key], count: 1 };
+//     }
+//     return result;
+//   }, {});
+//   console.log("output from filterCache", filtered);
+//   return filtered;
+// };
 
 export const filterCacheConcat = (cache, tags) => {
   let concat = tags.map(e => {
@@ -227,7 +250,8 @@ export const mapStateToProps = state => {
     tagsConcat: filterCacheConcat(
       state.cache.data.tag_db,
       state.fileHandler.cleanData
-    )
+    ),
+    length: state.fileHandler.cleanData.length
   };
 };
 
