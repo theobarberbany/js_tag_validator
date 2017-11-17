@@ -1,5 +1,5 @@
 // Display results of querying database json
-import React from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { ObjectInspector } from "react-inspector";
@@ -58,143 +58,228 @@ export const getCount = tags => {
   let flattened = Object.keys(tags)
     .map(tag => tags[tag])
     .reduce((a, c) => a.concat(c), []);
-  console.log("flattened array (without tags) in getCount", flattened);
+  //console.log("flattened array (without tags) in getCount", flattened);
   let distinctFlattened = distinctArray(flattened);
 
   let count = [...new Set(distinctFlattened)].map(tagGroup => [
     tagGroup,
     flattened.filter(x => arrayEqual(x)(tagGroup)).length
   ]);
-  console.log("distinct: ", count);
+  //console.log("distinct: ", count);
   return count;
 };
 
 //tags and tagsConcat are objects where the key is the tag or concatenated tag
 //and the value is an array containing arrays of tag sets of the form:
 //[142, "Magic Tag Group"]
-export const DatabaseContainer = ({ tags, tagsConcat, indexing, length }) => (
-  <div>
-    {indexing === "dual" ? (
-      <Accordion>
-        <AccordionItem title="Database: Individual Tags">
-          <Table>
-            <TableHead>
-              <TableRow header>
-                <TableHeader> Group name </TableHeader>
-                <TableHeader> Group ID </TableHeader>
-                <TableHeader> Matches </TableHeader>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {getCount(tags).map(tagGroup => (
-                <DatabaseItem
-                  key={tagGroup[0][0]}
-                  id={tagGroup[0][0]}
-                  name={tagGroup[0][1]}
-                  matches={tagGroup[1]}
-                />
-              ))}
-            </TableBody>
-          </Table>
-          <div id="Modal">
-            <ModalWrapper
-              id="detail-modal"
-              buttonTriggerText="Detailed Results"
-              modalLabel="Detailed Results"
-              modalHeading="Single Tags"
-              passiveModal
+
+export class DatabaseContainer extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      individual: false,
+      concatenated: false,
+      singleIndex: false
+    };
+  }
+
+  componentWillMount() {
+    if (this.props.indexing === "dual") {
+      this.individualTags = getCount(this.props.tags).map(tagGroup => {
+        if (this.state.individual) {
+          console.log("already set");
+        } else if (tagGroup[1] === this.props.length) {
+          this.setState({ individual: true });
+          console.log("setting true");
+        }
+        return (
+          <DatabaseItem
+            key={tagGroup[0][0]}
+            id={tagGroup[0][0]}
+            name={tagGroup[0][1]}
+            matches={tagGroup[1]}
+          />
+        );
+      });
+
+      this.concatenatedTags = getCount(this.props.tagsConcat).map(tagGroup => {
+        if (this.state.concatenated) {
+          console.log("already set");
+        } else if (tagGroup[1] === this.props.length) {
+          this.setState({ concatenated: true });
+          console.log("setting true");
+        }
+        return (
+          <DatabaseItem
+            key={tagGroup[0][0]}
+            id={tagGroup[0][0]}
+            name={tagGroup[0][1]}
+            matches={tagGroup[1]}
+          />
+        );
+      });
+    } else {
+      this.singleIndexTags = getCount(this.props.tagsConcat).map(tagGroup => {
+        if (this.state.concatenated) {
+          console.log("already set");
+        } else if (tagGroup[1] === this.props.length) {
+          this.setState({ singleIndex: true });
+          console.log("setting true");
+        }
+        return (
+          <DatabaseItem
+            key={tagGroup[0][0]}
+            id={tagGroup[0][0]}
+            name={tagGroup[0][1]}
+            matches={tagGroup[1]}
+          />
+        );
+      });
+    }
+  }
+
+  // renderedTags() {
+  // }
+
+  render() {
+    console.log(
+      "here!",
+      this.props.length,
+      this.state.individual,
+      this.state.concatenated
+    );
+    return (
+      <div>
+        {this.props.indexing === "dual" ? (
+          <Accordion>
+            <AccordionItem
+              title="Database: Individual Tags"
+              style={{
+                background: this.state.individual
+                  ? "rgba(92, 167, 0, 0.55)"
+                  : "rgba(231, 29, 50, 0.55)"
+              }}
             >
-              <div className="bx--modal-content__text">
-                <div id="Inspector">
-                  <ObjectInspector expandLevel={3} data={tags} />
-                </div>
+              <Table>
+                <TableHead>
+                  <TableRow header>
+                    <TableHeader> Group name </TableHeader>
+                    <TableHeader> Group ID </TableHeader>
+                    <TableHeader> Matches </TableHeader>
+                  </TableRow>
+                </TableHead>
+                <TableBody>{this.individualTags}</TableBody>
+              </Table>
+              <div id="Modal">
+                <ModalWrapper
+                  id="detail-modal"
+                  buttonTriggerText="Detailed Results"
+                  modalLabel="Detailed Results"
+                  modalHeading="Single Tags"
+                  passiveModal
+                >
+                  <div className="bx--modal-content__text">
+                    <div id="Inspector">
+                      {/* /<ObjectInspector expandLevel={3} data={this.props.tags} /> */}
+                    </div>
+                  </div>
+                </ModalWrapper>
               </div>
-            </ModalWrapper>
-          </div>
-        </AccordionItem>
-        <AccordionItem title="Database: Concatenated Tags">
-          <Table>
-            <TableHead>
-              <TableRow header>
-                <TableHeader> Group name </TableHeader>
-                <TableHeader> Group ID </TableHeader>
-                <TableHeader> Matches </TableHeader>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {getCount(tagsConcat).map(tagGroup => (
-                <DatabaseItem
-                  key={tagGroup[0][0]}
-                  id={tagGroup[0][0]}
-                  name={tagGroup[0][1]}
-                  matches={tagGroup[1]}
-                />
-              ))}
-            </TableBody>
-          </Table>
-          <div id="Modal">
-            <ModalWrapper
-              id="detail-modal"
-              buttonTriggerText="Detailed Results"
-              modalLabel="Detailed Results"
-              modalHeading="Concatenated Tags"
-              passiveModal
+            </AccordionItem>
+            <AccordionItem
+              title="Database: Concatenated Tags"
+              style={{
+                background: this.state.concatenated
+                  ? "rgba(92, 167, 0, 0.55)"
+                  : "rgba(231, 29, 50, 0.55)"
+              }}
             >
-              <div className="bx--modal-content__text">
-                <div id="Inspector">
-                  <ObjectInspector expandLevel={3} data={tagsConcat} />
-                </div>
+              <Table>
+                <TableHead>
+                  <TableRow header>
+                    <TableHeader> Group name </TableHeader>
+                    <TableHeader> Group ID </TableHeader>
+                    <TableHeader> Matches </TableHeader>
+                  </TableRow>
+                </TableHead>
+                <TableBody>{this.concatenatedTags}</TableBody>
+              </Table>
+              <div id="Modal">
+                <ModalWrapper
+                  id="detail-modal"
+                  buttonTriggerText="Detailed Results"
+                  modalLabel="Detailed Results"
+                  modalHeading="Concatenated Tags"
+                  passiveModal
+                >
+                  <div className="bx--modal-content__text">
+                    <div id="Inspector">
+                      <ObjectInspector
+                        expandLevel={3}
+                        data={this.props.tagsConcat}
+                      />
+                    </div>
+                  </div>
+                </ModalWrapper>
               </div>
-            </ModalWrapper>
-          </div>
-        </AccordionItem>
-      </Accordion>
-    ) : (
-      <Accordion>
-        <AccordionItem title="Database">
-          <Table>
-            <TableHead>
-              <TableRow header>
-                <TableHeader> Group name </TableHeader>
-                <TableHeader> Group ID </TableHeader>
-                <TableHeader> Matches </TableHeader>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {getCount(tagsConcat).map(tagGroup => (
-                <DatabaseItem
-                  key={tagGroup[0][0]}
-                  id={tagGroup[0][0]}
-                  name={tagGroup[0][1]}
-                  matches={tagGroup[1]}
-                />
-              ))}
-            </TableBody>
-          </Table>
-          <div id="Modal">
-            <ModalWrapper
-              id="detail-modal"
-              buttonTriggerText="Detailed Results"
-              modalLabel="Detailed Results"
-              modalHeading="Single Tags"
-              passiveModal
-            >
-              <div className="bx--modal-content__text">
-                <div id="Inspector">
-                  <ObjectInspector expandLevel={3} data={tags} />
-                </div>
+            </AccordionItem>
+          </Accordion>
+        ) : (
+          <Accordion
+            style={{
+              background: this.state.singleIndex
+                ? "rgba(92, 167, 0, 0.55)"
+                : "rgba(231, 29, 50, 0.55)"
+            }}
+          >
+            <AccordionItem title="Database">
+              <Table>
+                <TableHead>
+                  <TableRow header>
+                    <TableHeader> Group name </TableHeader>
+                    <TableHeader> Group ID </TableHeader>
+                    <TableHeader> Matches </TableHeader>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {getCount(this.props.tagsConcat).map(tagGroup => (
+                    <DatabaseItem
+                      key={tagGroup[0][0]}
+                      id={tagGroup[0][0]}
+                      name={tagGroup[0][1]}
+                      matches={tagGroup[1]}
+                    />
+                  ))}
+                </TableBody>
+              </Table>
+              <div id="Modal">
+                <ModalWrapper
+                  id="detail-modal"
+                  buttonTriggerText="Detailed Results"
+                  modalLabel="Detailed Results"
+                  modalHeading="Single Tags"
+                  passiveModal
+                >
+                  <div className="bx--modal-content__text">
+                    <div id="Inspector">
+                      <ObjectInspector expandLevel={3} data={this.props.tags} />
+                    </div>
+                  </div>
+                </ModalWrapper>
               </div>
-            </ModalWrapper>
-          </div>
-        </AccordionItem>
-      </Accordion>
-    )}
-  </div>
-);
+            </AccordionItem>
+          </Accordion>
+        )}
+      </div>
+    );
+  }
+}
 
 DatabaseContainer.PropTypes = {
   tags: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.array)),
-  tagsConcat: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.array))
+  tagsConcat: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.array)),
+  indexing: PropTypes.string.isRequired,
+  length: PropTypes.number
 };
 
 export const filterCache = (cache, tags) => {
@@ -210,7 +295,7 @@ export const filterCache = (cache, tags) => {
     }
     return result;
   }, {});
-  console.log("output from filterCache", filtered);
+  //console.log("output from filterCache", filtered);
   return filtered;
 };
 
