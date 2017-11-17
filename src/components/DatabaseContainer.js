@@ -241,16 +241,7 @@ export class DatabaseContainer extends PureComponent {
                     <TableHeader> Matches </TableHeader>
                   </TableRow>
                 </TableHead>
-                <TableBody>
-                  {getCount(this.props.tagsConcat).map(tagGroup => (
-                    <DatabaseItem
-                      key={tagGroup[0][0]}
-                      id={tagGroup[0][0]}
-                      name={tagGroup[0][1]}
-                      matches={tagGroup[1]}
-                    />
-                  ))}
-                </TableBody>
+                <TableBody>{this.singleIndexTags}</TableBody>
               </Table>
               <div id="Modal">
                 <ModalWrapper
