@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Raven from "raven-js";
 import { connect } from "react-redux";
 import "./FileHandlerContainer.css";
@@ -16,7 +16,7 @@ import { run } from "../internal/Validator";
 
 const re = /^[ATCGatgc]+$/;
 
-export class FileHandlerContainer extends Component {
+export class FileHandlerContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.handleFileDrop = this.handleFileDrop.bind(this);
@@ -167,7 +167,7 @@ const mapDispatchToProps = dispatch => {
     fetchCache: () => {
       dispatch(
         cacheActions.fetchCache(
-          "https://raw.githubusercontent.com/theobarberbany/js_tag_validator/master/src/internal/cache_min.json"
+          "https://raw.githubusercontent.com/theobarberbany/js_tag_validator/testing/src/internal/cache_min.json"
         )
       );
     }
