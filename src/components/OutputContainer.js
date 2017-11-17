@@ -16,7 +16,6 @@ import OutputItem from "./OutputItem";
 
 export const OutputContainer = ({ composition, indexing }) => (
   <div>
-    {console.log("HERE", composition)}
     {indexing === "dual" ? (
       <Accordion>
         <AccordionItem title="Composition: Index read 1">

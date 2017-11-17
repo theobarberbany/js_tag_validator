@@ -20,7 +20,7 @@ export const WarningContainer = ({ badPairs, badPairsConcat, onClick }) => (
       style={{
         background:
           badPairs.length + badPairsConcat.length === 0
-            ? "rgba(90, 167, 0, 0.55)"
+            ? "rgba(92, 167, 0, 0.55)"
             : "rgba(231, 29, 50, 0.55)"
       }}
     >
