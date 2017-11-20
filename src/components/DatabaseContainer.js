@@ -279,8 +279,10 @@ export const filterCache = (cache, tags) => {
   let filtered = flattened.reduce((result, key) => {
     if (result[key]) {
       result[key] = result[key].concat(cache[key]);
-    } else {
+    } else if (cache[key] != null) {
       result[key] = cache[key];
+    } else {
+      console.log("tag ", key, "not in cache");
     }
     return result;
   }, {});
@@ -311,7 +313,9 @@ export const filterCacheConcat = (cache, tags) => {
     return e.join("");
   });
   let filtered = concat.reduce((result, key) => {
-    result[key] = cache[key];
+    if (cache[key] != null) {
+      result[key] = cache[key];
+    }
     return result;
   }, {});
   return filtered;
