@@ -281,8 +281,6 @@ export const filterCache = (cache, tags) => {
       result[key] = result[key].concat(cache[key]);
     } else if (cache[key] != null) {
       result[key] = cache[key];
-    } else {
-      console.log("tag ", key, "not in cache");
     }
     return result;
   }, {});
