@@ -58,19 +58,32 @@ export class OutputContainer extends PureComponent {
             "index read 1 :",
             bad_bases
           );
-        }
 
-        return (
-          <OutputItem
-            key={index}
-            colNo={index + 1}
-            a={tag[0]}
-            t={tag[1]}
-            c={tag[2]}
-            g={tag[3]}
-            sum={sum}
-          />
-        );
+          return (
+            <OutputItem
+              colour={true}
+              key={index}
+              colNo={index + 1}
+              a={tag[0]}
+              t={tag[1]}
+              c={tag[2]}
+              g={tag[3]}
+              sum={sum}
+            />
+          );
+        } else {
+          return (
+            <OutputItem
+              key={index}
+              colNo={index + 1}
+              a={tag[0]}
+              t={tag[1]}
+              c={tag[2]}
+              g={tag[3]}
+              sum={sum}
+            />
+          );
+        }
       });
       //Calculate what to render for the second index read
       this.read_2 = this.props.composition[1].map((tag, index) => {
@@ -86,19 +99,31 @@ export class OutputContainer extends PureComponent {
             "index read 2 :",
             bad_bases
           );
+          return (
+            <OutputItem
+              colour={true}
+              key={index}
+              colNo={index + 1}
+              a={tag[0]}
+              t={tag[1]}
+              c={tag[2]}
+              g={tag[3]}
+              sum={sum}
+            />
+          );
+        } else {
+          return (
+            <OutputItem
+              key={index}
+              colNo={index + 1}
+              a={tag[0]}
+              t={tag[1]}
+              c={tag[2]}
+              g={tag[3]}
+              sum={sum}
+            />
+          );
         }
-
-        return (
-          <OutputItem
-            key={index}
-            colNo={index + 1}
-            a={tag[0]}
-            t={tag[1]}
-            c={tag[2]}
-            g={tag[3]}
-            sum={sum}
-          />
-        );
       });
     } else if (this.props.indexing === "single") {
       //Calculate what to render for the first index read
@@ -110,19 +135,31 @@ export class OutputContainer extends PureComponent {
         } else if (bad_bases.length >= 1) {
           this.setState({ single_index_failure: true });
           console.log("Bad bases for col", index + 1, ":", bad_bases);
+          return (
+            <OutputItem
+              colour={true}
+              key={index}
+              colNo={index + 1}
+              a={tag[0]}
+              t={tag[1]}
+              c={tag[2]}
+              g={tag[3]}
+              sum={sum}
+            />
+          );
+        } else {
+          return (
+            <OutputItem
+              key={index}
+              colNo={index + 1}
+              a={tag[0]}
+              t={tag[1]}
+              c={tag[2]}
+              g={tag[3]}
+              sum={sum}
+            />
+          );
         }
-
-        return (
-          <OutputItem
-            key={index}
-            colNo={index + 1}
-            a={tag[0]}
-            t={tag[1]}
-            c={tag[2]}
-            g={tag[3]}
-            sum={sum}
-          />
-        );
       });
     }
   }
