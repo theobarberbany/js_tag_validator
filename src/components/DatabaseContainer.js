@@ -311,7 +311,9 @@ export const filterCacheConcat = (cache, tags) => {
     return e.join("");
   });
   let filtered = concat.reduce((result, key) => {
-    if (cache[key] != null) {
+    if (result[key]) {
+      result[key] = result[key].concat(cache[key]);
+    } else if (cache[key] != null) {
       result[key] = cache[key];
     }
     return result;
