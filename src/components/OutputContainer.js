@@ -49,15 +49,15 @@ export class OutputContainer extends PureComponent {
         let sum = tag.reduce((prev, curr) => prev + curr);
         let bad_bases = this.calculateProportions(tag, sum);
         if (this.state.read_1_failure) {
-          console.log("already set");
+          // console.log("already set");
         } else if (bad_bases.length >= 1) {
           this.setState({ read_1_failure: true });
-          console.log(
-            "Bad bases for col",
-            index + 1,
-            "index read 1 :",
-            bad_bases
-          );
+          // console.log(
+          //   "Bad bases for col",
+          //   index + 1,
+          //   "index read 1 :",
+          //   bad_bases
+          // );
 
           return (
             <OutputItem
@@ -90,15 +90,15 @@ export class OutputContainer extends PureComponent {
         let sum = tag.reduce((prev, curr) => prev + curr);
         let bad_bases = this.calculateProportions(tag, sum);
         if (this.state.read_2_failure) {
-          console.log("already set");
+          // console.log("already set");
         } else if (bad_bases.length >= 1) {
           this.setState({ read_2_failure: true });
-          console.log(
-            "Bad bases for col",
-            index + 1,
-            "index read 2 :",
-            bad_bases
-          );
+          // console.log(
+          //   "Bad bases for col",
+          //   index + 1,
+          //   "index read 2 :",
+          //   bad_bases
+          // );
           return (
             <OutputItem
               colour={true}
@@ -131,10 +131,10 @@ export class OutputContainer extends PureComponent {
         let sum = tag.reduce((prev, curr) => prev + curr);
         let bad_bases = this.calculateProportions(tag, sum);
         if (this.state.read_1_failure) {
-          console.log("already set");
+          // console.log("already set");
         } else if (bad_bases.length >= 1) {
           this.setState({ single_index_failure: true });
-          console.log("Bad bases for col", index + 1, ":", bad_bases);
+          // console.log("Bad bases for col", index + 1, ":", bad_bases);
           return (
             <OutputItem
               colour={true}
