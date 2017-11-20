@@ -177,6 +177,7 @@ export class DatabaseContainer extends PureComponent {
                 >
                   <div className="bx--modal-content__text">
                     <div id="Inspector">
+                      <h3>Not currently supported</h3>
                       {/* /<ObjectInspector expandLevel={3} data={this.props.tags} /> */}
                     </div>
                   </div>
