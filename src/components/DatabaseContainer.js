@@ -138,9 +138,6 @@ export class DatabaseContainer extends PureComponent {
     }
   }
 
-  // renderedTags() {
-  // }
-
   render() {
     // console.log(
     //   "here!",
@@ -266,7 +263,7 @@ export class DatabaseContainer extends PureComponent {
   }
 }
 
-DatabaseContainer.PropTypes = {
+DatabaseContainer.propTypes = {
   tags: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.array)),
   tagsConcat: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.array)),
   indexing: PropTypes.string.isRequired,

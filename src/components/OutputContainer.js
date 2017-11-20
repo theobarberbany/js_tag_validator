@@ -205,7 +205,7 @@ export class OutputContainer extends PureComponent {
   }
 }
 
-OutputContainer.PropTypes = {
+OutputContainer.propTypes = {
   composition: PropTypes.shape({
     composition: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number))
   }),
