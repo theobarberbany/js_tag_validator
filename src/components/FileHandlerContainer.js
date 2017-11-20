@@ -13,8 +13,11 @@ import DatabaseContainer from "./DatabaseContainer";
 
 import { parseData2 } from "../internal/Parser";
 import { run } from "../internal/Validator";
+import { error } from "util";
 
 const re = /^[ATCGatgc]+$/;
+const oh_snap =
+  "https://wiggly-power.glitch.me/static/media/sentry-aw-snap.afe2fd59.svg";
 
 export class FileHandlerContainer extends PureComponent {
   constructor(props) {
@@ -99,10 +102,12 @@ export class FileHandlerContainer extends PureComponent {
               //Call cleaning function
               this.cleanParsedData();
             } else {
+              //Throw a parsing error.
               this.setState({
                 droppedFiles: [],
                 parseError: true
               });
+              throw new Error("Unexpected parsing result");
             }
           },
           err => {
@@ -128,20 +133,41 @@ export class FileHandlerContainer extends PureComponent {
 
     if (this.state.parseError) {
       return (
-        <div id="parseError">
-          <h1>
-            An error has occured with parsing. Please refresh the page to start
-            again.
-          </h1>
+        <div className="snap">
+          <img alt="it's broken" src={oh_snap} />
+          <div className="snap-message">
+            <p>
+              We're sorry - something's gone wrong. The file you have dropped is
+              unexpectedly formatted.
+            </p>
+            <p>
+              Our team has been notified, but click
+              <button
+                onClick={() => Raven.lastEventId() && Raven.showReportDialog()}
+              >
+                here
+              </button>
+              to fill out a report, then refresh the page to start again.
+            </p>
+          </div>
         </div>
       );
     } else if (this.state.hasError) {
       return (
-        <div id="fatalError">
-          <h1>
-            A fatal application error has occured, please refresh the page to
-            start again
-          </h1>
+        <div className="snap">
+          <img alt="it's broken" src={oh_snap} />
+          <div className="snap-message">
+            <p>We're sorry - something's gone wrong.</p>
+            <p>
+              Our team has been notified, but click
+              <button
+                onClick={() => Raven.lastEventId() && Raven.showReportDialog()}
+              >
+                here
+              </button>
+              to fill out a report, then refresh the page to start again.
+            </p>
+          </div>
         </div>
       );
     } else {
