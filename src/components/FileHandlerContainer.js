@@ -23,7 +23,9 @@ export class FileHandlerContainer extends PureComponent {
     this.cleanParsedData = this.cleanParsedData.bind(this);
     this.state = {
       droppedFiles: [{ name: "placeholder" }],
-      key: 0
+      key: 0,
+      hasError: false,
+      parseError: false
     };
   }
 
@@ -34,7 +36,7 @@ export class FileHandlerContainer extends PureComponent {
   }
 
   componentDidCatch(error, errorInfo) {
-    this.setState({ error });
+    this.setState({ hasError: true });
     Raven.captureException(error, { extra: errorInfo });
   }
 
@@ -97,9 +99,10 @@ export class FileHandlerContainer extends PureComponent {
               //Call cleaning function
               this.cleanParsedData();
             } else {
-              this.setState({ droppedFiles: [] });
-              //Temporary hack to reset page on bad csv drop.
-              window.location.reload();
+              this.setState({
+                droppedFiles: [],
+                parseError: true
+              });
             }
           },
           err => {
@@ -123,33 +126,53 @@ export class FileHandlerContainer extends PureComponent {
   render() {
     const { FILE } = NativeTypes;
 
-    return (
-      <DragDropContextProvider backend={HTML5Backend}>
-        <div>
-          <div>
-            {this.state.hideFileHandler ? (
-              <div id="Output">
-                <h2>
-                  Validation Complete: {this.state.droppedFiles[0].name} -
-                  Indexing: {this.state.indexing}
-                </h2>
-                <WarningContainer />
-                <br />
-                <OutputContainer indexing={this.state.indexing} />
-                <br />
-                <DatabaseContainer indexing={this.state.indexing} />
-              </div>
-            ) : (
-              <FileHandler
-                key={this.state.key}
-                accepts={[FILE]}
-                onDrop={this.handleFileDrop}
-              />
-            )}
-          </div>
+    if (this.state.parseError) {
+      return (
+        <div id="parseError">
+          <h1>
+            An error has occured with parsing. Please refresh the page to start
+            again.
+          </h1>
         </div>
-      </DragDropContextProvider>
-    );
+      );
+    } else if (this.state.hasError) {
+      return (
+        <div id="fatalError">
+          <h1>
+            A fatal application error has occured, please refresh the page to
+            start again
+          </h1>
+        </div>
+      );
+    } else {
+      return (
+        <DragDropContextProvider backend={HTML5Backend}>
+          <div>
+            <div>
+              {this.state.hideFileHandler ? (
+                <div id="Output">
+                  <h2>
+                    Validation Complete: {this.state.droppedFiles[0].name} -
+                    Indexing: {this.state.indexing}
+                  </h2>
+                  <WarningContainer />
+                  <br />
+                  <OutputContainer indexing={this.state.indexing} />
+                  <br />
+                  <DatabaseContainer indexing={this.state.indexing} />
+                </div>
+              ) : (
+                <FileHandler
+                  key={this.state.key}
+                  accepts={[FILE]}
+                  onDrop={this.handleFileDrop}
+                />
+              )}
+            </div>
+          </div>
+        </DragDropContextProvider>
+      );
+    }
   }
 }
 
