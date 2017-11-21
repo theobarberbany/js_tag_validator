@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import Raven from "raven-js";
 import { connect } from "react-redux";
 import "./FileHandlerContainer.css";
@@ -10,25 +10,25 @@ import FileHandler from "./FileHandler";
 import WarningContainer from "./WarningContainer";
 import OutputContainer from "./OutputContainer";
 import DatabaseContainer from "./DatabaseContainer";
+import { customError } from "./SentryBoundary";
 
 import { parseData2 } from "../internal/Parser";
 import { run } from "../internal/Validator";
-import { error } from "util";
 
 const re = /^[ATCGatgc]+$/;
-const oh_snap =
-  "https://wiggly-power.glitch.me/static/media/sentry-aw-snap.afe2fd59.svg";
 
-export class FileHandlerContainer extends PureComponent {
+export class FileHandlerContainer extends Component {
   constructor(props) {
     super(props);
     this.handleFileDrop = this.handleFileDrop.bind(this);
     this.cleanParsedData = this.cleanParsedData.bind(this);
     this.state = {
-      droppedFiles: [{ name: "placeholder" }],
-      key: 0,
-      hasError: false,
-      parseError: false
+      droppedFiles: [
+        {
+          name: "placeholder"
+        }
+      ],
+      key: 0
     };
   }
 
@@ -38,23 +38,32 @@ export class FileHandlerContainer extends PureComponent {
     window.debug = this;
   }
 
-  componentDidCatch(error, errorInfo) {
-    this.setState({ hasError: true });
-    Raven.captureException(error, { extra: errorInfo });
+  shouldComponentUpdate() {
+    if (this.state.bad_input) {
+      throw new customError("Parsing Failure");
+    } else {
+      return true;
+    }
   }
 
   runValidation(cleanData) {
     // Determine if dual index or single index run.
     if (re.test(cleanData[0][0]) && re.test(cleanData[0][1])) {
-      this.setState({ indexing: "dual" });
+      this.setState({
+        indexing: "dual"
+      });
     } else {
       cleanData = cleanData.reduce((acc, cur) => acc.concat(cur[0]), []);
       console.log("Single run data:", cleanData);
-      this.setState({ indexing: "single" });
+      this.setState({
+        indexing: "single"
+      });
     }
     let output = run(cleanData);
     this.props.processOverview(output);
-    this.setState({ hideFileHandler: true }); // Hide FileHandler Component
+    this.setState({
+      hideFileHandler: true
+    }); // Hide FileHandler Component
   }
 
   cleanParsedData() {
@@ -72,11 +81,12 @@ export class FileHandlerContainer extends PureComponent {
       console.log("you dropped something: ", monitor.getItem().files[0]);
       const component = this;
       const droppedFiles = monitor.getItem().files;
-      let bad_input = false;
 
       if (droppedFiles[0].type === "text/csv") {
         component.props.dropFile(); // update ui
-        this.setState({ droppedFiles }); // update state with dropped file
+        this.setState({
+          droppedFiles
+        }); // update state with dropped file
         // parse
         parseData2(this.state.droppedFiles[0], ",").then(
           obj => {
@@ -86,28 +96,28 @@ export class FileHandlerContainer extends PureComponent {
               obj.data[8][2] !== "TAG OLIGO" ||
               obj.data[8][3] !== "TAG2 OLIGO"
             ) {
-              bad_input = true;
+              this.setState({
+                bad_input: true
+              });
             } else if (!re.test(obj.data[9][2])) {
               // check the first tag is a valid combination of ATCG
-              bad_input = true;
+              this.setState({
+                bad_input: true
+              });
             }
 
-            if (!bad_input) {
+            if (!this.state.bad_input) {
               let len = obj.data.length;
               this.setState({
                 parsedData: obj.data.slice(9, len) //update array with parsed data
               });
-              // component.props.dropFile();
-              // this.setState({ key: Math.random() }); // hackery to try get the component to redraw, it doesn't work.
               //Call cleaning function
               this.cleanParsedData();
             } else {
               //Throw a parsing error.
               this.setState({
-                droppedFiles: [],
-                parseError: true
+                bad_input: true
               });
-              throw new Error("Unexpected parsing result");
             }
           },
           err => {
@@ -117,11 +127,16 @@ export class FileHandlerContainer extends PureComponent {
         );
       }
       if (droppedFiles[0].type !== "text/csv") {
-        bad_input = true;
+        //ToDO: make this fail to a "you dropped something that is not a manifest"
+        this.setState({
+          bad_input: true
+        });
       }
-      if (bad_input) {
+      if (this.state.bad_input) {
         // Reset the state of droppedFiles
-        this.setState({ droppedFiles: [] });
+        this.setState({
+          droppedFiles: []
+        });
         // scold the user..
         console.log("only drop a csv file here...");
       }
@@ -130,88 +145,50 @@ export class FileHandlerContainer extends PureComponent {
 
   render() {
     const { FILE } = NativeTypes;
-
-    if (this.state.parseError) {
-      return (
-        <div className="snap">
-          <img alt="it's broken" src={oh_snap} />
-          <div className="snap-message">
-            <p>
-              We're sorry - something's gone wrong. The file you have dropped is
-              unexpectedly formatted.
-            </p>
-            <p>
-              Our team has been notified, but click
-              <button
-                onClick={() => Raven.lastEventId() && Raven.showReportDialog()}
-              >
-                here
-              </button>
-              to fill out a report, then refresh the page to start again.
-            </p>
-          </div>
-        </div>
-      );
-    } else if (this.state.hasError) {
-      return (
-        <div className="snap">
-          <img alt="it's broken" src={oh_snap} />
-          <div className="snap-message">
-            <p>We're sorry - something's gone wrong.</p>
-            <p>
-              Our team has been notified, but click
-              <button
-                onClick={() => Raven.lastEventId() && Raven.showReportDialog()}
-              >
-                here
-              </button>
-              to fill out a report, then refresh the page to start again.
-            </p>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <DragDropContextProvider backend={HTML5Backend}>
+    return (
+      <DragDropContextProvider backend={HTML5Backend}>
+        <div>
           <div>
-            <div>
-              {this.state.hideFileHandler ? (
-                <div id="Output">
-                  <h2>
-                    Validation Complete: {this.state.droppedFiles[0].name} -
-                    Indexing: {this.state.indexing}
-                  </h2>
-                  <WarningContainer />
-                  <br />
-                  <OutputContainer indexing={this.state.indexing} />
-                  <br />
-                  <DatabaseContainer indexing={this.state.indexing} />
-                </div>
-              ) : (
-                <FileHandler
-                  key={this.state.key}
-                  accepts={[FILE]}
-                  onDrop={this.handleFileDrop}
-                />
-              )}
-            </div>
+            {this.state.hideFileHandler ? (
+              <div id="Output">
+                <h2>
+                  Validation Complete: {this.state.droppedFiles[0].name} -
+                  Indexing: {this.state.indexing}{" "}
+                </h2>
+                <WarningContainer />
+                <br />
+                <OutputContainer indexing={this.state.indexing} /> <br />
+                <DatabaseContainer indexing={this.state.indexing} />
+              </div>
+            ) : (
+              <FileHandler
+                key={this.state.key}
+                accepts={[FILE]}
+                onDrop={this.handleFileDrop}
+              />
+            )}
           </div>
-        </DragDropContextProvider>
-      );
-    }
+        </div>
+      </DragDropContextProvider>
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     pushData: data => {
-      dispatch({ type: "PUSH_DATA", data });
+      dispatch({
+        type: "PUSH_DATA",
+        data
+      });
     },
     processOverview: data => {
       dispatch(fileHandlerActionCreators.processOverview(data));
     },
     dropFile: () => {
-      dispatch({ type: "DROP_FILE" });
+      dispatch({
+        type: "DROP_FILE"
+      });
     },
     fetchCache: () => {
       dispatch(
