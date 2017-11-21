@@ -12,7 +12,20 @@ export function configureStore() {
     rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
       window.__REDUX_DEVTOOLS_EXTENSION__(),
-    applyMiddleware(thunk, createRavenMiddleware(Raven))
+    applyMiddleware(
+      thunk,
+      createRavenMiddleware(
+        //modify state so cache isn't sent
+        Raven,
+        {
+          stateTransformer: state => {
+            let copy = { ...state }; //return a copy of the state - so it does not get modified.
+            delete copy["cache"];
+            return copy;
+          }
+        }
+      )
+    )
   );
 }
 
