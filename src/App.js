@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import store from "./setupStore";
-import Raven from "raven-js";
 import { Provider } from "react-redux";
+import SentryBoundary from "./components/SentryBoundary";
 import FileHandlerContainer from "./components/FileHandlerContainer";
-import logo from "./logo.svg";
 import "../node_modules/carbon-components/css/carbon-components.css";
 import "./App.css";
 
@@ -23,20 +22,22 @@ class App extends Component {
     console.log("unsubscribed from store");
   }
 
-  componentDidCatch(error, errorInfo) {
-    this.setState({ error });
-    Raven.captureException(error, { extra: errorInfo });
-  }
+  // componentDidCatch(error, errorInfo) {
+  //   this.setState({ error });
+  //   Raven.captureException(error, { extra: errorInfo });
+  // }
 
   render() {
     return (
-      <Provider store={store}>
-        <div className="App">
-          <div className="FileHandlerContainer">
-            <FileHandlerContainer />
+      <SentryBoundary>
+        <Provider store={store}>
+          <div className="App">
+            <div className="FileHandlerContainer">
+              <FileHandlerContainer />
+            </div>
           </div>
-        </div>
-      </Provider>
+        </Provider>
+      </SentryBoundary>
     );
   }
 }
