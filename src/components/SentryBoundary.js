@@ -7,10 +7,10 @@ import oops from "../internal/aw_snap.svg";
 export class customError extends Error {
   constructor(...args) {
     super(...args);
-    Error.captureStackTrace(this, customError);
+    //Currently fails all tests; need to find polyfill.
+    //Error.captureStackTrace(this, customError);
   }
 }
-customError.prototype = Error.prototype;
 
 class SentryBoundary extends Component {
   constructor(props) {
