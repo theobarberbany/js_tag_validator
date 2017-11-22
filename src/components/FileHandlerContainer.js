@@ -82,7 +82,7 @@ export class FileHandlerContainer extends Component {
       const component = this;
       const droppedFiles = monitor.getItem().files;
 
-      if (droppedFiles[0].type === "text/csv") {
+      if (droppedFiles[0].type === ("text/csv" || "application/vnd.ms-excel")) {
         component.props.dropFile(); // update ui
         this.setState({
           droppedFiles
@@ -126,7 +126,7 @@ export class FileHandlerContainer extends Component {
           }
         );
       }
-      if (droppedFiles[0].type !== "text/csv") {
+      if (droppedFiles[0].type !== ("text/csv" || "application/vnd.ms-excel")) {
         //ToDO: make this fail to a "you dropped something that is not a manifest"
         this.setState({
           bad_input: true
