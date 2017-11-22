@@ -61,9 +61,11 @@ const props = {
 };
 
 const mockState = {
-  fileHandler: {
-    badPairs: props.badPairs,
-    badPairsConcat: props.badPairsConcat
+  warningContainer: {
+    warningItems: {
+      badPairs: props.badPairs,
+      badPairsConcat: props.badPairsConcat
+    }
   }
 };
 

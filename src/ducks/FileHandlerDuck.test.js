@@ -16,14 +16,6 @@ describe("File Handler actions", () => {
     };
     expect(duck.pushData(data)).toEqual(expectedAction);
   });
-  it("should create an action to toggle a tag pair completed", () => {
-    const id = 1;
-    const expectedAction = {
-      type: duck.TOGGLE_TAG_PAIR,
-      id
-    };
-    expect(duck.toggleTagPair(id)).toEqual(expectedAction);
-  });
   it("should create an action to change ui state when a file is dropped", () => {
     const fileHandlerState = {
       displayProps: {
@@ -54,41 +46,6 @@ describe("File Handler actions", () => {
     };
     expect(duck.pushOverview(data)).toEqual(expectedAction);
   });
-  it("Should create an action to add a new bad tag pair to the store", () => {
-    let nextTagPairId = 0;
-    const tag1 = "GGAGCTAC";
-    const tag2 = "TCGACTAG";
-    const diff = 2;
-    const pos = 1;
-    const expectedAction = {
-      type: duck.ADD_BAD_TAG_PAIR,
-      id: nextTagPairId++,
-      tag1,
-      tag2,
-      diff,
-      pos
-    };
-    expect(duck.addBadTagPair(tag1, tag2, diff, pos)).toEqual(expectedAction);
-  });
-  it("Should create an action to add a new concatenated bad tag pair to the store", () => {
-    let nextTagPairId = 1;
-    const tag1 = "GGAGCTAC";
-    const tag2 = "TCGACTAG";
-    const diff = 2;
-    const pos1 = 22;
-    const pos2 = 56;
-    const expectedAction = {
-      type: duck.ADD_BAD_TAG_PAIR_CONCAT,
-      id: nextTagPairId++,
-      tag1,
-      tag2,
-      diff,
-      pos: "22 : 56"
-    };
-    expect(duck.addBadTagPairConcat(tag1, tag2, diff, pos1, pos2)).toEqual(
-      expectedAction
-    );
-  });
 });
 
 describe("File Handler async actions", () => {
@@ -100,7 +57,7 @@ describe("File Handler async actions", () => {
       },
       {
         diff: 2,
-        id: 2,
+        id: 0,
         pos: 47,
         tag1: "CCGTAGTA",
         tag2: "CCGTAAGA",
@@ -108,7 +65,7 @@ describe("File Handler async actions", () => {
       },
       {
         diff: 0,
-        id: 3,
+        id: 1,
         pos: "56 : 23",
         tag1: "GCGTAGTAGCGTAGTA",
         tag2: "GCGTAGTAGCGTAGTA",
@@ -169,137 +126,6 @@ describe("File Handler reducer", () => {
     ).toEqual({
       ...duck.initialState,
       overview: data
-    });
-  });
-  it("should handle ADD_BAD_TAG_PAIR", () => {
-    expect(
-      reducer(undefined, {
-        type: duck.ADD_BAD_TAG_PAIR,
-        id: 0,
-        tag1: "ATCG",
-        tag2: "ATCG",
-        diff: 0,
-        pos: 11
-      })
-    ).toEqual({
-      ...duck.initialState,
-      badPairs: [
-        ...duck.initialState.badPairs,
-        {
-          id: 0,
-          tag1: "ATCG",
-          tag2: "ATCG",
-          diff: 0,
-          pos: 11,
-          completed: false
-        }
-      ]
-    });
-  });
-  it("should handle ADD_BAD_TAG_PAIR_CONCAT", () => {
-    expect(
-      reducer(undefined, {
-        type: duck.ADD_BAD_TAG_PAIR_CONCAT,
-        id: 1,
-        tag1: "ATCGATCG",
-        tag2: "ATCGATCG",
-        diff: 0
-      })
-    ).toEqual({
-      ...duck.initialState,
-      badPairsConcat: [
-        ...duck.initialState.badPairsConcat,
-        {
-          id: 1,
-          tag1: "ATCGATCG",
-          tag2: "ATCGATCG",
-          diff: 0,
-          completed: false
-        }
-      ]
-    });
-  });
-  it("should handle TOGGLE_TAG_PAIR with a normal tag", () => {
-    const state = {
-      ...duck.initialState,
-      badPairs: [
-        {
-          id: 0,
-          tag1: "ATCG",
-          tag2: "ATCG",
-          diff: 0,
-          pos: 11,
-          completed: false
-        }
-      ],
-      badParisConcat: [
-        {
-          id: 1,
-          tag1: "ATCGATCG",
-          tag2: "ATCGATCG",
-          diff: 0,
-          completed: false
-        }
-      ]
-    };
-    expect(
-      reducer(state, {
-        type: duck.TOGGLE_TAG_PAIR,
-        id: 0
-      })
-    ).toEqual({
-      ...state,
-      badPairs: [
-        {
-          id: 0,
-          tag1: "ATCG",
-          tag2: "ATCG",
-          diff: 0,
-          pos: 11,
-          completed: true
-        }
-      ]
-    });
-  });
-  it("should handle TOGGLE_TAG_PAIR with a concatenated tag", () => {
-    const state = {
-      ...duck.initialState,
-      badPairs: [
-        {
-          id: 0,
-          tag1: "ATCG",
-          tag2: "ATCG",
-          diff: 0,
-          pos: 11,
-          completed: false
-        }
-      ],
-      badPairsConcat: [
-        {
-          id: 1,
-          tag1: "ATCGATCG",
-          tag2: "ATCGATCG",
-          diff: 0,
-          completed: false
-        }
-      ]
-    };
-    expect(
-      reducer(state, {
-        type: duck.TOGGLE_TAG_PAIR,
-        id: 1
-      })
-    ).toEqual({
-      ...state,
-      badPairsConcat: [
-        {
-          id: 1,
-          tag1: "ATCGATCG",
-          tag2: "ATCGATCG",
-          diff: 0,
-          completed: true
-        }
-      ]
     });
   });
 });
