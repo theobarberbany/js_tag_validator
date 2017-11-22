@@ -40,6 +40,8 @@ class SentryBoundary extends Component {
               </button>
               to fill out a report.
             </p>
+            <br />
+            <p>Then refresh the page to try again.</p>
           </div>
         </div>
       );
