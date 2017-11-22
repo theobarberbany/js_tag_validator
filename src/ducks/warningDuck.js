@@ -17,8 +17,8 @@ export const { SHOW_ALL } = VisibilityFilters;
 
 //Reducers
 export const initialWarningState = {
-  badParis: [],
-  badParisConcat: []
+  badPairs: [],
+  badPairsConcat: []
 };
 
 export function visibilityFilter(state = SHOW_ALL, action) {
