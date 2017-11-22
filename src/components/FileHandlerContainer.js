@@ -130,8 +130,10 @@ export class FileHandlerContainer extends Component {
         );
       }
       if (
-        droppedFiles[0].type === "text/csv" ||
-        droppedFiles[0].type === "application/vnd.ms-excel"
+        !(
+          droppedFiles[0].type === "text/csv" ||
+          droppedFiles[0].type === "application/vnd.ms-excel"
+        )
       ) {
         //ToDO: make this fail to a "you dropped something that is not a manifest"
         this.setState({
