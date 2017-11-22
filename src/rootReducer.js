@@ -2,6 +2,7 @@
 import { combineReducers } from "redux";
 import { reducer as fileHandler } from "./ducks/FileHandlerDuck";
 import { reducer as cache } from "./ducks/cacheDuck";
+import { reducer as warningContainer } from "./ducks/warningDuck";
 
 /*
 the syntax is <key in store>:<reducer name>
@@ -11,6 +12,7 @@ state.<key in store>.<whateverprop>
 */
 const rootReducer = combineReducers({
   fileHandler: fileHandler,
+  warningContainer: warningContainer,
   cache: cache
 });
 export default rootReducer;
