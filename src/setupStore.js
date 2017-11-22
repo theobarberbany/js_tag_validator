@@ -22,6 +22,14 @@ export function configureStore() {
             let copy = { ...state }; //return a copy of the state - so it does not get modified.
             delete copy["cache"];
             return copy;
+          },
+
+          actionTransformer: action => {
+            let copy = { ...action };
+            if (copy.type === "RECIEVE_CACHE") {
+              delete copy["data"];
+            }
+            return copy;
           }
         }
       )
