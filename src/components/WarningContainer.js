@@ -1,7 +1,7 @@
 // Display Warnings from validator.js
 import React from "react";
 import { connect } from "react-redux";
-import * as fileHandlerActionCreators from "../ducks/FileHandlerDuck";
+import * as warningContainerActionCreators from "../ducks/warningDuck";
 import PropTypes from "prop-types";
 import {
   Accordion,
@@ -94,7 +94,7 @@ export const mapDispatchToProps = dispatch => {
   return {
     onClick: id => {
       console.log("Id passed: ", id);
-      dispatch(fileHandlerActionCreators.toggleTagPair(id));
+      dispatch(warningContainerActionCreators.toggleTagPair(id));
     }
   };
 };
