@@ -98,7 +98,10 @@ class FileHandler extends Component {
             </OverflowMenu>
           </CardContent>
           <CardFooter>
-            <CardStatus status={this.props.status} />
+            <CardStatus
+              status={this.props.status}
+              notRunningText={"Waiting for input"}
+            />
           </CardFooter>
         </Card>
       </div>
