@@ -100,7 +100,7 @@ class FileHandler extends Component {
           <CardFooter>
             <CardStatus
               status={this.props.status}
-              notRunningText={"Waiting for input"}
+              notRunningText={"Waiting for your input"}
             />
           </CardFooter>
         </Card>
