@@ -54,7 +54,7 @@ describe("Warning actions", () => {
 
 describe("Warning reducer", () => {
   const initialState = {
-    visibilityFilter: "SHOW_ALL",
+    visibilityFilter: "SHOW_ACTIVE",
     warningItems: duck.initialWarningState
   };
   it("should return the initial state", () => {

@@ -3,15 +3,8 @@ import { mount } from "enzyme";
 import {
   WarningContainer,
   mapStateToProps,
-  mapDispatchToProps
+  getVisibleWarnings
 } from "./WarningContainer";
-
-import {
-  StructuredListRow,
-  StructuredListInput,
-  StructuredListCell,
-  Icon
-} from "carbon-components-react";
 
 const props = {
   badPairs: [
@@ -98,6 +91,7 @@ describe("Testing OutputContainer", () => {
 
   describe("Testing mapStateToProps", () => {
     it("returns the correct slice of state", () => {
+      console.log(mapStateToProps(mockState));
       expect(mapStateToProps(mockState).badPairs).toEqual(props.badPairs);
       expect(mapStateToProps(mockState).badPairsConcat).toEqual(
         props.badPairsConcat
