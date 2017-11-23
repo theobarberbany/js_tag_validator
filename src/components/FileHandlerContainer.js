@@ -10,7 +10,7 @@ import FileHandler from "./FileHandler";
 import WarningContainer from "./WarningContainer";
 import OutputContainer from "./OutputContainer";
 import DatabaseContainer from "./DatabaseContainer";
-import { customError } from "./SentryBoundary";
+import SentryBoundary, { customError } from "./SentryBoundary";
 
 import { parseData2 } from "../internal/Parser";
 import { run } from "../internal/Validator";
@@ -163,10 +163,17 @@ export class FileHandlerContainer extends Component {
                   Validation Complete: {this.state.droppedFiles[0].name} -
                   Indexing: {this.state.indexing}{" "}
                 </h2>
-                <WarningContainer />
+                <SentryBoundary>
+                  <WarningContainer />
+                </SentryBoundary>
                 <br />
-                <OutputContainer indexing={this.state.indexing} /> <br />
-                <DatabaseContainer indexing={this.state.indexing} />
+                <SentryBoundary>
+                  <OutputContainer indexing={this.state.indexing} />
+                </SentryBoundary>
+                <br />
+                <SentryBoundary>
+                  <DatabaseContainer indexing={this.state.indexing} />
+                </SentryBoundary>
               </div>
             ) : (
               <FileHandler
