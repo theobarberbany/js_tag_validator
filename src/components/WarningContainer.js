@@ -1,6 +1,7 @@
 // Display Warnings from validator.js
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
+import { setVisibilityFilter, VisibilityFilters } from "../ducks/warningDuck";
 import * as warningContainerActionCreators from "../ducks/warningDuck";
 import PropTypes from "prop-types";
 import {
@@ -14,54 +15,110 @@ import {
 } from "carbon-components-react";
 import WarningItem from "./WarningItem";
 
-export const WarningContainer = ({ badPairs, badPairsConcat, onClick }) => (
-  <div>
-    <Accordion
-      style={{
-        background:
-          badPairs.length + badPairsConcat.length === 0
-            ? "rgba(92, 167, 0, 0.55)"
-            : "rgba(231, 29, 50, 0.55)"
-      }}
-    >
-      <AccordionItem title="Tag Clash">
-        <StructuredListWrapper selection border>
-          <StructuredListHead>
-            <StructuredListRow head>
-              <StructuredListCell head>{""}</StructuredListCell>
-              <StructuredListCell head>Tag</StructuredListCell>
-              <StructuredListCell head>Clashing Tag</StructuredListCell>
-              <StructuredListCell head>Difference</StructuredListCell>
-              <StructuredListCell head>Position in manifest</StructuredListCell>
-            </StructuredListRow>
-          </StructuredListHead>
-          <StructuredListBody>
-            {badPairs.map(badPair => (
-              <WarningItem
-                key={badPair.id}
-                {...badPair}
-                onClick={e => {
-                  e.preventDefault();
-                  onClick(badPair.id);
-                }}
-              />
-            ))}
-            {badPairsConcat.map(badPair => (
-              <WarningItem
-                key={badPair.id}
-                {...badPair}
-                onClick={e => {
-                  e.preventDefault();
-                  onClick(badPair.id);
-                }}
-              />
-            ))}
-          </StructuredListBody>
-        </StructuredListWrapper>
-      </AccordionItem>
-    </Accordion>
-  </div>
-);
+export class Footer extends Component {
+  renderFilter(filter, name) {
+    if (filter === this.props.filter) {
+      return name;
+    }
+
+    return (
+      <a
+        href="#"
+        onClick={e => {
+          e.preventDefault();
+          this.props.onFilterChange(filter);
+        }}
+      >
+        {name}
+      </a>
+    );
+  }
+
+  render() {
+    return (
+      <p>
+        Show: {this.renderFilter("SHOW_ALL", "All")}
+        {", "}
+        {this.renderFilter("SHOW_COMPLETED", "Completed")}
+        {", "}
+        {this.renderFilter("SHOW_ACTIVE", "Active")}
+        .
+      </p>
+    );
+  }
+}
+
+Footer.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
+  filter: PropTypes.oneOf(["SHOW_ALL", "SHOW_COMPLETED", "SHOW_ACTIVE"])
+};
+
+export class WarningContainer extends Component {
+  render() {
+    const {
+      dispatch,
+      visibilityFilter,
+      badPairs,
+      badPairsConcat,
+      onClick
+    } = this.props;
+    return (
+      <div>
+        <Accordion
+          style={{
+            background:
+              badPairs.length + badPairsConcat.length === 0
+                ? "rgba(92, 167, 0, 0.55)"
+                : "rgba(231, 29, 50, 0.55)"
+          }}
+        >
+          <AccordionItem title="Tag Clash">
+            <StructuredListWrapper selection border>
+              <StructuredListHead>
+                <StructuredListRow head>
+                  <StructuredListCell head>{""}</StructuredListCell>
+                  <StructuredListCell head>Tag</StructuredListCell>
+                  <StructuredListCell head>Clashing Tag</StructuredListCell>
+                  <StructuredListCell head>Difference</StructuredListCell>
+                  <StructuredListCell head>
+                    Position in manifest
+                  </StructuredListCell>
+                </StructuredListRow>
+              </StructuredListHead>
+              <StructuredListBody>
+                {badPairs.map(badPair => (
+                  <WarningItem
+                    key={badPair.id}
+                    {...badPair}
+                    onClick={e => {
+                      e.preventDefault();
+                      onClick(badPair.id);
+                    }}
+                  />
+                ))}
+                {badPairsConcat.map(badPair => (
+                  <WarningItem
+                    key={badPair.id}
+                    {...badPair}
+                    onClick={e => {
+                      e.preventDefault();
+                      onClick(badPair.id);
+                    }}
+                  />
+                ))}
+              </StructuredListBody>
+            </StructuredListWrapper>
+            <Footer
+              filter={visibilityFilter}
+              onFilterChange={nextFilter =>
+                dispatch(setVisibilityFilter(nextFilter))}
+            />
+          </AccordionItem>
+        </Accordion>
+      </div>
+    );
+  }
+}
 
 WarningContainer.PropTypes = {
   badPairs: PropTypes.arrayOf(
@@ -76,16 +133,28 @@ WarningContainer.PropTypes = {
   onClick: PropTypes.func.isRequired
 };
 
-//Once checked off, remove from list.
-export const getVisibleWarnings = badPairs => {
-  return badPairs.filter(bp => !bp.completed);
+export const getVisibleWarnings = (warnings, filter) => {
+  switch (filter) {
+    case VisibilityFilters.SHOW_ALL:
+      return warnings;
+    case VisibilityFilters.SHOW_COMPLETED:
+      return warnings.filter(warning => warning.completed);
+    case VisibilityFilters.SHOW_ACTIVE:
+      return warnings.filter(warning => !warning.completed);
+    default:
+      return warnings;
+  }
 };
 
 export const mapStateToProps = state => {
   return {
-    badPairs: getVisibleWarnings(state.warningContainer.warningItems.badPairs),
+    badPairs: getVisibleWarnings(
+      state.warningContainer.warningItems.badPairs,
+      state.warningContainer.visibilityFilter
+    ),
     badPairsConcat: getVisibleWarnings(
-      state.warningContainer.warningItems.badPairsConcat
+      state.warningContainer.warningItems.badPairsConcat,
+      state.warningContainer.visibilityFilter
     )
   };
 };
@@ -95,6 +164,9 @@ export const mapDispatchToProps = dispatch => {
     onClick: id => {
       console.log("Id passed: ", id);
       dispatch(warningContainerActionCreators.toggleTagPair(id));
+    },
+    dispatch: arg => {
+      dispatch(arg);
     }
   };
 };
