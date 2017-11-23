@@ -1,10 +1,5 @@
-import { reducer, warningItems } from "./warningDuck";
+import { reducer } from "./warningDuck";
 import * as duck from "./warningDuck";
-import { CardStatus } from "carbon-components-react";
-import thunk from "redux-thunk";
-import configureMockStore from "redux-mock-store";
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
 
 describe("Warning actions", () => {
   it("should create an action to toggle a tag pair completed", () => {
