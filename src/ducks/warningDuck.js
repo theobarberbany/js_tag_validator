@@ -13,15 +13,15 @@ export const VisibilityFilters = {
   SHOW_ACTIVE: "SHOW_ACTIVE"
 };
 
-export const { SHOW_ALL } = VisibilityFilters;
-
 //Reducers
+export const { SHOW_ACTIVE } = VisibilityFilters;
+
 export const initialWarningState = {
   badPairs: [],
   badPairsConcat: []
 };
 
-export function visibilityFilter(state = SHOW_ALL, action) {
+export function visibilityFilter(state = SHOW_ACTIVE, action) {
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
       return action.filter;
