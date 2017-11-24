@@ -1,0 +1,12 @@
+#Items that are not needed.
+#Anything not used for building goes here
+
+Dockerfile
+.dockerignore
+.gitignore
+README.md
+
+#Artifacts 
+#Contains all files created during running 'yarn build'
+build
+node_modules
