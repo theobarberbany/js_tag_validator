@@ -120,7 +120,7 @@ export class WarningContainer extends Component {
   }
 }
 
-WarningContainer.PropTypes = {
+WarningContainer.propTypes = {
   badPairs: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
