@@ -1,23 +1,20 @@
 import { reducer } from "./FileHandlerDuck";
 import * as duck from "./FileHandlerDuck";
 import { CardStatus } from "carbon-components-react";
+import thunk from "redux-thunk";
+import configureMockStore from "redux-mock-store";
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
-describe("actions", () => {
+const data = { somejson: "somedata" }; // some dummy data
+
+describe("File Handler actions", () => {
   it("should create an action to load an object into the store", () => {
-    const data = { text: "asdf" };
     const expectedAction = {
       type: duck.PUSH_DATA,
       data
     };
     expect(duck.pushData(data)).toEqual(expectedAction);
-  });
-  it("should create an action to toggle a tag pair completed", () => {
-    const id = 1;
-    const expectedAction = {
-      type: duck.TOGGLE_TAG_PAIR,
-      id
-    };
-    expect(duck.toggleTagPair(id)).toEqual(expectedAction);
   });
   it("should create an action to change ui state when a file is dropped", () => {
     const fileHandlerState = {
@@ -49,52 +46,86 @@ describe("actions", () => {
     };
     expect(duck.pushOverview(data)).toEqual(expectedAction);
   });
-  it("Should create an action to add a new bad tag pair to the store", () => {
-    let nextTagPairId = 0;
-    const tag1 = "GGAGCTAC";
-    const tag2 = "TCGACTAG";
-    const diff = 2;
-    const pos = 1;
-    const expectedAction = {
-      type: duck.ADD_BAD_TAG_PAIR,
-      id: nextTagPairId++,
-      tag1: tag1,
-      tag2: tag2,
-      diff: diff,
-      pos: pos
+});
+
+describe("File Handler async actions", () => {
+  it("should dispatch pushOverview with the overview data, and then dispatch processBadTags", async () => {
+    const expectedActions = [
+      {
+        data: { bad_tag_total: 2, composition: [[1, 2, 3, 4], [1, 2, 3, 4]] },
+        type: "PUSH_OVERVIEW"
+      },
+      {
+        diff: 2,
+        id: 0,
+        pos: 47,
+        tag1: "CCGTAGTA",
+        tag2: "CCGTAAGA",
+        type: "ADD_BAD_TAG_PAIR"
+      },
+      {
+        diff: 0,
+        id: 1,
+        pos: "56 : 23",
+        tag1: "GCGTAGTAGCGTAGTA",
+        tag2: "GCGTAGTAGCGTAGTA",
+        type: "ADD_BAD_TAG_PAIR_CONCAT"
+      }
+    ];
+    const object = {
+      bad_tag_container: {
+        normal: {
+          bad_tag_count: 1,
+          bad_tag_pairs: [["CCGTAGTA", "CCGTAAGA", 2, 47]]
+        },
+        concatenated: {
+          bad_tag_count: 1,
+          bad_tag_pairs: [["GCGTAGTAGCGTAGTA", "GCGTAGTAGCGTAGTA", 0, 56, 23]]
+        }
+      },
+      composition: {
+        bad_tag_total: 1,
+        composition: [[1, 2, 3, 4], [1, 2, 3, 4]]
+      }
     };
-    expect(duck.addBadTagPair(tag1, tag2, diff, pos)).toEqual(expectedAction);
-  });
-  it("Should create an action to add a new concatenated bad tag pair to the store", () => {
-    let nextTagPairId = 1;
-    const tag1 = "GGAGCTAC";
-    const tag2 = "TCGACTAG";
-    const diff = 2;
-    const expectedAction = {
-      type: duck.ADD_BAD_TAG_PAIR_CONCAT,
-      id: nextTagPairId++,
-      tag1: tag1,
-      tag2: tag2,
-      diff: diff
-    };
-    expect(duck.addBadTagPairConcat(tag1, tag2, diff)).toEqual(expectedAction);
+    const store = mockStore(duck.initialState);
+    await store.dispatch(duck.processOverview(object));
+    expect(store.getActions()).toEqual(expectedActions);
   });
 });
 
-test("reducers", () => {
-  let state;
-  state = reducer(undefined, {});
-  expect(state.displayProps).toEqual({
-    cardTitle: "Get started",
-    cardIcon: "copy",
-    cardInfo: ["Drop manifest file here"],
-    status: 1
+describe("File Handler reducer", () => {
+  it("should return the initial state", () => {
+    expect(reducer(undefined, {})).toEqual(duck.initialState);
   });
-  state = reducer(undefined, { type: "DROP_FILE" });
-  expect(state.displayProps).toEqual({
-    cardTitle: "Crunching Numbers",
-    cardIcon: "copy",
-    cardInfo: ["Won't be a minute"],
-    status: 0
+  it("should change the UI when DROP_FILE is handled", () => {
+    expect(reducer(undefined, { type: duck.DROP_FILE }).displayProps).toEqual({
+      cardTitle: "Crunching Numbers",
+      cardIcon: "copy",
+      cardInfo: ["Won't be a minute"],
+      status: 0
+    });
+  });
+  it("should handle PUSH_DATA", () => {
+    expect(
+      reducer(undefined, {
+        type: duck.PUSH_DATA,
+        data
+      })
+    ).toEqual({
+      ...duck.initialState,
+      cleanData: data
+    });
+  });
+  it("should handle PUSH_OVERVIEW", () => {
+    expect(
+      reducer(undefined, {
+        type: duck.PUSH_OVERVIEW,
+        data
+      })
+    ).toEqual({
+      ...duck.initialState,
+      overview: data
+    });
   });
 });

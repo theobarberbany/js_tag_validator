@@ -11,7 +11,7 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 import fetchMock from "fetch-mock";
 
-describe("actions", () => {
+describe("cache actions", () => {
   it("should create an action to request a cache fetch", () => {
     const cacheURL = "http://testurl.fetch/cache.json";
     const expectedAction = {
@@ -28,14 +28,16 @@ describe("actions", () => {
     const expectedAction = {
       type: duck.RECIEVE_CACHE,
       cacheURL,
-      data: json,
-      receivedAt: Date.now()
+      data: json
     };
-    expect(duck.recieveCache(cacheURL, json)).toEqual(expectedAction);
+    let action = duck.recieveCache(cacheURL, json);
+    delete action.receivedAt;
+    console.log(action);
+    expect(action).toEqual(expectedAction);
   });
 });
 
-describe("async actions", () => {
+describe("async cache actions", () => {
   afterEach(() => {
     fetchMock.reset();
     fetchMock.restore();
@@ -69,61 +71,66 @@ describe("async actions", () => {
     const store = mockStore({});
 
     await store.dispatch(duck.fetchCache("cache.json")).then(() => {
-      //console.log("store actions: ", store.getActions());
       //hack to prevent recievedAt field failing the test
       let gotActions = store.getActions();
-      let o = gotActions[1];
-      delete o.receivedAt;
-      expect(gotActions).toEqual(expectedActions);
+      //Action 1
+      expect(gotActions[0]).toEqual(expectedActions[0]);
+      //Action 2
+      ////type
+      expect(gotActions[1].type).toEqual(expectedActions[1].type);
+      ////cacheURL
+      expect(gotActions[1].cacheURL).toEqual(expectedActions[1].cacheURL);
+      ////data
+      expect(gotActions[1].data).toEqual(expectedActions[1].data);
     });
   });
 });
 
-test("reducers", () => {
-  let state;
-  state = reducer(
-    {
-      fileHandler: {
-        displayProps: {
-          cardTitle: "Get started",
-          cardIcon: "copy",
-          cardInfo: ["Drop manifest file here"],
-          status: 1
+const initialState = {
+  isFetching: false,
+  didInvalidate: false,
+  data: []
+};
+
+const cacheURL = "http://testing123.com/cache.json";
+const data = { somejson: "somedata" };
+
+describe("Cache reducer", () => {
+  it("returns initial state", () => {
+    expect(reducer(undefined, {})).toEqual(initialState);
+  });
+  it("should handle REQUEST_CACHE", () => {
+    expect(
+      reducer(undefined, {
+        type: duck.REQUEST_CACHE
+      })
+    ).toEqual({
+      ...initialState,
+      isFetching: true,
+      didInvalidate: false
+    });
+  });
+  it("should handle RECIEVE_CACHE", () => {
+    expect(
+      reducer(
+        {
+          ...initialState,
+          isFetching: true,
+          didInvalidate: false
         },
-        cleanData: [],
-        badPairs: [],
-        badPairsConcat: []
-      },
-      cache: {
-        isFetching: false,
-        didInvalidate: false,
-        data: []
-      }
-    },
-    {
-      type: "REQUEST_CACHE",
-      cacheURL:
-        "https://raw.githubusercontent.com/theobarberbany/js_tag_validator/development/src/internal/cache_min.json"
-    }
-  );
-  expect(state).toEqual({
-    cache: {
-      data: [],
+        {
+          type: duck.RECIEVE_CACHE,
+          cacheURL,
+          data: data,
+          receivedAt: 0
+        }
+      )
+    ).toEqual({
+      ...initialState,
+      isFetching: false,
       didInvalidate: false,
-      isFetching: false
-    },
-    didInvalidate: false,
-    fileHandler: {
-      badPairs: [],
-      badPairsConcat: [],
-      cleanData: [],
-      displayProps: {
-        cardIcon: "copy",
-        cardInfo: ["Drop manifest file here"],
-        cardTitle: "Get started",
-        status: 1
-      }
-    },
-    isFetching: true
+      data: data,
+      lastUpdated: 0
+    });
   });
 });

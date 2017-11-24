@@ -7,8 +7,15 @@ import {
   Icon
 } from "carbon-components-react";
 
-const WarningItem = ({ onClick, tag1, tag2, diff, pos }) => (
-  <StructuredListRow label htmlFor="warning" onClick={onClick}>
+const WarningItem = ({ onClick, tag1, tag2, diff, pos, completed }) => (
+  <StructuredListRow
+    label
+    htmlFor="warning"
+    onClick={onClick}
+    style={{
+      textDecoration: completed ? "line-through" : "none"
+    }}
+  >
     <StructuredListInput
       id="warning"
       value="warning"

@@ -19,3 +19,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+src/internal/testing.html
+package-lock.json
+scratchpad.js
+src/internal/test_manifest.csv

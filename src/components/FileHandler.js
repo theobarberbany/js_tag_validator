@@ -9,7 +9,7 @@ import { CardFooter } from "carbon-components-react";
 import { CardContent } from "carbon-components-react";
 import { CardStatus } from "carbon-components-react";
 
-const cardProps = {
+export const cardProps = {
   onClick: () => {
     console.log("click");
   }, // eslint-disable-line no-console
@@ -19,7 +19,7 @@ const cardProps = {
   className: "some-class"
 };
 
-const overflowMenuProps = {
+export const overflowMenuProps = {
   onClick: () => {
     console.log("click");
   }, // eslint-disable-line no-console
@@ -29,20 +29,20 @@ const overflowMenuProps = {
   className: "some-class"
 };
 
-const overflowMenuItemProps = {
+export const overflowMenuItemProps = {
   onFocus: () => {
     console.log("focus");
   }, // eslint-disable-line no-console
   className: "some-class"
 };
 
-const visitInfo = () => {
-  window.location = "https://github.com/theobarberbany/js_tag_validator/";
+export const visitInfo = () => {
+  window.location.assign("https://github.com/theobarberbany/js_tag_validator/");
 };
 
 // Calls func when file is dropped, if func is defined. Allowed methods defined
 // here (spec)
-const boxTarget = {
+export const boxTarget = {
   drop(props, monitor) {
     if (props.onDrop) {
       props.onDrop(props, monitor);
@@ -50,7 +50,7 @@ const boxTarget = {
   }
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     cardTitle: state.fileHandler.displayProps.cardTitle,
     cardIcon: state.fileHandler.displayProps.cardIcon,
@@ -67,6 +67,15 @@ class FileHandler extends Component {
     canDrop: PropTypes.bool.isRequired,
     onDrop: PropTypes.func
   };
+
+  //For debugging purposes
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log("previous props: ", prevProps, "previous state: ", prevState);
+  // }
+
+  // componentWillUpdate(nextProps, nextState) {
+  //   console.log("next props: ", nextProps, "next state:", nextState);
+  // }
 
   render() {
     const { canDrop, isOver, connectDropTarget } = this.props;
@@ -89,7 +98,10 @@ class FileHandler extends Component {
             </OverflowMenu>
           </CardContent>
           <CardFooter>
-            <CardStatus status={this.props.status} />
+            <CardStatus
+              status={this.props.status}
+              notRunningText={"Waiting for your input"}
+            />
           </CardFooter>
         </Card>
       </div>

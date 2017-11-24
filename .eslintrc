@@ -1,9 +1,3 @@
 {
-  "extends": ["react-app", "airbnb"],
-  "parser": "babel-eslint",
-  "plugins": ["react", "jsx-a11y", "import"],
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": true
-  }
+  "extends": "react-app"
 }
