@@ -32,7 +32,7 @@ class SentryBoundary extends Component {
           <div className="snap-message">
             <p>We're sorry - something's gone wrong.</p>
             <p>
-              Our team has been notified, but click
+              Please click
               <button
                 onClick={() => Raven.lastEventId() && Raven.showReportDialog()}
               >
