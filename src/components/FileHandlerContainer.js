@@ -208,7 +208,7 @@ const mapDispatchToProps = dispatch => {
     fetchCache: () => {
       dispatch(
         cacheActions.fetchCache(
-          "https://raw.githubusercontent.com/theobarberbany/js_tag_validator/testing/src/internal/cache_min.json"
+          "https://raw.githubusercontent.com/theobarberbany/js_tag_validator/master/src/internal/cache_min.json"
         )
       );
     }
