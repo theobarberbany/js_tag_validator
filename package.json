@@ -10,7 +10,7 @@
     "papaparse": "^4.3.6",
     "prop-types": "^15.6.0",
     "raven-for-redux": "^1.1.1",
-    "raven-js": "latest ",
+    "raven-js": "latest",
     "react": "^16.0.0",
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^2.5.4",
