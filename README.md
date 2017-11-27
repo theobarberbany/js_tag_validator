@@ -1,12 +1,6 @@
 ## Javascript Tag Validator
 ---
-Master branch :
-[![Build Status](https://travis-ci.org/theobarberbany/js_tag_validator.svg?branch=master)](https://travis-ci.org/theobarberbany/js_tag_validator) [![codecov](https://codecov.io/gh/theobarberbany/js_tag_validator/branch/master/graph/badge.svg)](https://codecov.io/gh/theobarberbany/js_tag_validator)
-
-Development branch :
-[![Build Status devel](https://travis-ci.org/theobarberbany/js_tag_validator.svg?branch=development)](https://travis-ci.org/theobarberbany/js_tag_validator) [![codecov devel](https://codecov.io/gh/theobarberbany/js_tag_validator/branch/development/graph/badge.svg)](https://codecov.io/gh/theobarberbany/js_tag_validator)
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/theobarberbany/js_tag_validator.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/theobarberbany/js_tag_validator.svg?branch=master)](https://travis-ci.org/theobarberbany/js_tag_validator) [![codecov](https://codecov.io/gh/theobarberbany/js_tag_validator/branch/master/graph/badge.svg)](https://codecov.io/gh/theobarberbany/js_tag_validator)[![Greenkeeper badge](https://badges.greenkeeper.io/theobarberbany/js_tag_validator.svg)](https://greenkeeper.io/)
 
 Clone the repo then run `npm install` or `yarn install`
 
