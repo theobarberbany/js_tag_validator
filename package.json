@@ -1,6 +1,7 @@
 {
   "name": "js_tag_validator",
   "version": "0.1.0",
+  "license": "SEE LICENSE IN LICENSE",
   "private": true,
   "dependencies": {
     "carbon-components": "^8.1.9",
