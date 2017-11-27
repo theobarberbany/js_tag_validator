@@ -1,11 +1,10 @@
 sudo: true
-dist: trusty 
+dist: trusty
 language: node_js
 node_js:
 - 8
 before_install:
-# package-lock.json was introduced in npm@5
-- npm install -g npm@5 # skip this if you are using node 9
+- npm install -g npm@5
 - npm install -g greenkeeper-lockfile@1
 before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
@@ -20,6 +19,9 @@ notifications:
     on_success: never
     on_failure: always
   slack:
-    on_success: always 
+    on_success: always
     on_failure: always
     secure: 2qS5uGU7QxZh0xl3/5Mts8Y7gzrkVZXQ10Hnw6T9KdjPOMOcWoXOVWN6u//wqkL0oKhYyJ+PCogz85g5zMOa/vWoDI6rUzHZarm3JJ9Bw5M20Sfd/DcX08PXahZkIhCDxSzzU4J9Fx8z/qSF9Eu48ktxSgA8Shd43fQrENhJ2xzZhLIkjmufBxblgJwPXbZmpXXw6cIjaTFFz1n95zmcMUxw/I8WES5jKpm6bzB0KO0ZFyg+zB68wKzuP47sHZKhXYECWlnoHMViXjLU2FeMpu6i9jxsldxbYK3IPMAKpvxGilQ3segBZCtyoQRtfT0YBe3miB+4v1u6YvUMCBZyzOKOcGk16/eNxWkZjLLYwRFmY7NXGElAw/nY/fnYI1N9VgSkVYLFbSyzi/ufWT9Z/LyiSj8GCBH9FUZOmfQR6F2tkIIPAd5t1CDorj0SxxUrAKDzlzri4o0dGPUiIshRQH9aGIp/685pJkGv6lC+zx9j05MrkSE7a3HNu8AnE3EoGIFZPf3ENaydJ6uTbE1NU8ZVskv78RQRaEH6K5Cx4hTTpc1QNlBWgZDK5qJaHKAzLeOPlpkzx7aq+rtDuPg+7V7hNV9v0uGOA2g3zCcS1KjncWCIbNK3tGzUFhHbbDSiEy60XazmkvRTn8Gq344eXwz6beYZ3xsq3KkZT0XmIe4=
+env:
+  global:
+    secure: Uq2jkkFnI6KWJTiyX657XUREJf+rjhVRaZGNUNudSJEhA/9jccQTadX1TqlpHjjMGuX5Hut+Jsa7DP9smi319ZkKEFDQZeifEvThRyI/veNOT9HrURlJBEYJnj458Hlw94pmxctRVNs/cTVjrzX4PWTPozdMk+wP97R3VNpTKc6i65w0rcpxqLXZF8hLFS0M/QoJMdd4tmCbl7iIih5KRKsStQgngWcyJnGrR5aiPpLBDf7286BwUTohTG3cEeP8ABnS6qJ60wt2WZHAVU7ZQ6h1iQb4/IEG+4u/oQ2bja6qkZq2bvEq2oxvxs73Z3HOlu6giPNTw4HGxJpx5uKbpnhm2brPwhilJ4gZ/4rcDq85kQk+qa/SFxT/3d18cBYbe1LW4QyfKdP0BOAzFnubJvVcUJeL0OVV9JepO5ralJx9CWNV5e9ZGjeYrzW1zYl22AVRmSb22vRHFgSJ8EK7Zc2bx4ngGYsWreHmvYE1/qX5VihfXChDTeIkkN0MVwooxbRg+qgmIZbucVrbQAkQOOFAPt+ACXkmynIHsKJtEs/p2UdQ+0mx6Edglcxezx+AsnlfYjVYOrxLjrSaZxs90AJIvUXRT2NgWc1o1TPop+1AUORJSy+6CttDBJMImzGb6GEXysDdvobr8fLB5JikLnZ7oQ65jorgAjX/1J/eMog=
