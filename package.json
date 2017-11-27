@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "carbon-components": "^latest",
-    "carbon-components-react": "^latest",
-    "carbon-icons": "^latest",
+    "carbon-components": "^8.1.9",
+    "carbon-components-react": "^4.2.1",
+    "carbon-icons": "^6.2.0",
     "isomorphic-fetch": "^2.2.1",
     "papaparse": "^4.3.6",
     "prop-types": "^15.6.0",
