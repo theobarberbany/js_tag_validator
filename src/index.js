@@ -17,4 +17,4 @@ ReactDOM.render(
   </div>,
   document.getElementById("root")
 );
-registerServiceWorker();
+// registerServiceWorker(); // leave this until stable
