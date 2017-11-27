@@ -6,7 +6,7 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 
 Raven.config("https://509f2c5e443c4252b9eb011cc14bda0f@sentry.io/232560", {
-  release: "0e4fdef81448dcfa0e16ecc4433ff3997aa53572",
+  release: "804aef8675adef2a3eb0c692f8d110e47a6d9cce",
   autoBreadcrumbs: true,
   captureUnhandledRejections: true
 }).install();
