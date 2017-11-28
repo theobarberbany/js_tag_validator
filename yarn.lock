@@ -1266,18 +1266,18 @@ capture-stack-trace@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/capture-stack-trace/-/capture-stack-trace-1.0.0.tgz#4a6fa07399c26bba47f0b2496b4d0fb408c5550d"
 
-carbon-components-react@^latest:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/carbon-components-react/-/carbon-components-react-4.2.1.tgz#ba0af02ddd68171657f519601516ef9343edf1f6"
+carbon-components-react@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/carbon-components-react/-/carbon-components-react-5.0.0.tgz#8e45dec426c9609f27a215ef7695c2574509be64"
   dependencies:
     classnames "2.2.5"
-    flatpickr "3.0.7"
+    flatpickr "4.0.7"
     lodash.debounce "^4.0.8"
     react-addons-css-transition-group "^15.4.2"
     warning "3.0.0"
     window-or-global "^1.0.1"
 
-carbon-components@^latest:
+carbon-components@^8.1.9:
   version "8.1.9"
   resolved "https://registry.yarnpkg.com/carbon-components/-/carbon-components-8.1.9.tgz#3b655c2347b7be28d9f794e25f92f0d0b245b914"
   dependencies:
@@ -1286,7 +1286,7 @@ carbon-components@^latest:
     lodash.debounce "^4.0.8"
     warning "^3.0.0"
 
-carbon-icons@^6.0.4, carbon-icons@^latest:
+carbon-icons@^6.0.4, carbon-icons@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/carbon-icons/-/carbon-icons-6.2.0.tgz#84f568a64b1465c52183eb26de736893b3d8abdb"
 
@@ -2470,7 +2470,7 @@ eslint@4.10.0:
     table "^4.0.1"
     text-table "~0.2.0"
 
-eslint@^4.5.0, eslint@^4.9.0:
+eslint@^4.12.0, eslint@^4.5.0:
   version "4.12.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.12.0.tgz#a7ce78eba8cc8f2443acfbbc870cc31a65135884"
   dependencies:
@@ -2853,9 +2853,9 @@ flatpickr@2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-2.6.3.tgz#457357532deb135f3da64b425bf4435737961564"
 
-flatpickr@3.0.7:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-3.0.7.tgz#2aa980c0bd83884c0299ee9fba3b7809bea16a29"
+flatpickr@4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.0.7.tgz#a73ea27abafb084c276569223ab6ff4fafe1cba0"
 
 flatten@^1.0.2:
   version "1.0.2"
