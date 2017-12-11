@@ -48,7 +48,7 @@
     "prettier-eslint": "^8.2.1",
     "react-scripts": "1.0.17",
     "react-test-renderer": "^16.0.0",
-    "fs-extra": "^4.0.2"
+    "fs-extra": "^5.0.0"
   },
   "jest": {
     "collectCoverageFrom": [
