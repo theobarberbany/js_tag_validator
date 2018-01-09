@@ -1,16 +1,9 @@
+// Error boundary utilising sentry
 import React, { Component } from "react";
 import Raven from "raven-js";
 
 import "./SentryBoundary.css";
 import oops from "../internal/aw_snap.svg";
-
-export class customError extends Error {
-  constructor(...args) {
-    super(...args);
-    //Currently fails all tests; need to find polyfill.
-    //Error.captureStackTrace(this, customError);
-  }
-}
 
 class SentryBoundary extends Component {
   constructor(props) {

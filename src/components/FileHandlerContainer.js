@@ -10,7 +10,7 @@ import FileHandler from "./FileHandler";
 import WarningContainer from "./WarningContainer";
 import OutputContainer from "./OutputContainer";
 import DatabaseContainer from "./DatabaseContainer";
-import SentryBoundary, { customError } from "./SentryBoundary";
+import SentryBoundary from "./SentryBoundary";
 
 import { parseData2 } from "../internal/Parser";
 import { run } from "../internal/Validator";
@@ -40,7 +40,7 @@ export class FileHandlerContainer extends Component {
 
   shouldComponentUpdate() {
     if (this.state.bad_input) {
-      throw new customError("Parsing Failure");
+      throw new Error("Parsing Failure");
     } else {
       return true;
     }
