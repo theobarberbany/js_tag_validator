@@ -18,7 +18,7 @@ You can find the most recent version of the guide [here](https://github.com/face
 
   - run tests: `yarn test`
 
-  - build for production: `yarn build`
+  - build for production: `yarn build`  :shipit:
 
   - eject (don't do..): `yarn eject`
 
@@ -50,6 +50,18 @@ You can find the most recent version of the guide [here](https://github.com/face
 
 ---
 
+###### Sentry (Error Handling)
+
+Sentry is used for error tracking.  All config is within `src/index.js`, 
+
+Each new release corresponds to a new release within Sentry. This makes it easy to see if users of an older version are reporting errors from known bugs. See [releases](https://docs.sentry.io/learn/releases/) for the documentation on using releases.
+
+Errors within the application are caught by [error boundaries](https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html), a react 16 feature. A single error boundary is currently used, with Sentry integration. It is defined in `src/components/SentryBoundary.js`. There is room for additional, more specialised error boundaries that may be added later. (e.g A parser failure should look different to a validation or database function failing to run)
+
+The boundaries are defined in `/src/components/FileHandlerContainer.js` where The `<SentryBoundary>` component wraps the respective container component. This way, if the component fails to mount, the entire application does not unmount. Coarser, or finer grained options are possible. 
+
+---
+
 ###### Libraries used :
 
  - [React](https://reactjs.org/)
@@ -61,3 +73,5 @@ You can find the most recent version of the guide [here](https://github.com/face
  - [React DnD](https://github.com/react-dnd/react-dnd)
  - [Redux Dev tools](https://github.com/zalmoxisus/redux-devtools-extension) (chrome extension)
  - [React Inspector](https://github.com/xyc/react-inspector)
+ - [Raven Middleware for Redux](https://github.com/captbaritone/raven-for-redux)
+ - [Raven-js](https://github.com/getsentry/raven-js)
