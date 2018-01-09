@@ -5,7 +5,28 @@ import Raven from "raven-js";
 import createRavenMiddleware from "raven-for-redux";
 import rootReducer from "./rootReducer";
 import thunk from "redux-thunk";
+eimport { GoogleAnalytics } from "redux-beacon/targets/google-analytics"; //Redux Beacon target
+import { createMiddleware } from "redux-beacon";
 
+//Analytics set up
+//
+
+// Define an event
+const pageView = action => ({
+  hitType: "pageview",
+  page: action.payload
+});
+
+// Map the event to a Redux action
+const eventsMap = {
+  LOCATION_CHANGE: pageView
+};
+
+// Create the analytics middleware
+const analytics = createMiddleware(eventsMap, GoogleAnalytics);
+
+
+//Configure Store.
 export function configureStore() {
   return createStore(
     rootReducer, // Import root reducer from rootReducer.js
@@ -13,6 +34,7 @@ export function configureStore() {
       window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(
       thunk, // Apply Redux thunk
+      analytics, //Apply Redux Beacon analytics
       createRavenMiddleware(
         // Redux + Sentry Config
         //modify state so cache isn't sent as state, or an action. (Don't undo!)

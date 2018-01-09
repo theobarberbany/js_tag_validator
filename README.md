@@ -76,3 +76,4 @@ The boundaries are defined in `/src/components/FileHandlerContainer.js` where Th
  - [Raven Middleware for Redux](https://github.com/captbaritone/raven-for-redux)
  - [Raven-js](https://github.com/getsentry/raven-js)
  - [react-ga](https://github.com/react-ga/react-ga)
+ - [Redux Beacon](https://github.com/rangle/redux-beacon)
