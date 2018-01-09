@@ -6,16 +6,16 @@ import createRavenMiddleware from "raven-for-redux";
 import rootReducer from "./rootReducer";
 import thunk from "redux-thunk";
 
-//Enable redux devtools, and apply middlewear.
 export function configureStore() {
   return createStore(
-    rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    rootReducer, // Import root reducer from rootReducer.js
+    window.__REDUX_DEVTOOLS_EXTENSION__ && // Enable redux-devtools
       window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(
-      thunk,
+      thunk, // Apply Redux thunk
       createRavenMiddleware(
-        //modify state so cache isn't sent
+        // Redux + Sentry Config
+        //modify state so cache isn't sent as state, or an action. (Don't undo!)
         Raven,
         {
           stateTransformer: state => {

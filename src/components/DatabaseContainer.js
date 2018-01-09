@@ -83,6 +83,11 @@ export class DatabaseContainer extends PureComponent {
     };
   }
 
+  /* 
+   Generate the DatabaseItems outside of the render() method. 
+   This is so that the render() method can be re-called without causing problems.
+   It is also more in line with the react style of doing things. 
+*/
   componentWillMount() {
     if (this.props.indexing === "dual") {
       this.individualTags = getCount(this.props.tags).map(tagGroup => {
@@ -138,6 +143,8 @@ export class DatabaseContainer extends PureComponent {
     }
   }
 
+  /* ObjectInspector for Detailed results not currently implemented 
+   for performance issues and a minimal need */
   render() {
     // console.log(
     //   "here!",
@@ -272,10 +279,12 @@ DatabaseContainer.propTypes = {
 };
 
 export const filterCache = (cache, tags) => {
-  //1. Make data usable
+  //1. Make data usable, flatten the 2d array.
   let flattened = tags.reduce((acc, cur) => acc.concat(cur), []);
   //console.log(flattened);
-  //2. Actually filter
+  /* 2. Actually filter : if the item is in flattened, extract it's 
+     Corresponding data from the cache.
+  */
   let filtered = flattened.reduce((result, key) => {
     if (result[key]) {
       result[key] = result[key].concat(cache[key]);
@@ -320,7 +329,6 @@ export const filterCacheConcat = (cache, tags) => {
   }, {});
   return filtered;
 };
-//2. Filter
 
 export const mapStateToProps = state => {
   return {
