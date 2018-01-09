@@ -14,7 +14,9 @@ Raven.config("https://509f2c5e443c4252b9eb011cc14bda0f@sentry.io/232560", {
 }).install();
 
 //Google Analytics
-ReactGA.initialize("UA-112184740-1");
+ReactGA.initialize("UA-112184740-1", {
+  debug: true
+});
 
 ReactDOM.render(
   <div>
