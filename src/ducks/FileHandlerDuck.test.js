@@ -1,11 +1,12 @@
 import { reducer } from "./FileHandlerDuck";
 import * as duck from "./FileHandlerDuck";
-import { CardStatus } from "carbon-components-react";
+import { CardStatus, Accordion } from "carbon-components-react";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
+import { EventTypes } from "redux-segment";
+
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
-
 const data = { somejson: "somedata" }; // some dummy data
 
 describe("File Handler actions", () => {
@@ -61,7 +62,21 @@ describe("File Handler async actions", () => {
         pos: 47,
         tag1: "CCGTAGTA",
         tag2: "CCGTAAGA",
-        type: "ADD_BAD_TAG_PAIR"
+        type: "ADD_BAD_TAG_PAIR",
+        meta: {
+          analytics: {
+            eventType: EventTypes.track,
+            eventPayload: {
+              event: "ADD_BAD_TAG_PAIR",
+              properties: {
+                tag1: "CCGTAGTA",
+                tag2: "CCGTAAGA",
+                diff: 2,
+                pos: 47
+              }
+            }
+          }
+        }
       },
       {
         diff: 0,
@@ -69,7 +84,21 @@ describe("File Handler async actions", () => {
         pos: "56 : 23",
         tag1: "GCGTAGTAGCGTAGTA",
         tag2: "GCGTAGTAGCGTAGTA",
-        type: "ADD_BAD_TAG_PAIR_CONCAT"
+        type: "ADD_BAD_TAG_PAIR_CONCAT",
+        meta: {
+          analytics: {
+            eventType: EventTypes.track,
+            eventPayload: {
+              event: "ADD_BAD_TAG_PAIR_CONCAT",
+              properties: {
+                tag1: "GCGTAGTAGCGTAGTA",
+                tag2: "GCGTAGTAGCGTAGTA",
+                diff: 0,
+                pos: "56:23"
+              }
+            }
+          }
+        }
       }
     ];
     const object = {

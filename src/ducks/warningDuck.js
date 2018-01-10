@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { EventTypes } from "redux-segment";
 
 //Action Types
 export const ADD_BAD_TAG_PAIR = "ADD_BAD_TAG_PAIR";
@@ -98,7 +99,21 @@ export const addBadTagPair = (tag1, tag2, diff, pos) => {
     tag1: tag1,
     tag2: tag2,
     diff: diff,
-    pos: pos
+    pos: pos,
+    meta: {
+      analytics: {
+        eventType: EventTypes.track,
+        eventPayload: {
+          event: ADD_BAD_TAG_PAIR,
+          properties: {
+            tag1,
+            tag2,
+            diff,
+            pos
+          }
+        }
+      }
+    }
   };
 };
 
@@ -110,7 +125,21 @@ export const addBadTagPairConcat = (tag1, tag2, diff, pos1, pos2) => {
     tag1: tag1,
     tag2: tag2,
     diff: diff,
-    pos: pos1 + " : " + pos2
+    pos: pos1 + " : " + pos2,
+    meta: {
+      analytics: {
+        eventType: EventTypes.track,
+        eventPayload: {
+          event: ADD_BAD_TAG_PAIR_CONCAT,
+          properties: {
+            tag1,
+            tag2,
+            diff,
+            pos: pos1 + ":" + pos2
+          }
+        }
+      }
+    }
   };
 };
 //3. Toggle bad tag pairs complete

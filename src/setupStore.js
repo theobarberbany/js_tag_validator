@@ -5,6 +5,10 @@ import Raven from "raven-js";
 import createRavenMiddleware from "raven-for-redux";
 import rootReducer from "./rootReducer";
 import thunk from "redux-thunk";
+import { createTracker } from "redux-segment";
+
+//Redux segment
+const tracker = createTracker();
 
 //Configure Store.
 export function configureStore() {
@@ -14,6 +18,7 @@ export function configureStore() {
       window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(
       thunk, // Apply Redux thunk
+      tracker, //Apply Redux segment tracker
       createRavenMiddleware(
         // Redux + Sentry Config
         //modify state so cache isn't sent as state, or an action. (Don't undo!)

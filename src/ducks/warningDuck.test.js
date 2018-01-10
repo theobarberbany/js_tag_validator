@@ -1,5 +1,6 @@
 import { reducer } from "./warningDuck";
 import * as duck from "./warningDuck";
+import { EventTypes } from "redux-segment";
 
 describe("Warning actions", () => {
   it("should create an action to toggle a tag pair completed", () => {
@@ -22,7 +23,21 @@ describe("Warning actions", () => {
       tag1,
       tag2,
       diff,
-      pos
+      pos,
+      meta: {
+        analytics: {
+          eventType: EventTypes.track,
+          eventPayload: {
+            event: duck.ADD_BAD_TAG_PAIR,
+            properties: {
+              tag1,
+              tag2,
+              diff,
+              pos
+            }
+          }
+        }
+      }
     };
     expect(duck.addBadTagPair(tag1, tag2, diff, pos)).toEqual(expectedAction);
   });
@@ -39,7 +54,21 @@ describe("Warning actions", () => {
       tag1,
       tag2,
       diff,
-      pos: "22 : 56"
+      pos: "22 : 56",
+      meta: {
+        analytics: {
+          eventType: EventTypes.track,
+          eventPayload: {
+            event: duck.ADD_BAD_TAG_PAIR_CONCAT,
+            properties: {
+              tag1,
+              tag2,
+              diff,
+              pos: pos1 + ":" + pos2
+            }
+          }
+        }
+      }
     };
     expect(duck.addBadTagPairConcat(tag1, tag2, diff, pos1, pos2)).toEqual(
       expectedAction

@@ -75,3 +75,4 @@ The boundaries are defined in `/src/components/FileHandlerContainer.js` where Th
  - [React Inspector](https://github.com/xyc/react-inspector)
  - [Raven Middleware for Redux](https://github.com/captbaritone/raven-for-redux)
  - [Raven-js](https://github.com/getsentry/raven-js)
+ - [Redux-segment](https://github.com/rangle/redux-segment)
