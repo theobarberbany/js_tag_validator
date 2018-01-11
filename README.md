@@ -4,13 +4,13 @@
 
 Clone the repo then run `npm install` or `yarn install`
 
-(Currently tested and working with yarn 1.3.2, npm 5.6.0 and node version(s) 9.3.0 8.9.4)
+(Currently tested and working with yarn 1.3.2, npm 5.6.0 and node version(s) 9.3.0, 8.9.4)
 
 UI is designed with [sketch](https://www.sketchapp.com/), and can be found in ui.sketch
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-You can find the most recent version of the guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+React-scripts do a lot of background work. You can find the most recent version of the guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ---
 
