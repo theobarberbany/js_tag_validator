@@ -4,6 +4,8 @@
 
 Clone the repo then run `npm install` or `yarn install`
 
+(Currently tested and working with yarn 1.3.2 and node version 9.3.0)
+
 UI is designed with [sketch](https://www.sketchapp.com/), and can be found in ui.sketch
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
