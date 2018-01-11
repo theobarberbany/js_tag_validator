@@ -70,6 +70,10 @@ Travis CI is used for continuous integration. Currently the configuration runs w
 
 Documentation for changing slack integration can be found [here](https://docs.travis-ci.com/user/notifications/#Configuring-slack-notifications)
 
+[Codecov](https://codecov.io/) is used to track coverage. Results are automatically uploaded after each Travis build. The codecov token is encrypted in the same way the slack one is, and is stored in the `env:` section. See [here](https://github.com/codecov/example-node) for an example node repository.  
+
+[Greenkeeper](https://greenkeeper.io/docs.html) is used to track and keep npm dependencies up to date. [Docs](https://greenkeeper.io/docs.html)
+
 ---
 
 ###### Libraries used :
