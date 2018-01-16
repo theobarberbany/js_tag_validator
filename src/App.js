@@ -29,15 +29,15 @@ class App extends Component {
 
   render() {
     return (
-      <SentryBoundary>
-        <Provider store={store}>
-          <div className="App">
-            <div className="FileHandlerContainer">
+      <Provider store={store}>
+        <div className="App">
+          <div className="FileHandlerContainer">
+            <SentryBoundary>
               <FileHandlerContainer />
-            </div>
+            </SentryBoundary>
           </div>
-        </Provider>
-      </SentryBoundary>
+        </div>
+      </Provider>
     );
   }
 }
