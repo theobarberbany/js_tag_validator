@@ -1,6 +1,7 @@
 ## Javascript Tag Validator
 ---
 [![Build Status](https://travis-ci.org/theobarberbany/js_tag_validator.svg?branch=master)](https://travis-ci.org/theobarberbany/js_tag_validator) [![codecov](https://codecov.io/gh/theobarberbany/js_tag_validator/branch/master/graph/badge.svg)](https://codecov.io/gh/theobarberbany/js_tag_validator)[![Greenkeeper badge](https://badges.greenkeeper.io/theobarberbany/js_tag_validator.svg)](https://greenkeeper.io/)
+[![David Dependencies](https://david-dm.org/theobarberbany/js_tag_validator/status.svg)](https://david-dm.org/theobarberbany/js_tag_validator)
 
 Clone the repo then run `npm install` or `yarn install`
 
