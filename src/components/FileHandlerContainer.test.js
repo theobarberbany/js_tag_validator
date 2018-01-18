@@ -60,26 +60,3 @@ describe("runValidation function testing", () => {
     expect(enzymeWrapper.state("hideFileHandler")).toEqual(true);
   });
 });
-
-describe("cleanParsedData function testing", () => {
-  it("correctly cleans the parsed data", () => {
-    const { enzymeWrapper } = setupShallow();
-    enzymeWrapper.setState({
-      parsedData: [["Gib", "Gib", "ATCG", "CTGA", "Gib", "Berish"]]
-    });
-    enzymeWrapper.instance().cleanParsedData();
-    expect(props.pushData).toBeCalledWith([["ATCG", "CTGA"]]);
-  });
-  it("Calls runValidation with the correct data", () => {
-    const { enzymeWrapper } = setupShallow();
-    const runValidationMock = jest.fn();
-    enzymeWrapper.instance().runValidation = runValidationMock;
-    enzymeWrapper.setState({
-      parsedData: [["Gib", "Gib", "ATCG", "CTGA", "Gib", "Berish"]]
-    });
-    enzymeWrapper.instance().cleanParsedData();
-    expect(enzymeWrapper.instance().runValidation).toBeCalledWith([
-      ["ATCG", "CTGA"]
-    ]);
-  });
-});
