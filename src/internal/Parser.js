@@ -54,19 +54,25 @@ const parseData = (data, re, headers) => {
 
 // Find any cols with headers.
 const findHeaders = (data, headers) => {
-  for (let row = 0; row <= data.length; row++) {
+  for (let row = 0; row < data.length; row++) {
+    console.log("Checking row number", row);
     let cols = checkRow(data[row], headers);
     if (cols.length > 0) {
       return [row, cols]; //return row and col of headers.
     }
   }
 };
-
+//problem here!
 // Check if a row contains any headers
 const checkRow = (row, headers) => {
+  console.log("CheckRow called with row: ", row);
   let cols = [];
-  for (let i = 0; i <= row.length; i++) {
-    if (headers.includes(row[i])) {
+  for (let i = 0; i < row.length; i++) {
+    console.log("checking col:", i);
+    console.log("Printing element i in row ", row[i]);
+    //.trim fixes edge case where \r / \n causes a match to fail.
+    if (headers.includes(row[i].trim())) {
+      console.log("Found!", i);
       cols.push(i);
     }
   }
