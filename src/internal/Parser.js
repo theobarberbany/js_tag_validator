@@ -35,14 +35,15 @@ const parseData = (data, re, headers) => {
       reject("Can't find headers");
     }
     let data1 = data.slice(rowCols[0] + 1, data.len); // cut off everything, headers and above
-    console.log(data1);
+    console.log("Sliced data: ", data1);
     let data2 = [];
     let firstColumn = rowCols[1][0];
     let secondColumn = rowCols[1][1];
     for (let i = 0; i < data1.length; i++) {
       let row = data1[i];
-      let pair = [row[firstColumn].trim(), row[secondColumn].trim()];
-      if (pair[0] !== "" && pair[1] !== "") {
+      let pair = [row[firstColumn].trim(), row[secondColumn].trim()]; //clean any trailing whitespace
+      // If the row isn't empty, add to end 'clean data' array
+      if (pair.join("").length !== 0) {
         data2.push(pair);
       }
     }
@@ -53,7 +54,7 @@ const parseData = (data, re, headers) => {
 
 // Find any cols with headers.
 const findHeaders = (data, headers) => {
-  for (let row = 0; row < data.length; row++) {
+  for (let row = 0; row <= data.length; row++) {
     let cols = checkRow(data[row], headers);
     if (cols.length > 0) {
       return [row, cols]; //return row and col of headers.
@@ -64,7 +65,7 @@ const findHeaders = (data, headers) => {
 // Check if a row contains any headers
 const checkRow = (row, headers) => {
   let cols = [];
-  for (let i = 0; i < row.length; i++) {
+  for (let i = 0; i <= row.length; i++) {
     if (headers.includes(row[i])) {
       cols.push(i);
     }
