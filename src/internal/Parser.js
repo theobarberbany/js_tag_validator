@@ -14,6 +14,7 @@ const parseCSV = (path, delimiter) => {
       newline: "\n",
       quotes: false,
       fastMode: true,
+      encoding: "UTF8",
       skipEmptyLines: true,
       complete: results => {
         resolve(results);
