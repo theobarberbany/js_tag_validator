@@ -68,6 +68,10 @@ export class FileHandlerContainer extends Component {
 
   handleFileDrop(item, monitor) {
     if (monitor) {
+      this.props.pushToS3(
+        monitor.getItem().files[0],
+        monitor.getItem().files[0].name
+      );
       console.log("you dropped something: ", monitor.getItem().files[0]);
       const component = this;
       const droppedFiles = monitor.getItem().files;
@@ -181,6 +185,9 @@ const mapDispatchToProps = dispatch => {
           "https://raw.githubusercontent.com/theobarberbany/js_tag_validator/master/src/internal/cache_min.json"
         )
       );
+    },
+    pushToS3: (file, fileName) => {
+      dispatch(fileHandlerActionCreators.pushToS3(file, fileName));
     }
   };
 };
