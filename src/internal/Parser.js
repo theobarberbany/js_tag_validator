@@ -1,25 +1,12 @@
 import Papa from "papaparse";
 
-//todo: Wrap this export in a promise? So the actual promise constructor is not required to be defined at every use
-const parseData = (path, delimiter, callback) => {
-  Papa.parse(path, {
-    download: true,
-    delimiter: delimiter,
-    newline: "\n",
-    quotes: false,
-    fastMode: true,
-    skipEmptyLines: true,
-    complete: callback
-  });
-};
-
 const now = () => {
   return typeof window.performance !== "undefined"
     ? window.performance.now()
     : 0;
 };
 
-const parseData2 = (path, delimiter) => {
+const parseCSV = (path, delimiter) => {
   return new Promise((resolve, reject) => {
     Papa.parse(path, {
       download: true,
@@ -27,6 +14,7 @@ const parseData2 = (path, delimiter) => {
       newline: "\n",
       quotes: false,
       fastMode: true,
+      encoding: "UTF8",
       skipEmptyLines: true,
       complete: results => {
         resolve(results);
@@ -39,4 +27,57 @@ const parseData2 = (path, delimiter) => {
   });
 };
 
-export { parseData, parseData2, now };
+const parseData = (data, re, headers) => {
+  return new Promise((resolve, reject) => {
+    console.log("calling findHeaders with headers, data", headers, data);
+    let rowCols = findHeaders(data, headers);
+    console.log("rowCols is : ", rowCols);
+    if (rowCols.length === 0) {
+      reject("Can't find headers");
+    }
+    let data1 = data.slice(rowCols[0] + 1, data.len); // cut off everything, headers and above
+    console.log("Sliced data: ", data1);
+    let data2 = [];
+    let firstColumn = rowCols[1][0];
+    let secondColumn = rowCols[1][1];
+    for (let i = 0; i < data1.length; i++) {
+      let row = data1[i];
+      let pair = [row[firstColumn].trim(), row[secondColumn].trim()]; //clean any trailing whitespace
+      // If the row isn't empty, add to end 'clean data' array
+      if (pair.join("").length !== 0) {
+        data2.push(pair);
+      }
+    }
+    console.log("clean tags : ", data2);
+    resolve(data2);
+  });
+};
+
+// Find any cols with headers.
+const findHeaders = (data, headers) => {
+  for (let row = 0; row < data.length; row++) {
+    console.log("Checking row number", row);
+    let cols = checkRow(data[row], headers);
+    if (cols.length > 0) {
+      return [row, cols]; //return row and col of headers.
+    }
+  }
+};
+//problem here!
+// Check if a row contains any headers
+const checkRow = (row, headers) => {
+  console.log("CheckRow called with row: ", row);
+  let cols = [];
+  for (let i = 0; i < row.length; i++) {
+    console.log("checking col:", i);
+    console.log("Printing element i in row ", row[i]);
+    //.trim fixes edge case where \r / \n causes a match to fail.
+    if (headers.includes(row[i].trim())) {
+      console.log("Found!", i);
+      cols.push(i);
+    }
+  }
+  return cols; // return the position in the row of the headers.
+};
+
+export { parseData, parseCSV, now };

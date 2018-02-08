@@ -4,7 +4,7 @@ function difference(tag1, tag2) {
   //compare two tags - return the degree to which they differ
   try {
     if (tag1.length !== tag2.length) {
-      throw "Tag Length Mismatch";
+      throw "Tag Length Mismatch between " + tag1 + "and " + tag2;
     }
     let counter = 0;
     for (let i = 0; i < tag1.length; i++) {

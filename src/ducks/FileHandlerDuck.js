@@ -1,11 +1,14 @@
 // FileHandler.js duck *quack*
 import { CardStatus } from "carbon-components-react";
 import { addBadTagPair, addBadTagPairConcat } from "./warningDuck";
+import "isomorphic-fetch";
+import "form-data";
 
 //Action types
 export const DROP_FILE = "DROP_FILE";
 export const PUSH_DATA = "PUSH_DATA";
 export const PUSH_OVERVIEW = "PUSH_OVERVIEW";
+export const PUSHED_TO_S3 = "PUSHED_TO_S3";
 
 // Reducer Initial state for *this* component (Duck) (This only gets passed a
 // slice of the state)
@@ -46,6 +49,11 @@ export function reducer(state = initialState, action) {
         ...state,
         overview: action.data
       };
+    case PUSHED_TO_S3:
+      return {
+        ...state,
+        filePushedToS3: action.fileName
+      };
     default:
       return state;
   }
@@ -54,17 +62,26 @@ export function reducer(state = initialState, action) {
 // Action Creators
 //1. Loads an object into store.
 export const pushData = data => {
-  return { type: PUSH_DATA, data };
+  return {
+    type: PUSH_DATA,
+    data
+  };
 };
 
 //2. Changes FileHandler UI state when something is dropped on it
 export const dropFile = fileHandlerState => {
-  return { type: DROP_FILE, fileHandlerState };
+  return {
+    type: DROP_FILE,
+    fileHandlerState
+  };
 };
 
 //3. Pushes tag composition (array) to store
 export const pushOverview = data => {
-  return { type: PUSH_OVERVIEW, data };
+  return {
+    type: PUSH_OVERVIEW,
+    data
+  };
 };
 
 //Async
@@ -110,5 +127,34 @@ export const processBadTags = object => {
         )
       );
     }
+  };
+};
+//6. Notify the app that you've pushed to S3
+export const pushedToS3 = fileName => {
+  return {
+    type: PUSHED_TO_S3,
+    fileName
+  };
+};
+//7. Push dropped file to S3 Bucker
+export const pushToS3 = (file, fileName) => {
+  return dispatch => {
+    let form = new FormData();
+    form.append("bucket", "tb15");
+    form.append("policy", "fillIn");
+    form.append("AWSAccessKeyId", "fillIn");
+    form.append("signature", "fillIn");
+    form.append("key", "uploads/" + fileName);
+    form.append("file", file);
+    return fetch("https://cog.sanger.ac.uk/tb15/", {
+      method: "POST",
+      body: form
+    }).then((response, error) => {
+      if (response.status === 204) {
+        dispatch(pushedToS3(fileName));
+      } else if (error) {
+        console.log("Error pushing to S3", error);
+      }
+    });
   };
 };
