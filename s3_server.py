@@ -4,6 +4,12 @@ import falcon
 from falcon_cors import CORS
 import mimetypes
 
+"""
+S3 Signed URL API. Will Guess filetype passed.
+
+Run with gunicorn: $ gunicorn s3_server:api
+"""
+
 access_key = ''
 secret_key = ''
 conn = boto.connect_s3(
