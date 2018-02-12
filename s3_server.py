@@ -8,6 +8,9 @@ import mimetypes
 S3 Signed URL API. Will Guess filetype passed.
 
 Run with gunicorn: $ gunicorn s3_server:api
+
+See https://github.com/theobarberbany/s3_signed_url_server for documentation.
+
 """
 
 access_key = ''
