@@ -136,25 +136,28 @@ export const pushedToS3 = fileName => {
     fileName
   };
 };
-//7. Push dropped file to S3 Bucker
+//7. Push dropped file to S3 Bucket
 export const pushToS3 = (file, fileName) => {
   return dispatch => {
-    let form = new FormData();
-    form.append("bucket", "tb15");
-    form.append("policy", "fillIn");
-    form.append("AWSAccessKeyId", "fillIn");
-    form.append("signature", "fillIn");
-    form.append("key", "uploads/" + fileName);
-    form.append("file", file);
-    return fetch("https://cog.sanger.ac.uk/tb15/", {
-      method: "POST",
-      body: form
-    }).then((response, error) => {
-      if (response.status === 204) {
-        dispatch(pushedToS3(fileName));
-      } else if (error) {
-        console.log("Error pushing to S3", error);
-      }
-    });
+    return fetch("/api/S3Sign?objectName=" + fileName, {
+      method: "GET"
+    })
+      .then(
+        url => url.json(),
+        error => console.log("Error generating signed URL", error)
+      )
+      .then(url =>
+        fetch(url.signedUrl, {
+          method: "PUT",
+          body: file
+        })
+      )
+      .then((response, error) => {
+        if (response.status === 200) {
+          dispatch(pushedToS3(fileName));
+        } else if (error) {
+          console.log("Error pushing to S3", error);
+        }
+      });
   };
 };
