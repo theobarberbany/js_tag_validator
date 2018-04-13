@@ -12,7 +12,7 @@
 
 * Set up crontab to automatically rebuild database, you will need python3 and the [python tag validator](https://github.com/theobarberbany/tag_validator) installed. The script connects to the warehouse internal database, so will need to be executed somewhere with access to that too.
     ```bash
-    $ cat script
+    $
     #!/usr/bin/env bash
     if [ "$(whoami)" != "root" ]
     then
