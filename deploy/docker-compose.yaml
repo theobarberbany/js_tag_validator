@@ -1,0 +1,47 @@
+version: "3.2"
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1350
+    ipam:
+      config:
+        - subnet: 192.168.4.0/24
+
+services:
+  s3:
+    image: tb15/s3_server:master
+    environment:
+      - TOKEN=${TOKEN}
+      - URL=${VAULT_ADDR}
+      - INDEX=tag-validator/s3
+    ports:
+      - "8000:8000"
+  validator:
+    image: tb15/tag_validator:master
+    command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+    environment:
+      - TOKEN=${TOKEN}
+      - URL=${VAULT_ADDR}
+      - INDEX=tag-validator/db
+  js-tag-validator:
+    image: tb15/js-tag-validator:master
+    ports:
+      - "3000:3000"
+  nginx:
+    image: tb15/nginx-vault:master
+    environment:
+      - TOKEN=${TOKEN}
+      - URL=${VAULT_ADDR}
+      - INDEX=tag-validator/nginx
+      - SERV=${SERV}
+    volumes:
+      - type: bind
+        source: ./cache
+        target: /var/www/cache
+    ports:
+      - "80:80"
+      - "443:443"
