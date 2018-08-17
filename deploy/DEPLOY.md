@@ -108,7 +108,7 @@ s3_1                | [2018-04-17 08:59:22 +0000] [26] [INFO] Booting worker wit
 js-tag-validator_1  | serve: Running on port 3000
 ```
 
-* Now you should be able to access the tag validator at the url provided in `${SERV}`. Now set up the cron job to use the tag-validator docker image brought up. Compose has mapped `/var/www/cache` inside the container to the `/cache` in the folder you brought everything up in. 
+* Now you should be able to access the tag validator at the url provided in `${SERV}`. Now set up the cron job to use the tag-validator docker image brought up. Compose has mapped `/var/www/cache` inside the container to the `/cache` in the folder you brought everything up in. I had to bring everything down (`docker-compose up`, ctrl +c) then `chmod 777 cache/` followed by `touch cache_min.json`. Then running `docker-compose up` again. Then run the script below. This fixed weird permissions problems with docker-compose's bind mounting.
 * Run `docker ps` to get the name of the container running the validator. Mine was testing_validator_1
  ```bash
     #!/usr/bin/env bash
