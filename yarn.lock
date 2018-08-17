@@ -282,9 +282,11 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-attr-accept@^1.0.3:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/attr-accept/-/attr-accept-1.1.0.tgz#b5cd35227f163935a8f1de10ed3eba16941f6be6"
+attr-accept@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/attr-accept/-/attr-accept-1.1.3.tgz#48230c79f93790ef2775fcec4f0db0f5db41ca52"
+  dependencies:
+    core-js "^2.5.0"
 
 autobind-decorator@^2.1.0:
   version "2.1.0"
@@ -1271,33 +1273,36 @@ capture-stack-trace@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/capture-stack-trace/-/capture-stack-trace-1.0.0.tgz#4a6fa07399c26bba47f0b2496b4d0fb408c5550d"
 
-carbon-components-react@^5.5.1:
-  version "5.5.1"
-  resolved "https://registry.yarnpkg.com/carbon-components-react/-/carbon-components-react-5.5.1.tgz#19d4c927780b77e956f413c60af95f488ade6920"
+carbon-components-react@5.52.4:
+  version "5.52.4"
+  resolved "https://registry.yarnpkg.com/carbon-components-react/-/carbon-components-react-5.52.4.tgz#3182ce178bc246f0c0730e691535a907e975a464"
   dependencies:
     classnames "2.2.5"
-    flatpickr "4.2.1"
+    downshift "^1.31.14"
+    flatpickr "4.5.0"
+    invariant "^2.2.3"
     lodash.debounce "^4.0.8"
     lodash.isequal "^4.5.0"
-    warning "3.0.0"
+    lodash.omit "^4.5.0"
+    warning "^3.0.0"
     window-or-global "^1.0.1"
 
-carbon-components@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/carbon-components/-/carbon-components-9.0.0.tgz#3a472a883266e202a1cc37c54e2d6be67ac9ce6b"
+carbon-components@8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/carbon-components/-/carbon-components-8.2.0.tgz#716d655d61397423fff89b905c0570f6d2dd868c"
   dependencies:
     carbon-icons "^6.0.4"
     flatpickr "2.6.3"
     lodash.debounce "^4.0.8"
     warning "^3.0.0"
 
+carbon-icons@^6.0.0:
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/carbon-icons/-/carbon-icons-6.3.2.tgz#2cc942225442b0d5c02593e344b50c7ec22edf28"
+
 carbon-icons@^6.0.4:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/carbon-icons/-/carbon-icons-6.2.0.tgz#84f568a64b1465c52183eb26de736893b3d8abdb"
-
-carbon-icons@^7.0.1:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/carbon-icons/-/carbon-icons-7.0.4.tgz#ebf76e08369944e8f0514776a41e9923f8aa58bc"
 
 case-sensitive-paths-webpack-plugin@2.1.1:
   version "2.1.1"
@@ -2088,6 +2093,10 @@ dotenv@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
 
+downshift@^1.31.14:
+  version "1.31.16"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-1.31.16.tgz#acd81631539502d4112d01bd573654419fd9f640"
+
 duplexer2@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.1.4.tgz#8b12dab878c0d69e3e7891051662a32fc6bddcc1"
@@ -2874,9 +2883,9 @@ flatpickr@2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-2.6.3.tgz#457357532deb135f3da64b425bf4435737961564"
 
-flatpickr@4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.2.1.tgz#72dda26a0db0456d19c4bf5c8430ebadf5d89cdc"
+flatpickr@4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.5.0.tgz#f72c7164a1c24e3ad419e3b2209d1a2d3604724a"
 
 flatten@^1.0.2:
   version "1.0.2"
@@ -3506,7 +3515,7 @@ invariant@^2.0.0, invariant@^2.1.0, invariant@^2.2.2:
   dependencies:
     loose-envify "^1.0.0"
 
-invariant@^2.2.4:
+invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   dependencies:
@@ -4330,6 +4339,10 @@ lodash.memoize@^4.1.2:
 lodash.merge@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.0.tgz#69884ba144ac33fe699737a6086deffadd0f89c5"
+
+lodash.omit@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
 
 lodash.template@^4.4.0:
   version "4.4.0"
@@ -5701,11 +5714,11 @@ react-dom@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-dropzone@^4.1.3:
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-4.2.3.tgz#f7bc92aa5fe4253fdb1fd3792114d2d29b47119a"
+react-dropzone@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-5.0.0.tgz#7b1c93a0317dda19529282d576b194d7b9b82af1"
   dependencies:
-    attr-accept "^1.0.3"
+    attr-accept "^1.1.3"
     prop-types "^15.5.7"
 
 react-error-overlay@^4.0.0:
@@ -6981,7 +6994,7 @@ walker@~1.0.5:
   dependencies:
     makeerror "1.0.x"
 
-warning@3.0.0, warning@^3.0.0:
+warning@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/warning/-/warning-3.0.0.tgz#32e5377cb572de4ab04753bdf8821c01ed605b7c"
   dependencies:
