@@ -4,8 +4,8 @@
   "license": "SEE LICENSE IN LICENSE",
   "private": true,
   "dependencies": {
+    "carbon-components-react": "^6.21.3",
     "carbon-components": "^9.0.0",
-    "carbon-components-react": "^5.5.1",
     "carbon-icons": "^7.0.1",
     "form-data": "^2.3.1",
     "isomorphic-fetch": "^2.2.1",
