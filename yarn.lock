@@ -2,6 +2,19 @@
 # yarn lockfile v1
 
 
+"@carbon/icon-helpers@0.0.1-alpha.25":
+  version "0.0.1-alpha.25"
+  resolved "https://registry.yarnpkg.com/@carbon/icon-helpers/-/icon-helpers-0.0.1-alpha.25.tgz#979d33e4ace14b14a1d9c693510fecef6a306c43"
+  integrity sha512-5HNefY823cWAjLhf3HKJP1ilySnFDroIOo2svMcdsGRMGF01A5GjVV+u2WxqmeOqLioOj36FEtzsOJlVZA5rFg==
+
+"@carbon/icons-react@^0.0.1-alpha.20":
+  version "0.0.1-alpha.25"
+  resolved "https://registry.yarnpkg.com/@carbon/icons-react/-/icons-react-0.0.1-alpha.25.tgz#898742d10bc8e5a098f5d592c7fb3ab9abd9c660"
+  integrity sha512-B8P9JTWlTSvA+dDffFet7e65RzwIoEsmU7qtycm46G0NiYKGsZV6USHhb6ZfsqXAjEtEZDjsNJDYDpxqp2996g==
+  dependencies:
+    "@carbon/icon-helpers" "0.0.1-alpha.25"
+    prop-types "^15.6.2"
+
 "@types/node@*":
   version "8.0.53"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.53.tgz#396b35af826fa66aad472c8cb7b8d5e277f4e6d8"
@@ -1273,13 +1286,15 @@ capture-stack-trace@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/capture-stack-trace/-/capture-stack-trace-1.0.0.tgz#4a6fa07399c26bba47f0b2496b4d0fb408c5550d"
 
-carbon-components-react@5.52.4:
-  version "5.52.4"
-  resolved "https://registry.yarnpkg.com/carbon-components-react/-/carbon-components-react-5.52.4.tgz#3182ce178bc246f0c0730e691535a907e975a464"
+carbon-components-react@6.60.0:
+  version "6.60.0"
+  resolved "https://registry.yarnpkg.com/carbon-components-react/-/carbon-components-react-6.60.0.tgz#6dbb1a98185279d3d89bf54826bbf774fb7c4e45"
+  integrity sha512-dUNCPTYKwbl7/dBBTPs4HbAbubZ0ky+g4WdyfEs6rl/SGMUaXjjGS2U76DP/dmPWMiWhzWvTjuXbdBDDrMiawQ==
   dependencies:
-    classnames "2.2.5"
+    "@carbon/icons-react" "^0.0.1-alpha.20"
+    classnames "2.2.6"
     downshift "^1.31.14"
-    flatpickr "4.5.0"
+    flatpickr "4.5.1"
     invariant "^2.2.3"
     lodash.debounce "^4.0.8"
     lodash.isequal "^4.5.0"
@@ -1388,9 +1403,10 @@ clap@^1.0.9:
   dependencies:
     chalk "^1.1.3"
 
-classnames@2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
+classnames@2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
 
 clean-css@4.1.x:
   version "4.1.9"
@@ -2883,9 +2899,10 @@ flatpickr@2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-2.6.3.tgz#457357532deb135f3da64b425bf4435737961564"
 
-flatpickr@4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.5.0.tgz#f72c7164a1c24e3ad419e3b2209d1a2d3604724a"
+flatpickr@4.5.1:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.5.1.tgz#f65eaf54c07538f87d6f68a67b03cf816d7fb82f"
+  integrity sha512-dsLTFmRg6mlqYfJ35A7gLlbq+8fOqRty3cWncl6rwU4pMe//i0WKxKLVyBbSYAZry93Lg+yqsOph9haltcxCqQ==
 
 flatten@^1.0.2:
   version "1.0.2"
@@ -5520,6 +5537,14 @@ prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.6.0:
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
     fbjs "^0.8.16"
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
+prop-types@^15.6.2:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
+  integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
+  dependencies:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
