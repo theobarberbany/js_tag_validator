@@ -17,7 +17,7 @@
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^5.0.1",
     "react-dom": "^16.0.0",
-    "react-dropzone": "^5.0.1",
+    "react-dropzone": "^10.0.1",
     "react-inspector": "^2.2.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
