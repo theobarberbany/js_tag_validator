@@ -19,7 +19,7 @@
     "react-dom": "^16.0.0",
     "react-dropzone": "^5.0.1",
     "react-inspector": "^2.2.0",
-    "react-redux": "^5.0.6",
+    "react-redux": "^7.0.3",
     "redux": "^3.7.2",
     "redux-segment": "^1.6.2",
     "redux-thunk": "^2.2.0",
