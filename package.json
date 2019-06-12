@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "carbon-components": "8.2.0",
-    "carbon-components-react": "5.52.4",
+    "carbon-components-react": "7.3.1",
     "carbon-icons": "^6.0.0",
     "form-data": "^2.3.1",
     "isomorphic-fetch": "^2.2.1",
