@@ -7,7 +7,7 @@
     "carbon-components": "8.2.0",
     "carbon-components-react": "5.52.4",
     "carbon-icons": "^6.0.0",
-    "form-data": "^2.3.1",
+    "form-data": "^3.0.0",
     "isomorphic-fetch": "^2.2.1",
     "papaparse": "^4.3.6",
     "prop-types": "^15.6.0",
