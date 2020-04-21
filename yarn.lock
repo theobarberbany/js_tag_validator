@@ -1287,22 +1287,18 @@ carbon-components-react@5.52.4:
     warning "^3.0.0"
     window-or-global "^1.0.1"
 
-carbon-components@8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/carbon-components/-/carbon-components-8.2.0.tgz#716d655d61397423fff89b905c0570f6d2dd868c"
+carbon-components@10.11.1:
+  version "10.11.1"
+  resolved "https://registry.yarnpkg.com/carbon-components/-/carbon-components-10.11.1.tgz#b64b56391d522669f84cecd2d0c076999d9d2f30"
+  integrity sha512-mYY999SmlDhvWRMI/m64FkT2gA3EnM/Lb/rwseaim9CHmEvRH4IDrI1VEtTIM9UnhUmF7wo2ykSifKfni6uwWQ==
   dependencies:
-    carbon-icons "^6.0.4"
-    flatpickr "2.6.3"
+    flatpickr "4.6.1"
     lodash.debounce "^4.0.8"
     warning "^3.0.0"
 
 carbon-icons@^6.0.0:
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/carbon-icons/-/carbon-icons-6.3.2.tgz#2cc942225442b0d5c02593e344b50c7ec22edf28"
-
-carbon-icons@^6.0.4:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/carbon-icons/-/carbon-icons-6.2.0.tgz#84f568a64b1465c52183eb26de736893b3d8abdb"
 
 case-sensitive-paths-webpack-plugin@2.1.1:
   version "2.1.1"
@@ -2879,13 +2875,14 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-flatpickr@2.6.3:
-  version "2.6.3"
-  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-2.6.3.tgz#457357532deb135f3da64b425bf4435737961564"
-
 flatpickr@4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.5.0.tgz#f72c7164a1c24e3ad419e3b2209d1a2d3604724a"
+
+flatpickr@4.6.1:
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.6.1.tgz#9eb498ab805dd27f5ae02e1ac6ac6c099ce45e94"
+  integrity sha512-3ULSxbXmcMIRzer/2jLNweoqHpwDvsjEawO2FUd9UFR8uPwLM+LruZcPDpuZStcEgbQKhuFOfXo4nYdGladSNw==
 
 flatten@^1.0.2:
   version "1.0.2"
